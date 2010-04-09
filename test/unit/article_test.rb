@@ -1,8 +1,6 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  # Replace this with your real tests.
-  test "the truth" do
-    assert true
+  test "" do
   end
 end
