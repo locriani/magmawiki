@@ -1,0 +1,21 @@
+<%# start_logging %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title><%= h(yield(:title) || "Magmawiki") %></title>
+		<%= stylesheet_link_tag 'application' %>
+		<%= yield(:head) %>
+	</head>
+  	<body>
+		<div id="body">
+			<% flash.each do |name, msg| %>
+			<%= content_tag :div, msg, :id => "flash_#{name}" %>
+    		<% end %>
+			
+			<%= yield %>
+		</div>
+	</body>
+</html>
+<%# finish_logging %>
+<%# output_logging_data %>
