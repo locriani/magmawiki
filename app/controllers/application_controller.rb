@@ -11,4 +11,8 @@ class ApplicationController < ActionController::Base
   def title(page_title)
     content_for(:title) { page_title }
   end
+  
+  def head(page_head)
+    content_for(:head) { page_head }
+  end
 end
