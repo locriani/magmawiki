@@ -36,5 +36,6 @@ class ArticleTest < ActiveSupport::TestCase
     article.save!
     
     assert_equal(article.current_revision, Revision.find_by_id(article.current_revision))
-  end  
+  end
+  
 end

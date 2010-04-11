@@ -2,7 +2,7 @@ class Article < ActiveRecord::Base
   before_validation :prepare_article_name
   before_validation_on_create :prepare_first_revision
   
-  # has_many :revisions
+  has_many :revisions
   belongs_to :current_revision, :class_name => 'Revision'
   validates_uniqueness_of :title
   

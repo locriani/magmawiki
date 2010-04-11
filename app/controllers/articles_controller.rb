@@ -17,6 +17,8 @@ class ArticlesController < ApplicationController
   
   def new
     @article = Article.new
+    revision = @article.revisions.build
+    @article.current_revision = revision
     respond_to do |format|
       format.html
     end

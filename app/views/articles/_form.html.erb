@@ -1,0 +1,15 @@
+<% form_for article do |f| %>
+	<div>
+		<%= f.label :title %>
+		<%= f.text_field :title %>
+	</div>
+	<div>
+	<% fields_for article.current_revision do |f| %>
+		<div>
+			<%= f.label :body %>
+			<%= f.text_area :body %>
+		</div>
+	<% end %>
+	<div>
+		<%= f.submit "submit" %>
+<% end %>
