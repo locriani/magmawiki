@@ -56,11 +56,35 @@ div#main-tools .group h5{
 }
 
 
-div#article-tools{
-  width: 48%;
-  margin: 0 100px;
+div#article-tabs{
+    display: block;
+    float: left;
+    padding-left: 15px;
+    position:absolute;
+    left:85px;
 }
-
+ul.article-tabs{
+    display: block;
+    float: left;
+    list-style-type: none;
+    margin:0px;
+    padding:0px;
+    right:1em;
+}
+li.active {
+    float:left;
+    display: block;
+    line-height: 1.125em;
+    border: 1px solid #9df;
+    white-space: nowrap;
+}
+li.inactive {
+    float:left;
+    display: block;
+    line-height: 1.125em;
+    border: 1px solid #9df;
+    white-space: nowrap;
+}
 div#article-tools .group{
 float: left;
 padding: 0px 7px;
@@ -79,12 +103,12 @@ border-bottom: 1px solid #bd8;
 background: #eef5ff;
 }
 
-div#article-tools .left{
+li.left{
 -moz-border-radius-topleft: 6px;
 -webkit-border-top-left-radius: 6px;
 }
 
-div#article-tools .right{
+li.right{
 -moz-border-radius-topright: 6px;
 -webkit-border-top-right-radius: 6px;
 }
@@ -102,7 +126,7 @@ div#article{
   
   margin: 0;
   //margin-left: 200px;
-  margin-top: 4px;
+  margin-top: 1px;
   border: 1px solid #bd8; //#B3B3B3; 
   padding: 5px;
   padding-top: 10px;

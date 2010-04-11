@@ -8,6 +8,7 @@
 		<%= yield(:head) %>
 	</head>
   	<body>
+	<div id="header">
 	    <div id="logo">
 	    </div>
 	    <div id="login-bar">
@@ -16,22 +17,21 @@
 	    <div id="search">
 		<input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" autocomplete="off">
 	    </div>
-	    <div id="article-tools">
-		<div class="group left">
-		    <h5>Title1</h5>
-		    <div class="body">
-			Article
-		    </div>
-		</div>
-
-		<div class="group below right">
-		    <h5>Title2</h5>
-		    <div class="body">
-			Edit
-		    </div>
+	
+	<!-- locriani's test changes are here -->
+	    <div id="article-tabs">
+		<ul class="article-tabs">
+			<li id="article-tab left" class="active left">
+				Article
+			</li>
+			<li id="article-tab" class="inactive right">
+				Edit
+			</li>
+		</ul>
 		</div>
 		<br>
 	    </div>
+	<!-- locriani's test changes end here -->
 
 	    <div id="main-tools">
 		<!--<div class="group">
