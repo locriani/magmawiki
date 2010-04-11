@@ -62,6 +62,7 @@ div#article-tabs{
     padding-left: 15px;
     position:absolute;
     left:85px;
+    height:20px;
 }
 ul.article-tabs{
     display: block;
@@ -70,6 +71,8 @@ ul.article-tabs{
     margin:0px;
     padding:0px;
     right:1em;
+    line-height: 1.125em;
+    height:20px;
 }
 li.active {
     float:left;
@@ -77,13 +80,15 @@ li.active {
     line-height: 1.125em;
     border: 1px solid #9df;
     white-space: nowrap;
+    height:20px;
 }
 li.inactive {
     float:left;
     display: block;
-    line-height: 1.125em;
     border: 1px solid #9df;
     white-space: nowrap;
+    line-height: 1.125em;
+    height:20px;
 }
 div#article-tools .group{
 float: left;
