@@ -29,9 +29,13 @@ div#logo{
   float: left;
 }
 
+div#article-tools-right{
+float:right;
+}
 
 div#article-tools{
   margin: 0px 100px;
+  margin-right: 0px;
   padding-bottom:0px;
   height:22px;
 }
@@ -65,13 +69,18 @@ div#article-tools .right{
 -webkit-border-top-right-radius: 6px;
 }
 
+div#star-tool{
+  background: url('/star-watch.png') no-repeat;
+  width:16px;
+  height: 16px;
+}
+
 div#article-tools .group h5{
   display:none;
 }
 
 div#search{
 float:right;
-margin-top: -3px;
 }
 
 div#article{
