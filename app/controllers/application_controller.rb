@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password, :password_confirmation, :authenticity_token
+  
+  def title(page_title)
+    content_for(:title) { page_title }
+  end
 end
