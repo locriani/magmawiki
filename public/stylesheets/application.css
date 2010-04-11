@@ -1,13 +1,20 @@
 body{
 background: #F7F7F7;
 font-family: Helvetica, arial, sans-serif;
+padding: 0px 18px;
+padding-top: 7px;
+}
+
+a:link, a:visited{
+color:#08c;
+text-decoration:none;
 }
 
 div#login-bar{
   text-align: center;
   margin:auto;
   margin-top: -7px;
-  margin-bottom: 12px;
+  margin-bottom: 20px;
   padding-top: 1px;
 border: 1px solid #B3B3B3; 
 border-top:none;
@@ -21,7 +28,6 @@ width:30em;
 
 div#logo{
   margin-left:5px;
-  margin-top:5px;
   background: url('/logo2.png') no-repeat;
   background-size: 100%;
   width:85px;
@@ -43,20 +49,26 @@ div#article-tools{
 div#article-tools .group{
 float: left;
 padding: 0px 7px;
-padding-top: 3px;
+padding-top: 6px;
 padding-bottom:0px;
 margin-right:1px;
 border: 1px solid #bd8; 
 border-bottom: 1px solid #FFF;
 background: #FFF;
 font-size:80%;
-height:22px;
+height:19px;
 }
 
 div#article-tools .below{
 border: 1px solid #9df; //#B3B3B3;
 border-bottom: 1px solid #bd8;
-background: #eef5ff;
+background: #fff;
+background-image: url('/Gradient-blue5.png');
+background-repeat: repeat-x;
+}
+
+div#article-tools .active a:link, div#article-tools .active a:visited{
+color: #E0A752;
 }
 
 div#article-tools .left{
@@ -73,14 +85,25 @@ div#star-tool{
   background: url('/star-watch.png') no-repeat;
   width:16px;
   height: 16px;
+  margin-top:-1px;
+}
+
+div#article-tools .group .body{
+  color: #373737;
 }
 
 div#article-tools .group h5{
   display:none;
 }
 
+div#article-tools .group .triangle{
+  font-size: 110%;
+  margin-top:-1px;
+}
+
 div#search{
 float:right;
+margin-left: 3px;
 }
 
 div#article{
@@ -90,4 +113,40 @@ div#article{
   padding: 5px;
   padding-top: 10px;
   background: #FFF;
+}
+
+#article_title{
+border: 1px solid #B3B3B3;
+}
+
+#arrow-menu{
+//display: none;
+position:absolute;
+  background: #FFF;
+  border: 1px solid #bd8;
+  border-top: none;
+  margin-top:21px;
+  padding:6px;
+  margin-left: -8px;
+}
+
+#arrow-menu a:link{
+color:#08c;
+text-decoration:none;
+}
+
+#arrow-menu a:visited{
+color:#08c;
+text-decoration:none;
+}
+
+textarea#revision_body{
+width:99%;
+margin:4px 0px;
+border: 1px solid #B3B3B3;
+}
+
+.new-wrapper-body
+{
+    text-align: center;
 }
