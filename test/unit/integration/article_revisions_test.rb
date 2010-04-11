@@ -5,6 +5,7 @@ class ArticleRevisionsTest < ActiveSupport::TestCase
     article = Factory.build(:article)
     article.save!
     
+    assert_not_nil article.current_revision
     assert_same article.current_revision, Revision.find_by_id(article.current_revision)
   end
   
