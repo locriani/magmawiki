@@ -13,7 +13,7 @@ private
   end
   
   def prepare_current_revision
-    current_revision = Revision.create(:body => "")
+    current_revision = Revision.new(:body => "")
     current_revision.article_id = self.id
     current_revision.save!
   end
