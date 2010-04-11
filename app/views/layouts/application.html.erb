@@ -8,76 +8,14 @@
 		<%= yield(:head) %>
 	</head>
   	<body>
-	    <div id="logo">
-	    </div>
-	    <div id="login-bar">
-		hey look this is that bar where login stuff usually goes~!
-	    </div>
-	
-	    <div id="search">
-		<input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> 
-	    </div>
-	<!-- locriani's test changes are here -->
-
-	<!-- locriani's test changes end here -->
-
-	    <div id="main-tools">
-		<!--<div class="group">
-		    <h5>navigation</h5>
-		    <div class="body">
-			<ul>
-			    <li>Main page</li>
-			    <li>Current events</li>
-			    <li>Random article</li>
-			</ul>
-		    </div>
-		</div>
-
-		<div class="group">
-		    <h5>toolbox</h5>
-		    <div class="body">
-			<ul>
-			    <li>What links here</li>
-			    <li>Upload file</li>
-			    <li>Permanent link</li>
-			</ul>
-		    </div>
-		</div>-->
-	    </div>
-	    <div>
-		<div id="article-tools">
-		    <div class="group left">
-			<h5>Title1</h5>
-			<div class="body">
-			    Article
-			</div>
-		    </div>
-
-		    <div class="group below right">
-			<h5>Title2</h5>
-			<div class="body">
-			    Edit
-			</div>
-		    </div>
-		    <br>
-		</div>
+		<%= render :partial => 'layouts/header' %>
 		<div id="article">
 		    <% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, :id => "flash_#{name}" %>
 		    <% end %>
-			    
+		    
 		    <%= yield %>
-
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-		    filler<br> filler <br><br>
-
 		</div>
-	    </div>
 	</body>
 </html>
 <%# finish_logging %>
