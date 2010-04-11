@@ -7,7 +7,7 @@ div#login-bar{
   text-align: center;
   margin:auto;
   margin-top: -7px;
-  margin-bottom: 20px;
+  margin-bottom: 12px;
   padding-top: 1px;
 border: 1px solid #B3B3B3; 
 border-top:none;
@@ -29,48 +29,24 @@ div#logo{
   float: left;
 }
 
-div#main-tools{
-  margin-top:10px;
-  float: left;
-  clear:left;
-  width: 190px;
-}
-
-div#main-tools .group{
-  margin-bottom: 10px;
-}
-
-div#main-tools .group .body{
-  border: 1px solid #B3B3B3; 
-  background: #FFF;
-  }
-
-div#main-tools .group .body ul{
-  margin: 9px 0px;
-  padding-left:25px;
-}
-
-div#main-tools .group h5{
-  padding: 0px;
-  margin: 0px;
-}
-
 
 div#article-tools{
-  width: 48%;
-  margin: 0 100px;
+  margin: 0px 100px;
+  padding-bottom:0px;
+  height:22px;
 }
 
 div#article-tools .group{
 float: left;
-//padding: 0px 7px;
-//padding-top: 3px;
+padding: 0px 7px;
+padding-top: 3px;
+padding-bottom:0px;
 margin-right:4px;
 border: 1px solid #bd8; 
 border-bottom: 1px solid #FFF;
 background: #FFF;
 font-size:80%;
-height:30px;
+height:22px;
 }
 
 div#article-tools .below{
@@ -99,12 +75,10 @@ margin-top: -3px;
 }
 
 div#article{
-  
-  //margin: 0;
-  //margin-left: 200px;
-  //margin-top: 10px;
+  margin: 0;
+  margin-top: 4px;
   border: 1px solid #bd8; //#B3B3B3; 
-  //padding: 5px;
-  //padding-top: 10px;
+  padding: 5px;
+  padding-top: 10px;
   background: #FFF;
 }
