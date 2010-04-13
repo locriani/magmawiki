@@ -9,13 +9,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413060624) do
+ActiveRecord::Schema.define(:version => 20100413113730) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
     t.integer  "talk_forum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "slug"
   end
 
   add_index "articles", ["title"], :name => "index_articles_on_title", :unique => true
