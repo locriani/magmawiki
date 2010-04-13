@@ -1,20 +1,15 @@
-class Article < ActiveRecord::Base
+class Article < ActiveRecord::Base  
   before_validation :prepare_article_name
-  before_validation :prepare_current_revision
   
   has_many :revisions
-  belongs_to :current_revision, :class_name => 'Revision'
+  has_one :current_revision, :class_name => 'Revision', :conditions => ["is_current = ?", true]
+  
   validates_uniqueness_of :title
-  # validates_presence_of :current_revision
+  
+  accepts_nested_attributes_for :current_revision, :revisions
   
 private
   def prepare_article_name
     title.downcase!
-  end
-  
-  def prepare_current_revision
-    current_revision = Revision.new(:body => "")
-    current_revision.article_id = self.id
-    current_revision.save!
   end
 end

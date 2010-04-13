@@ -9,11 +9,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100411192112) do
+ActiveRecord::Schema.define(:version => 20100413060624) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
-    t.integer  "current_revision_id"
     t.integer  "talk_forum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,7 +26,12 @@ ActiveRecord::Schema.define(:version => 20100411192112) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "summary"
+    t.boolean  "is_current"
   end
+
+  add_index "revisions", ["article_id", "is_current"], :name => "index_revisions_on_article_id_and_is_current", :unique => true
+  add_index "revisions", ["article_id"], :name => "index_revisions_on_article_id"
+  add_index "revisions", ["is_current"], :name => "index_revisions_on_is_current"
 
   create_table "talk_forums", :force => true do |t|
     t.datetime "created_at"

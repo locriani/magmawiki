@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_id(params[:id])
+    @article = Article.find_by_id(params[:id], :include => :current_revision)
     respond_to do |format|
       format.html
     end
@@ -17,14 +17,25 @@ class ArticlesController < ApplicationController
   
   def new
     @article = Article.new
-    revision = @article.revisions.build
-    @article.current_revision = revision
+    current_revision = @article.revisions.build
     respond_to do |format|
       format.html
     end
   end
   
   def create
+    #TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES
+    @article = Article.new(params[:article])
+    revision = @article.revisions.build
+    revision.body = params[:current_revision][:body]
+    revision.summary = params[:current_revision][:summary]
+    revision.is_current = true
+    if @article.save
+      flash[:notice] = "Article created successfully."
+      redirect_to article_path(@article)
+    else
+      render :action => :new
+    end
   end
   
   def edit
