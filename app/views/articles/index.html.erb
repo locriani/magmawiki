@@ -1,7 +1,11 @@
-<% @articles.each do |article| %>
-	<h3><%=h article.title %></h3>
-	<%= link_to "Edit", edit_article_path(article) %>
-<% end %>
-<%= link_to "New Article", new_article_path %>
-<% content_for :title do %>Articles<% end %>  
+<%= render :partial => 'layouts/toolbar_header', :locals => {:article => @article} %>
 
+<div id="body">
+	<% @articles.each do |article| %>
+		<h3><%=h article.title %></h3>
+		<%= link_to "Edit", edit_article_path(article) %>
+	<% end %>
+	<%= link_to "New Article", new_article_path %>
+</div>
+
+<% content_for :title do %>Articles<% end %>  

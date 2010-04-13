@@ -9,14 +9,11 @@
 		<%= yield(:head) %>
 	</head>
   	<body>
-		<%= render :partial => 'layouts/header' %>
-		<div id="article">
 		    <% flash.each do |name, msg| %>
 			<%= content_tag :div, msg, :id => "flash_#{name}" %>
 		    <% end %>
-		    
-		    <%= yield %>
-		</div>
+		
+			<%= yield %>
 	</body>
 </html>
 <%# finish_logging %>
