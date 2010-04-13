@@ -6,4 +6,4 @@ class RemoveCurrentRevisionIdFromArticles < ActiveRecord::Migration
   def self.down
     add_column :articles, :current_revision_id, :integer
   end
-endr
+end
