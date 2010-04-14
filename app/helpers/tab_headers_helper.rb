@@ -11,9 +11,9 @@ module TabHeadersHelper
   def article_tab(article, is_active)
       
     if article.nil? || article.id.nil?
-      output_string = active_div(is_active, left) { "<a href=\"#\">Article</a>" }
+      output_string = active_div(is_active, "left") { "<a href=\"#\">Article</a>" }
   	else
-  	  output_string = active_div(is_active, left) { link_to "Article", article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to "Article", article_path(article) }
   	end
   	  return output_string
   end
