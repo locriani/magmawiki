@@ -1,4 +1,7 @@
-<%= render :partial => 'layouts/toolbar_header', :locals => {:article => @article} %>
+<%= render :partial => 'layouts/toolbar_header',
+	:locals => {:article			=> @article,
+				:article_active		=> true
+				} -%>
 
 <div id="body">
 	<h1><%=h @article.title %></h1>

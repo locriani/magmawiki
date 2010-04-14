@@ -7,8 +7,8 @@
 <div>
 	<div id="article-tools">
 	    <div id="article-tools-left">
-			<%= article_tab(article, true) -%>
-			<%= talk_tab(nil, false) -%>
+			<%= article_tab(article, article_active)	-%>
+			<%= talk_tab(article, article_active)		-%>
 	    </div>
 
 	    <div id="search">
@@ -16,35 +16,11 @@
 	    </div>
 
 	    <div id="article-tools-right">
-		<div class="group active left">
-		    <div class="text"><a href="#">Read</a></div>
-		</div>
-		
-		<div class="group below">
-		    <div class="text"><a href="#">Edit</a></div>
-		</div>
-
-		<div class="group below">
-		    <div class="text"><a href="#">History</a></div>
-		</div>
-
-		<div class="group below">
-		    <div id ="star-tool"></div>
-		</div>
-
-		<div class="group active right">
-		    <div class="text triangle">
-			<a href="#">
-			   <div id="arrow-menu">
-			      <a href="#">lool</a><br>
-			      <a href="#">what</a><br>
-			      <a href="#">huh</a><br>
-			      <a href="#">yeah</a>
-			   </div>
-			    ▼
-			</a>
-		    </div>
-		</div>
+			<%= read_tab(article, article_active)		-%>
+			<%= edit_tab(article, article_active)		-%>
+			<%= history_tab(article, article_active)	-%>
+			<%= star_tab(article, article_active)		-%>
+			<%= menu_tab(article, article_active)		-%>
 	    </div>
 	</div>
 </div>

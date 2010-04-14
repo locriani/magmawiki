@@ -59,7 +59,7 @@ font-size:80%;
 height:19px;
 }
 
-div#article-tools .below{
+div#article-tools .inactive{
 border: 1px solid #9df; //#B3B3B3;
 border-bottom: 1px solid #bd8;
 background: #fff;
