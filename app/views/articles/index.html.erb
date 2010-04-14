@@ -12,7 +12,7 @@
 
 <div id="body">
 	<% @articles.each do |article| %>
-		<h3><%=h article.title %></h3>
+		<h3><%=link_to (h article.title), article_path(article) %></h3>
 		<%= link_to "Edit", edit_article_path(article) %>
 	<% end %>
 	<%= link_to "New Article", new_article_path %>
