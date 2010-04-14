@@ -130,7 +130,7 @@ private
         <div class ="text">
           #{yield}
         </div>
-      </div
+      </div>
     }
     
     return output_string
