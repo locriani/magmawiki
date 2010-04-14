@@ -9,28 +9,15 @@ module TabHeadersHelper
   # article:: The article object relevant to this tab.  If there is no article, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have the active styles
   def article_tab(article, is_active)
-  
-    if is_active
-      active = "active"
-    else
-      active = "inactive"
-    end
-    
+      
     if article.nil? || article.id.nil?
-      article_string = "<a href=\"#\">Article</a>"
+      output_string = active_div(is_active, left) { "<a href=\"#\">Article</a>" }
   	else
-  		article_string = link_to("Article", article_path(article))
+  	  output_string = active_div(is_active, left) { link_to "Article", article_path(article) }
   	end
-    
-    output_string  = %{
-      <div class="group #{active} left">
-        <div class="text">
-          #{article_string}
-        </div>
-      </div>
-    }
-    return output_string
+  	  return output_string
   end
+  
   # Like the article_tab method, the talk_tab method expects two parameters and prepares the semantic
   # markup (html) for the talk tab in either an inactive or active state.
   # This has not yet been implemented.
@@ -112,5 +99,24 @@ module TabHeadersHelper
     }
     
     return output_string
-  end	
+  end
+  
+private
+  def active_div(is_active, position = "")
+    if is_active
+      active = "active"
+    else
+      active = "inactive"
+    end
+    
+    output_string = %{
+      <div class = "group #{active} #{position}">
+        <div class ="text">
+          #{yield}
+        </div>
+      </div
+    }
+    
+    return output_string
+  end
 end
