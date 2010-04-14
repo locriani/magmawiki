@@ -45,7 +45,7 @@ module TabHeadersHelper
       # We actually probably need to grey this out if there is no relevant article yet
       output_string = active_div(is_active, "left") { "<a href=\"#\">Read</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to "Read", show_article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to "Read", article_path(article) }
   	end
   	
   	return output_string

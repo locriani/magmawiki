@@ -8,6 +8,7 @@ class Article < ActiveRecord::Base
   has_one :current_revision, :class_name => 'Revision', :conditions => ["is_current = ?", true]
   
   validates_uniqueness_of :title
+  validates_presence_of :slug
   
   accepts_nested_attributes_for :current_revision, :revisions
   
@@ -19,11 +20,11 @@ class Article < ActiveRecord::Base
   end
 private
   def prepare_article_name
-    title.downcase!
+    self.title.downcase!
   end
   
   def prepare_article_slug
     #TODO: Factor this out, this is gross. (DRY)
-    slug = title.downcase.gsub(/[^a-z0-9]+/i, '_')
+    self.slug = title.downcase.gsub(/[^a-z0-9]+/i, '_')
   end
 end

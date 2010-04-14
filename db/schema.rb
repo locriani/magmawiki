@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(:version => 20100413113730) do
     t.string   "slug"
   end
 
+  add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
   add_index "articles", ["title"], :name => "index_articles_on_title", :unique => true
 
   create_table "revisions", :force => true do |t|
