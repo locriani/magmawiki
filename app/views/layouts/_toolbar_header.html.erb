@@ -8,19 +8,20 @@
 	<div id="article-tools">
 	    <div id="article-tools-left">
 			<%= article_tab(article, article_active)	-%>
-			<%= talk_tab(article, article_active)		-%>
+			<%= talk_tab(talk_forum, talk_forum_active)	-%>
 	    </div>
 
 	    <div id="search">
+		<%#= render partial => "layouts/search" -%>
 		<input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> 
 	    </div>
 
 	    <div id="article-tools-right">
-			<%= read_tab(article, article_active)		-%>
-			<%= edit_tab(article, article_active)		-%>
-			<%= history_tab(article, article_active)	-%>
-			<%= star_tab(article, article_active)		-%>
-			<%= menu_tab(article, article_active)		-%>
+			<%= read_tab(article, read_active)			-%>
+			<%= edit_tab(article, edit_active)			-%>
+			<%= history_tab(article, history_active)	-%>
+			<%= star_tab(article, star_active)			-%>
+			<%= menu_tab(article, menu_active)			-%>
 	    </div>
 	</div>
 </div>

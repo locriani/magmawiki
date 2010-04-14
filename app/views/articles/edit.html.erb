@@ -1,6 +1,13 @@
 <%= render :partial => 'layouts/toolbar_header',
 	:locals => {:article			=> @article,
-				:article_active		=> true
+				:article_active		=> true,
+				:talk_forum			=> nil,
+				:talk_forum_active	=> false,
+				:read_active		=> false,
+				:edit_active		=> true,
+				:history_active		=> false,
+				:star_active		=> false,
+				:menu_active		=> false
 				} -%>
 <div id="body">
 <%= render :partial => "form", :locals => {:article => @article} %>
