@@ -7,19 +7,8 @@
 <div>
 	<div id="article-tools">
 	    <div id="article-tools-left">
-		<div class="group active left">
-		    <div class="body">
-				<% if article.nil? || article.id.nil? %>
-					<a href="#">Article</a>
-				<% else %>
-					<%= link_to "Article", article_path(article) %>
-				<% end %>
-			</div>
-		</div>
-		
-		<div class="group below right">
-		    <div class="body"><a href="#">Talk</a></div>
-		</div>
+			<%= article_tab(article, true) -%>
+			<%= talk_tab(nil, false) -%>
 	    </div>
 
 	    <div id="search">
@@ -28,15 +17,15 @@
 
 	    <div id="article-tools-right">
 		<div class="group active left">
-		    <div class="body"><a href="#">Read</a></div>
+		    <div class="text"><a href="#">Read</a></div>
 		</div>
 		
 		<div class="group below">
-		    <div class="body"><a href="#">Edit</a></div>
+		    <div class="text"><a href="#">Edit</a></div>
 		</div>
 
 		<div class="group below">
-		    <div class="body"><a href="#">History</a></div>
+		    <div class="text"><a href="#">History</a></div>
 		</div>
 
 		<div class="group below">
@@ -44,7 +33,7 @@
 		</div>
 
 		<div class="group active right">
-		    <div class="body triangle">
+		    <div class="text triangle">
 			<a href="#">
 			   <div id="arrow-menu">
 			      <a href="#">lool</a><br>
