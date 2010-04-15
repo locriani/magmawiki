@@ -1,7 +1,7 @@
 require 'test_helper'
 
 class ArticleTest < ActiveSupport::TestCase
-  test "Article Title is Unique" do
+  test "Article title is unique" do
     
     articles = []
     same_title = "STRING"
@@ -15,7 +15,7 @@ class ArticleTest < ActiveSupport::TestCase
     assert !(articles[1].valid?), 'Article was valid when it had a non-unique title'
   end
   
-  test "Article Title is not Case Sensitive (for uniqueness)" do
+  test "Article title is not case sensitive (for uniqueness)" do
     
     articles = []
     same_title = "STRING"
@@ -27,5 +27,9 @@ class ArticleTest < ActiveSupport::TestCase
     articles[0].save!
     
     assert !(articles[1].valid?), 'Article was valid when it had a non-unique title'
-  end  
+  end
+  
+  test "Article slug is properly escaped"
+  
+  test "Article slug handles periods (.) properly"
 end

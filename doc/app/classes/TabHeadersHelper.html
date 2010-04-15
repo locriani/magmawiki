@@ -126,7 +126,6 @@ either the active or inactive state. It checks to see if the object
 will instead link to # instead of calling the link_to helper.
 </p>
 <p>
-TODO: Factor out the common class code (divs, active state, etc)
 Parameters:
 </p>
 <table>
@@ -134,7 +133,7 @@ Parameters:
 nil.
 
 </td></tr>
-<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have the active styles
+<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have active styles.
 
 </td></tr>
 </table>
@@ -142,30 +141,16 @@ nil.
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 11</span>
-11:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">article_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
-12:   
-13:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">is_active</span>
-14:       <span class="ruby-identifier">active</span> = <span class="ruby-value str">&quot;active&quot;</span>
-15:     <span class="ruby-keyword kw">else</span>
-16:       <span class="ruby-identifier">active</span> = <span class="ruby-value str">&quot;inactive&quot;</span>
-17:     <span class="ruby-keyword kw">end</span>
-18:     
-19:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
-20:       <span class="ruby-identifier">article_string</span> = <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Article&lt;/a&gt;&quot;</span>
-21:         <span class="ruby-keyword kw">else</span>
-22:                 <span class="ruby-identifier">article_string</span> = <span class="ruby-identifier">link_to</span>(<span class="ruby-value str">&quot;Article&quot;</span>, <span class="ruby-identifier">article_path</span>(<span class="ruby-identifier">article</span>))
-23:         <span class="ruby-keyword kw">end</span>
-24:     
-25:     <span class="ruby-identifier">output_string</span>  = <span class="ruby-node">%{
-26:       &lt;div class=&quot;group #{active} left&quot;&gt;
-27:         &lt;div class=&quot;text&quot;&gt;
-28:           #{article_string}
-29:         &lt;/div&gt;
-30:       &lt;/div&gt;
-31:     }</span>
-32:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-33:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 10</span>
+10:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">article_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+11:       
+12:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+13:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;left&quot;</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Article&lt;/a&gt;&quot;</span> }
+14:         <span class="ruby-keyword kw">else</span>
+15:           <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;left&quot;</span>) { <span class="ruby-identifier">link_to</span> <span class="ruby-value str">&quot;Article&quot;</span>, <span class="ruby-identifier">article_path</span>(<span class="ruby-identifier">article</span>) }
+16:         <span class="ruby-keyword kw">end</span>
+17:           <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+18:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -181,22 +166,38 @@ nil.
         </div>
       
         <div class="method-description">
+          <p>
+More of the same: We require two parameters to prepare the semantic markup
+(html) for the edit tab in either an inactive or active state.
+</p>
+<p>
+Parameters:
+</p>
+<table>
+<tr><td valign="top">article:</td><td>The article object relevant to this tab. If there is no article, pass in
+nil.
+
+</td></tr>
+<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have active styles.
+
+</td></tr>
+</table>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000014-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 63</span>
-63:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
-64:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
-65:       &lt;div class=&quot;group inactive&quot;&gt;
-66:             &lt;div class=&quot;text&quot;&gt;
-67:               &lt;a href=&quot;#&quot;&gt;Edit&lt;/a&gt;
-68:             &lt;/div&gt;
-69:         &lt;/div&gt;
-70:     }</span>
-71:     
-72:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-73:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 60</span>
+60:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+61:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+62:       <span class="ruby-comment cmt"># We are probably on the edit action if the article does not exist.  Thus, linking elsewhere</span>
+63:       <span class="ruby-comment cmt"># would not be appropriate.</span>
+64:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Edit&lt;/a&gt;&quot;</span> }
+65:         <span class="ruby-keyword kw">else</span>
+66:           <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>) { <span class="ruby-identifier">link_to</span> <span class="ruby-value str">&quot;Edit&quot;</span>, <span class="ruby-identifier">edit_article_path</span>(<span class="ruby-identifier">article</span>) }
+67:         <span class="ruby-keyword kw">end</span>
+68:         
+69:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+70:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -212,22 +213,37 @@ nil.
         </div>
       
         <div class="method-description">
+          <p>
+More of the same: We require two parameters to prepare the semantic markup
+(html) for the history tab in either an inactive or active state.
+</p>
+<p>
+Parameters:
+</p>
+<table>
+<tr><td valign="top">article:</td><td>The article object relevant to this tab. If there is no article, pass in
+nil.
+
+</td></tr>
+<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have active styles.
+
+</td></tr>
+</table>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000015-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000015-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 75</span>
-75:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">history_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
-76:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
-77:       &lt;div class=&quot;group inactive&quot;&gt;
-78:             &lt;div class=&quot;text&quot;&gt;
-79:               &lt;a href=&quot;#&quot;&gt;History&lt;/a&gt;
-80:             &lt;/div&gt;
-81:         &lt;/div&gt;
-82:     }</span>
-83:     
-84:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-85:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 78</span>
+78:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">history_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+79:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+80:       <span class="ruby-comment cmt"># We don't have the backend code set up yet (revisions)</span>
+81:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;History&lt;/a&gt;&quot;</span> }
+82:         <span class="ruby-keyword kw">else</span>
+83:           <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;History&lt;/a&gt;&quot;</span> }
+84:         <span class="ruby-keyword kw">end</span>
+85:         
+86:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+87:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -247,26 +263,26 @@ nil.
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-     <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 97</span>
- 97:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">menu_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
- 98:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
- 99:       &lt;div class=&quot;group active right&quot;&gt;
-100:             &lt;div class=&quot;text triangle&quot;&gt;
-101:                 &lt;a href=&quot;#&quot;&gt;
-102:                    &lt;div id=&quot;arrow-menu&quot;&gt;
-103:                       &lt;a href=&quot;#&quot;&gt;lool&lt;/a&gt;&lt;br&gt;
-104:                       &lt;a href=&quot;#&quot;&gt;what&lt;/a&gt;&lt;br&gt;
-105:                       &lt;a href=&quot;#&quot;&gt;huh&lt;/a&gt;&lt;br&gt;
-106:                       &lt;a href=&quot;#&quot;&gt;yeah&lt;/a&gt;
-107:                    &lt;/div&gt;
-108:                     ▼
-109:                 &lt;/a&gt;
-110:             &lt;/div&gt;
-111:         &lt;/div&gt;
-112:     }</span>
-113:     
-114:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-115:   <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 99</span>
+ 99:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">menu_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+100:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
+101:       &lt;div class=&quot;group active right&quot;&gt;
+102:             &lt;div class=&quot;text triangle&quot;&gt;
+103:                 &lt;a href=&quot;#&quot;&gt;
+104:                    &lt;div id=&quot;arrow-menu&quot;&gt;
+105:                       &lt;a href=&quot;#&quot;&gt;lool&lt;/a&gt;&lt;br&gt;
+106:                       &lt;a href=&quot;#&quot;&gt;what&lt;/a&gt;&lt;br&gt;
+107:                       &lt;a href=&quot;#&quot;&gt;huh&lt;/a&gt;&lt;br&gt;
+108:                       &lt;a href=&quot;#&quot;&gt;yeah&lt;/a&gt;
+109:                    &lt;/div&gt;
+110:                     ▼
+111:                 &lt;/a&gt;
+112:             &lt;/div&gt;
+113:         &lt;/div&gt;
+114:     }</span>
+115:     
+116:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+117:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -282,22 +298,37 @@ nil.
         </div>
       
         <div class="method-description">
+          <p>
+Here we (also!) expect two parameters to prepare the semantic markup (html)
+for the read tab in either an inactive or active state.
+</p>
+<p>
+Parameters:
+</p>
+<table>
+<tr><td valign="top">article:</td><td>The article object relevant to this tab. If there is no article, pass in
+nil.
+
+</td></tr>
+<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have active styles.
+
+</td></tr>
+</table>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000013-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000013-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 51</span>
-51:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
-52:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
-53:       &lt;div class=&quot;group active left&quot;&gt;
-54:             &lt;div class=&quot;text&quot;&gt;
-55:               &lt;a href=&quot;#&quot;&gt;Read&lt;/a&gt;
-56:             &lt;/div&gt;
-57:         &lt;/div&gt;
-58:     }</span>
-59:   
-60:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-61:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 43</span>
+43:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">read_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+44:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">article</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+45:       <span class="ruby-comment cmt"># We actually probably need to grey this out if there is no relevant article yet</span>
+46:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;left&quot;</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Read&lt;/a&gt;&quot;</span> }
+47:         <span class="ruby-keyword kw">else</span>
+48:           <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;left&quot;</span>) { <span class="ruby-identifier">link_to</span> <span class="ruby-value str">&quot;Read&quot;</span>, <span class="ruby-identifier">article_path</span>(<span class="ruby-identifier">article</span>) }
+49:         <span class="ruby-keyword kw">end</span>
+50:         
+51:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+52:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -317,16 +348,16 @@ nil.
             onclick="toggleCode('M000016-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000016-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 87</span>
-87:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">star_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
-88:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
-89:       &lt;div class=&quot;group inactive&quot;&gt;
-90:             &lt;div id =&quot;star-tool&quot;&gt;&lt;/div&gt;
-91:         &lt;/div&gt;
-92:     }</span>
-93:     
-94:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-95:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 89</span>
+89:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">star_tab</span>(<span class="ruby-identifier">article</span>, <span class="ruby-identifier">is_active</span>)
+90:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
+91:       &lt;div class=&quot;group inactive&quot;&gt;
+92:             &lt;div id =&quot;star-tool&quot;&gt;&lt;/div&gt;
+93:         &lt;/div&gt;
+94:     }</span>
+95:     
+96:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+97:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -346,25 +377,35 @@ nil.
 Like the <a href="TabHeadersHelper.html#M000011">article_tab</a> method,
 the <a href="TabHeadersHelper.html#M000012">talk_tab</a> method expects two
 parameters and prepares the semantic markup (html) for the talk tab in
-either an inactive or active state. This has not yet been implemented.
+either an inactive or active state.
 </p>
+<p>
+Parameters:
+</p>
+<table>
+<tr><td valign="top">talk_forum:</td><td>The talk_forum object relevant to this tab. If there is no talk forum, pass
+in nil.
+
+</td></tr>
+<tr><td valign="top">is_active:</td><td>Boolean indicator as to whether or not the tab will have active styles.
+
+</td></tr>
+</table>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000012-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000012-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 37</span>
-37:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">talk_tab</span>(<span class="ruby-identifier">talk_forum</span>, <span class="ruby-identifier">is_active</span>)
-38:     <span class="ruby-comment cmt">#TODO: Implement this</span>
-39:     <span class="ruby-identifier">output_string</span> = <span class="ruby-value str">%{
-40:       &lt;div class=&quot;group inactive right&quot;&gt;
-41:         &lt;div class=&quot;text&quot;&gt;
-42:           &lt;a href=&quot;#&quot;&gt;Talk&lt;/a&gt;
-43:         &lt;/div&gt;
-44:       &lt;/div&gt;
-45:     }</span>
-46:     
-47:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
-48:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/helpers/tab_headers_helper.rb, line 26</span>
+26:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">talk_tab</span>(<span class="ruby-identifier">talk_forum</span>, <span class="ruby-identifier">is_active</span>)
+27:     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">talk_forum</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">talk_forum</span>.<span class="ruby-identifier">id</span>.<span class="ruby-identifier">nil?</span>
+28:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;right&quot;</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Talk&lt;/a&gt;&quot;</span> }
+29:     <span class="ruby-keyword kw">else</span>
+30:       <span class="ruby-comment cmt"># TODO: This will need to be replaced with link_to code once the talk_forum object has been set up</span>
+31:       <span class="ruby-identifier">output_string</span> = <span class="ruby-identifier">active_div</span>(<span class="ruby-identifier">is_active</span>, <span class="ruby-value str">&quot;right&quot;</span>) { <span class="ruby-value str">&quot;&lt;a href=\&quot;#\&quot;&gt;Talk&lt;/a&gt;&quot;</span> }
+32:     <span class="ruby-keyword kw">end</span>
+33:     
+34:     <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">output_string</span>
+35:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

@@ -9,9 +9,14 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_slug(params[:id], :include => :current_revision)
-    respond_to do |format|
-      format.html
+    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
+    
+    if @article.nil?
+      redirect_to new_article_url
+    else    
+      respond_to do |format|
+        format.html
+      end
     end
   end
   
@@ -39,7 +44,7 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find_by_slug(params[:id], :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
   end
   
   def update

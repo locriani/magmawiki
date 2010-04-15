@@ -188,7 +188,7 @@
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 41</span>
 41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
-42:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>])
+42:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
 43:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
@@ -266,7 +266,7 @@
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 11</span>
 11:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-12:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_id</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
+12:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
 13:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
 14:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
 15:     <span class="ruby-keyword kw">end</span>

@@ -13,18 +13,31 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :current_revision, :revisions
   
   # Rails uses to_param to construct the string for the object.
-  # This is not currently a portable implementation (doesn't handle accented characters), so it will need work.
+  # This *should* support unicode; but that's a theory.
   def to_param
-    # TODO: Clean this up for full unicode support.
-    "#{title}".gsub(/[^a-z0-9]+/i, '_')
+    self.slug
   end
+  
 private
   def prepare_article_name
     self.title.downcase!
   end
   
   def prepare_article_slug
-    #TODO: Factor this out, this is gross. (DRY)
-    self.slug = title.downcase.gsub(/[^a-z0-9]+/i, '_')
+    self.slug = escape(self.title.downcase)
+  end
+  
+  # We want to use some extended characters that CGI::escape escapes
+  def escape(string)
+    # We don't want to URL encode spaces, commas, or semicolons
+    string.gsub!(/[\s,;]/, '_')
+    # and we don't want to have multiple '_' in a row
+    string.gsub!(/[_{2,}]/, '_')
+    # now we escape
+    string.gsub(/([^ a-zA-Z0-9!()~^_.-]+)/n) do
+      '%' + $1.unpack('H2' * $1.size).join('%').upcase
+    end.tr(' ', '+')
   end
 end
+
+

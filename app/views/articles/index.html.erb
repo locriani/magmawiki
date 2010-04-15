@@ -11,11 +11,14 @@
 				} -%>
 
 <div id="body">
+	<h2>Articles:</h2>
 	<% @articles.each do |article| %>
-		<h3><%=link_to (h article.title), article_path(article) %></h3>
-		<%= link_to "Edit", edit_article_path(article) %>
+		<h3><%=link_to (h article.title), article_url(article) %></h3>
 	<% end %>
-	<%= link_to "New Article", new_article_path %>
+	<br />
+	<div>
+		<%= link_to "New Article", new_article_path %>
+	</div>
 </div>
 
 <% content_for :title do %>Articles<% end %>  
