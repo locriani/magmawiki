@@ -4,8 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title><%= h"Magmawiki #{yield(:title)}" %></title>
-		<%= stylesheet_link_tag 'reset' %>
-		<%= stylesheet_link_tag 'application' %>
+		<%= stylesheet_link_tag 'reset', 'application', 'header' %>
 		<%= yield(:head) %>
 	</head>
   	<body>

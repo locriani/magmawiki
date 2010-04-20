@@ -128,8 +128,8 @@ current revision, which is displayed when an article is requested.
         <div class="method-description">
           <p>
 Rails uses <a href="Article.html#M000001">to_param</a> to construct the
-string for the object. This is not currently a portable implementation
-(doesn&#8216;t handle accented characters), so it will need work.
+string for the object. This <b>should</b> support unicode; but that&#8216;s
+a theory.
 </p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
@@ -137,9 +137,8 @@ string for the object. This is not currently a portable implementation
 <pre>
     <span class="ruby-comment cmt"># File app/models/article.rb, line 17</span>
 17:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">to_param</span>
-18:     <span class="ruby-comment cmt"># TODO: Clean this up for full unicode support.</span>
-19:     <span class="ruby-node">&quot;#{title}&quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/[^a-z0-9]+/i</span>, <span class="ruby-value str">'_'</span>)
-20:   <span class="ruby-keyword kw">end</span>
+18:     <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">slug</span>
+19:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

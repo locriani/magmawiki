@@ -130,21 +130,21 @@
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 26</span>
-26:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
-27:     <span class="ruby-comment cmt">#TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES</span>
-28:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:article</span>])
-29:     <span class="ruby-identifier">revision</span> = <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">revisions</span>.<span class="ruby-identifier">build</span>
-30:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:current_revision</span>][<span class="ruby-identifier">:body</span>]
-31:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">summary</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:current_revision</span>][<span class="ruby-identifier">:summary</span>]
-32:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">is_current</span> = <span class="ruby-keyword kw">true</span>
-33:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">save</span>
-34:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;Article created successfully.&quot;</span>
-35:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">article_path</span>(<span class="ruby-ivar">@article</span>)
-36:     <span class="ruby-keyword kw">else</span>
-37:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:new</span>
-38:     <span class="ruby-keyword kw">end</span>
-39:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 31</span>
+31:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>
+32:     <span class="ruby-comment cmt">#TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES</span>
+33:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:article</span>])
+34:     <span class="ruby-identifier">revision</span> = <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">revisions</span>.<span class="ruby-identifier">build</span>
+35:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">body</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:current_revision</span>][<span class="ruby-identifier">:body</span>]
+36:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">summary</span> = <span class="ruby-identifier">params</span>[<span class="ruby-identifier">:current_revision</span>][<span class="ruby-identifier">:summary</span>]
+37:     <span class="ruby-identifier">revision</span>.<span class="ruby-identifier">is_current</span> = <span class="ruby-keyword kw">true</span>
+38:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">save</span>
+39:       <span class="ruby-identifier">flash</span>[<span class="ruby-identifier">:notice</span>] = <span class="ruby-value str">&quot;Article created successfully.&quot;</span>
+40:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">article_path</span>(<span class="ruby-ivar">@article</span>)
+41:     <span class="ruby-keyword kw">else</span>
+42:       <span class="ruby-identifier">render</span> <span class="ruby-identifier">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:new</span>
+43:     <span class="ruby-keyword kw">end</span>
+44:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -164,9 +164,9 @@
             onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000008-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 48</span>
-48:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
-49:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 53</span>
+53:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">destroy</span>
+54:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -186,10 +186,10 @@
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 41</span>
-41:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
-42:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
-43:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 46</span>
+46:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">edit</span>
+47:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
+48:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -237,14 +237,14 @@
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 18</span>
-18:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
-19:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">new</span>
-20:     <span class="ruby-identifier">current_revision</span> = <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">revisions</span>.<span class="ruby-identifier">build</span>
-21:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-22:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
-23:     <span class="ruby-keyword kw">end</span>
-24:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 23</span>
+23:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">new</span>
+24:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">new</span>
+25:     <span class="ruby-identifier">current_revision</span> = <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">revisions</span>.<span class="ruby-identifier">build</span>
+26:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+27:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
+28:     <span class="ruby-keyword kw">end</span>
+29:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -266,11 +266,16 @@
 <pre>
     <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 11</span>
 11:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">show</span>
-12:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>], <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
-13:     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-14:       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
-15:     <span class="ruby-keyword kw">end</span>
-16:   <span class="ruby-keyword kw">end</span>
+12:     <span class="ruby-ivar">@article</span> = <span class="ruby-constant">Article</span>.<span class="ruby-identifier">find_by_slug</span>(<span class="ruby-identifier">params</span>[<span class="ruby-identifier">:id</span>].<span class="ruby-identifier">downcase</span>, <span class="ruby-identifier">:include</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:current_revision</span>)
+13:     
+14:     <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@article</span>.<span class="ruby-identifier">nil?</span>
+15:       <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">new_article_url</span>
+16:     <span class="ruby-keyword kw">else</span>    
+17:       <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
+18:         <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span>
+19:       <span class="ruby-keyword kw">end</span>
+20:     <span class="ruby-keyword kw">end</span>
+21:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -290,9 +295,9 @@
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 45</span>
-45:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
-46:   <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File app/controllers/articles_controller.rb, line 50</span>
+50:   <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">update</span>
+51:   <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
