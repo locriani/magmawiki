@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100413113730) do
+ActiveRecord::Schema.define(:version => 20100421082123) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20100413113730) do
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
-  add_index "articles", ["title"], :name => "index_articles_on_title", :unique => true
 
   create_table "revisions", :force => true do |t|
     t.text     "body"
