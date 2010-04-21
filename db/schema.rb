@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20100413113730) do
     t.boolean  "is_current"
   end
 
-  add_index "revisions", ["article_id", "is_current"], :name => "index_revisions_on_article_id_and_is_current", :unique => true
+  add_index "revisions", ["article_id", "is_current"], :name => "index_revisions_on_article_id_and_is_current"
   add_index "revisions", ["article_id"], :name => "index_revisions_on_article_id"
   add_index "revisions", ["is_current"], :name => "index_revisions_on_is_current"
 

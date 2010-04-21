@@ -36,7 +36,7 @@ class ArticlesController < ApplicationController
     revision.summary = params[:current_revision][:summary]
     revision.is_current = true
     if @article.save
-      flash[:notice] = "Article created successfully."
+      flash[:notice] = "Article created successfully." #TODO: I18LN
       redirect_to article_path(@article)
     else
       render :action => :new
@@ -44,10 +44,26 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].downcase)
   end
   
   def update
+    # TODO: OH DEAR GOD WTF
+    @article = Article.find_by_slug(params[:id].downcase)
+    
+    Article.transaction do
+      @article.current_revision.is_current = false
+      @article.current_revision.save
+      
+      revision = @article.revisions.build
+      revision.body = params[:revision][:body]
+      revision.summary = params[:revision][:summary]
+      revision.is_current = true
+      revision.save
+      
+      @article.save
+    end
+    redirect_to article_path(@article)  
   end
   
   def destroy
