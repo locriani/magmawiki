@@ -2,12 +2,12 @@
 # Each article maintains an ordered set of revisions, and a most current revision, which
 # is displayed when an article is requested.
 class Article < ActiveRecord::Base  
-  before_validation :prepare_article_name, :prepare_article_slug
+  before_validation_on_create  :prepare_article_slug
+  validate :slug_immutability
   
   has_many :revisions
   has_one :current_revision, :class_name => 'Revision', :conditions => ["is_current = ?", true]
   
-  validates_uniqueness_of :title
   validates_presence_of :slug
   
   accepts_nested_attributes_for :current_revision, :revisions
@@ -19,16 +19,19 @@ class Article < ActiveRecord::Base
   end
   
 private
-  def prepare_article_name
-    self.title.downcase!
+  def slug_immutability
+    unless self.slug == escape(self.title.downcase)
+      errors.add :title, "Title must reduce to the same slug, this needs a better error message.  Perhaps you want to move the page instead?"
+    end
   end
+  
   
   def prepare_article_slug
     self.slug = escape(self.title.downcase)
   end
   
   def escape(string)
-    # We don't want to URL encode spaces, commas, or semicolons
+    # We don't want to stick anything that's not a number or letter in our urls
     string.gsub!(/[^a-zA-Z0-9]/, '_')
     # and we don't want to have multiple '_' in a row
     string.gsub!(/(_{2,})/, '_')

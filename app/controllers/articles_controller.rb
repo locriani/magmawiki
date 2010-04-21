@@ -52,19 +52,21 @@ class ArticlesController < ApplicationController
     # TODO: OH DEAR GOD WTF
     @article = Article.find_by_slug(params[:id].downcase)
     
-    Article.transaction do
-      @article.current_revision.is_current = false
-      @article.current_revision.save
-      
-      revision = @article.revisions.build
-      revision.body = params[:revision][:body]
-      revision.summary = params[:revision][:summary]
-      revision.is_current = true
-      revision.save
-      
-      @article.save
+    @article.current_revision.is_current = false
+    @article.current_revision.save
+    @article.title = params[:article][:title]
+    
+    revision = @article.revisions.build
+    revision.body = params[:revision][:body]
+    revision.summary = params[:revision][:summary]
+    revision.is_current = true
+
+    if @article.save
+      flash[:notice] = "Update successful"    
+      redirect_to article_path(@article)
+    else
+      render :action => :edit
     end
-    redirect_to article_path(@article)  
   end
   
   def destroy
