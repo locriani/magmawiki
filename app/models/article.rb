@@ -27,16 +27,13 @@ private
     self.slug = escape(self.title.downcase)
   end
   
-  # We want to use some extended characters that CGI::escape escapes
   def escape(string)
     # We don't want to URL encode spaces, commas, or semicolons
-    string.gsub!(/[\s,;]/, '_')
+    string.gsub!(/[^a-zA-Z0-9]/, '_')
     # and we don't want to have multiple '_' in a row
-    string.gsub!(/[_{2,}]/, '_')
-    # now we escape
-    string.gsub(/([^ a-zA-Z0-9!()~^_.-]+)/n) do
-      '%' + $1.unpack('H2' * $1.size).join('%').upcase
-    end.tr(' ', '+')
+    string.gsub!(/(_{2,})/, '_')
+    # and strip trailing underscores
+    string.chomp('_')
   end
 end
 

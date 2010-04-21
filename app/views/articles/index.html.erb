@@ -16,9 +16,6 @@
 		<h3><%=link_to (h article.title), article_url(article) %></h3>
 	<% end %>
 	<br />
-	<div>
-		<%= link_to "New Article", new_article_path %>
-	</div>
 </div>
 
 <% content_for :title do %>Articles<% end %>  

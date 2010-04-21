@@ -45,6 +45,7 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find_by_slug(params[:id].downcase)
+    @article.current_revision.summary = ""
   end
   
   def update
