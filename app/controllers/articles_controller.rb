@@ -9,7 +9,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_slug(params[:id].downcaseo, :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
     
     if @article.nil?
       redirect_to new_article_url
