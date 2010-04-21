@@ -2,6 +2,7 @@ require 'test_helper'
 
 class ArticleRevisionsTest < ActiveSupport::TestCase
   test "Article has a current_revision" do
+    #This fails currently because we're handling it through the controller instead of through the model
     article = Factory.build(:article)
     
     assert article.valid?
@@ -12,6 +13,7 @@ class ArticleRevisionsTest < ActiveSupport::TestCase
   end
   
   test "Article can get a list of all revisions for that article" do
+    #This fails currently because we're handling it through the controller instead of through the model
     article = Factory.build(:article)
     article.save!
     
@@ -19,6 +21,7 @@ class ArticleRevisionsTest < ActiveSupport::TestCase
   end
   
   test "Creating a new article revision changes the current_revision" do
+    #This fails currently because we're handling it through the controller instead of through the model
     assert false, 'Pending'
   end
 end

@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   
   def new
     @article = Article.new
-    current_revision = @article.revisions.build
+    @article.current_revision = @article.revisions.build
     respond_to do |format|
       format.html
     end
@@ -32,8 +32,8 @@ class ArticlesController < ApplicationController
     #TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES
     @article = Article.new(params[:article])
     revision = @article.revisions.build
-    revision.body = params[:current_revision][:body]
-    revision.summary = params[:current_revision][:summary]
+    revision.body = params[:revision][:body]
+    revision.summary = params[:revision][:summary]
     revision.is_current = true
     if @article.save
       flash[:notice] = "Article created successfully." #TODO: I18LN
