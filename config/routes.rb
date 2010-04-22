@@ -1,44 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
-  # The priority is based upon order of creation: first created -> highest priority.
 
-  # Sample of regular route:
-  #   map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-
-  # Sample of named route:
-  #   map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   map.resources :products
-
-  # Sample resource route with options:
-  #   map.resources :products, :member => { :short => :get, :toggle => :post }, :collection => { :sold => :get }
-
-  # Sample resource route with sub-resources:
-  #   map.resources :products, :has_many => [ :comments, :sales ], :has_one => :seller
+  map.with_options :controller => 'articles' do |map|
+    # create
+    map.new_article     'wiki/new',         :action => 'new'
+    map.create_article  'wiki/create/:id',  :action => 'create'
+    
+    # read
+    map.connect         'wiki/',            :action => 'index'
+    map.show_article    'wiki/show/:id',    :action => 'show'
+    
+    # update
+    map.edit_article    'wiki/edit/:id',    :action => 'edit'
+    map.update_article  'wiki/update/:id',  :action => 'update'
+    
+    # destroy
+    # NYI
+  end
   
-  # Sample resource route with more complex sub-resources
-  #   map.resources :products do |products|
-  #     products.resources :comments
-  #     products.resources :sales, :collection => { :recent => :get }
-  #   end
+  map.show_history      'wiki/history/:id',                                   :action => 'show'
+  map.show_revision     'wiki/revision/show/:revision_id/:id/',               :action => 'show'
+  map.diff_revision     'wiki/revision/diff/:revision_1/:revision_2/:id/',    :action => 'diff'
 
-  # Sample resource route within a namespace:
-  #   map.namespace :admin do |admin|
-  #     # Directs /admin/products/* to Admin::ProductsController (app/controllers/admin/products_controller.rb)
-  #     admin.resources :products
-  #   end
-
-  # You can have the root of your site routed with map.root -- just remember to delete public/index.html.
-  # map.root :controller => "welcome"
-
-  # See how all your routes lay out with "rake routes"
-
-  # Install the default routes as the lowest priority.
-  # Note: These default routes make all actions in every controller accessible via GET requests. You should
-  # consider removing or commenting them out if you're using named routes and resources.
-  map.resources :articles, :as => :wiki
-  
   map.root :controller => :articles, :action => :show, :id => "Main_page"
 end

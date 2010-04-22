@@ -1,5 +1,5 @@
-<% form_for article do |f| %>
-	<%= f.error_messages%>
+<% form_for article, :url => method(url_action).call(article) do |f| %>
+	<%= f.error_messages %>
 	<%= f.hidden_field :lock_version %>
 	<div class="new-wrapper">
 	    <div>

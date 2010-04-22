@@ -12,7 +12,7 @@ module TabHeadersHelper
     if article.nil? || article.id.nil?
       output_string = active_div(is_active, "left") { "<a href=\"#\">Article</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to "Article", article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to "Article", show_article_path(article) }
   	end
   	  return output_string
   end
@@ -45,7 +45,7 @@ module TabHeadersHelper
       # We actually probably need to grey this out if there is no relevant article yet
       output_string = active_div(is_active, "left") { "<a href=\"#\">Read</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to "Read", article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to "Read", show_article_path(article) }
   	end
   	
   	return output_string
@@ -87,32 +87,25 @@ module TabHeadersHelper
   end
   
   def star_tab(article, is_active)
-    output_string = %{
-      <div class="group inactive">
-    	    <div id ="star-tool"></div>
-    	</div>
-    }
-    
+    #incomplete
+	  output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
+
     return output_string
   end
   
   def menu_tab(article, is_active)
-    output_string = %{
-      <div class="group active right">
-    	    <div class="text triangle">
-    		<a href="#">
-    		   <div id="arrow-menu">
-    		      <a href="#">lool</a><br>
-    		      <a href="#">what</a><br>
-    		      <a href="#">huh</a><br>
-    		      <a href="#">yeah</a>
-    		   </div>
-    		    ▼
-    		</a>
-    	    </div>
-    	</div>
-    }
-    
+    output_string = active_div(is_active) {
+      %{
+      <a href="#">
+		  <div id="arrow-menu">
+		    <a href="#">lool</a><br>
+		    <a href="#">what</a><br>
+		    <a href="#">huh</a><br>
+		    <a href="#">yeah</a>
+		  </div>
+		  ▼
+		  </a>
+		}}
     return output_string
   end
   

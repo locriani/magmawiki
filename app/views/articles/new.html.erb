@@ -10,5 +10,8 @@
 				:menu_active		=> false
 				} -%>
 <div id="body">
-	<%= render :partial => "form", :locals => {:article => @article} %>
+	<%= render :partial => "form",
+		:locals => {:article	=> @article,
+					:url_action	=> :create_article_path,
+					} -%>
 </div>

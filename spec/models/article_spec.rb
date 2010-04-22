@@ -69,7 +69,7 @@ describe Article do
       Factory.create(:article, :title => title)
       article = Factory.build(:article, :title => title)
       
-      lambda { article.save }.should raise_error(ActiveRecord::StatementInvalid)
+      article.should_not be_valid
     end
   end
   

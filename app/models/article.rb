@@ -8,6 +8,7 @@ class Article < ActiveRecord::Base
   before_validation_on_create  :prepare_article_slug
 
   validates_presence_of :slug
+  validates_uniqueness_of :slug
   validate :slug_immutability
   
   accepts_nested_attributes_for :current_revision, :revisions

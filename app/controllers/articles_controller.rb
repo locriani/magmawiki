@@ -37,7 +37,7 @@ class ArticlesController < ApplicationController
     revision.is_current = true
     if @article.save
       flash[:notice] = "Article created successfully." #TODO: I18LN
-      redirect_to article_url(@article)
+      redirect_to show_article_url(@article)
     else
       render :action => :new
     end
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
       current_revision.save
       
       flash[:notice] = "Update successful"
-      redirect_to article_url(@article)
+      redirect_to show_article_url(@article)
     else
       render :action => :edit
     end
