@@ -88,7 +88,7 @@ module TabHeadersHelper
   
   def star_tab(article, is_active)
     #incomplete
-	  output_string = active_div(is_active) { "<a href=\"#\"><div id=\"star-tool\"></div></a>" }
+	  output_string = active_div(is_active) { "<div id=\"star-tool\"><a href=\"#\"></a></div>" }
 
     return output_string
   end
@@ -97,14 +97,14 @@ module TabHeadersHelper
     output_string = active_div(is_active, "right") {
       %{
       <a href="#">
+      ▼
+		  </a>
 		  <div id="arrow-menu">
-		    <a href="#">lool</a><br>
-		    <a href="#">what</a><br>
-		    <a href="#">huh</a><br>
+		    <a href="#">lool</a><br />
+		    <a href="#">what</a><br />
+		    <a href="#">huh</a><br />
 		    <a href="#">yeah</a>
 		  </div>
-		  ▼
-		  </a>
 		}}
     return output_string
   end

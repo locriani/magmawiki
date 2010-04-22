@@ -1,10 +1,10 @@
-<% begin_logging "document"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
 		<title><%= h"Magmawiki #{yield(:title)}" %></title>
-		<%= stylesheet_link_tag 'reset', 'application', 'header' %>
+		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
+		<%= stylesheet_link_tag 'reset', 'application', 'header', :cache => 'cache/all' %>
 		<%= yield(:head) %>
 	</head>
   	<body>
@@ -15,5 +15,4 @@
 			<%= yield %>
 	</body>
 </html>
-<% finish_logging "document" %>
-<%= output_logging_data "document" %>
+<!-- <%= "Prepared in #{@request_timer.total_time}ms by #{request.env['SERVER_NAME']}" %> -->
