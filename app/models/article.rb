@@ -27,10 +27,11 @@ private
   end
   
   def prepare_article_slug
-    self.slug = escape(self.title.downcase)
+    self.slug = escape(self.title)
   end
   
   def escape(string)
+    string.downcase!
     # We don't want to stick anything that's not a number or letter in our urls
     string.gsub!(/[^a-zA-Z0-9]/, '_')
     # and we don't want to have multiple '_' in a row
