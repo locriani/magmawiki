@@ -7,7 +7,8 @@ class Article < ActiveRecord::Base
   
   before_validation_on_create  :prepare_article_slug
 
-  validates_presence_of :slug
+  validates_presence_of   :title
+  validates_presence_of   :slug
   validates_uniqueness_of :slug
   validate :slug_immutability
   
@@ -22,8 +23,8 @@ class Article < ActiveRecord::Base
   
 private
   def slug_immutability
-    unless self.slug == escape(self.title.downcase)
-      #TODO: Bad error message
+    unless self.slug == escape(self.title)
+      #TODO: Bad error message, i18n
       errors.add :title, "Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
     end
   end
@@ -32,14 +33,14 @@ private
     self.slug = escape(self.title)
   end
   
-  def escape(string)
-    string.downcase!
+  def escape(input_string)
+    output_string = input_string.downcase
     # We don't want to stick anything that's not a number or letter in our urls
-    string.gsub!(/[^a-zA-Z0-9]/, '_')
+    output_string.gsub!(/[^a-zA-Z0-9]/, '_')
     # and we don't want to have multiple '_' in a row
-    string.gsub!(/(_{2,})/, '_')
+    output_string.gsub!(/(_{2,})/, '_')
     # and strip trailing underscores
-    string.chomp('_')
+    output_string.chomp('_')
   end
 end
 

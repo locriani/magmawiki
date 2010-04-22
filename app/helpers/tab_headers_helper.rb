@@ -88,13 +88,13 @@ module TabHeadersHelper
   
   def star_tab(article, is_active)
     #incomplete
-	  output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
+	  output_string = active_div(is_active) { "<a href=\"#\"><div id=\"star-tool\"></div></a>" }
 
     return output_string
   end
   
   def menu_tab(article, is_active)
-    output_string = active_div(is_active) {
+    output_string = active_div(is_active, "right") {
       %{
       <a href="#">
 		  <div id="arrow-menu">
@@ -119,7 +119,7 @@ private
     end
     
     output_string = %{
-      <div class = "group #{active} #{position}">
+      <div class = "group #{active} #{h position}">
         <div class ="text">
           #{yield}
         </div>
