@@ -30,14 +30,14 @@ class ArticlesController < ApplicationController
   
   def create
     #TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES
+    # Most of this shouldn't be in the controller anyways, as it's article / revision specific logic
+    # and should be in the model
     @article = Article.new(params[:article])
-    revision = @article.revisions.build
-    revision.body = params[:revision][:body]
-    revision.summary = params[:revision][:summary]
+    revision = @article.revisions.build(params[:revision])
     revision.is_current = true
     if @article.save
       flash[:notice] = "Article created successfully." #TODO: I18LN
-      redirect_to article_path(@article)
+      redirect_to article_url(@article)
     else
       render :action => :new
     end
@@ -45,26 +45,22 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
-    @article.current_revision.summary = ""
+    @article.current_revision.summary = "" # We don't care about the previous revision's summary, because this is a new revision
   end
   
   def update
-    # TODO: OH DEAR GOD WTF
     @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
     
-    
-    @article.title = params[:article][:title]
-    
-    revision = @article.revisions.build
-    revision.body = params[:revision][:body]
-    revision.summary = params[:revision][:summary]
+    current_revision = @article.current_revision
+    revision = @article.revisions.build(params[:revision])
     revision.is_current = true
-
-    if @article.save
-      @article.current_revision.is_current = false
-      @article.current_revision.save
-      flash[:notice] = "Update successful"    
-      redirect_to article_path(@article)
+    
+    if @article.update_attributes(params[:article])
+      current_revision.is_current = false
+      current_revision.save
+      
+      flash[:notice] = "Update successful"
+      redirect_to article_url(@article)
     else
       render :action => :edit
     end

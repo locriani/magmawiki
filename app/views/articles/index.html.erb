@@ -13,7 +13,7 @@
 <div id="body">
 	<h2>Articles:</h2>
 	<% @articles.each do |article| %>
-		<h3><%=link_to (h article.title), article_url(article) %></h3>
+		<h3><%=link_to (h article.title), article_path(article) %></h3>
 	<% end %>
 	<br />
 </div>

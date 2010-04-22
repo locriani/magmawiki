@@ -2,13 +2,13 @@
 # Each article maintains an ordered set of revisions, and a most current revision, which
 # is displayed when an article is requested.
 class Article < ActiveRecord::Base  
-  before_validation_on_create  :prepare_article_slug
-  validate :slug_immutability
-  
   has_many :revisions
   has_one :current_revision, :class_name => 'Revision', :conditions => ["is_current = ?", true]
   
+  before_validation_on_create  :prepare_article_slug
+
   validates_presence_of :slug
+  validate :slug_immutability
   
   accepts_nested_attributes_for :current_revision, :revisions
   
@@ -21,10 +21,10 @@ class Article < ActiveRecord::Base
 private
   def slug_immutability
     unless self.slug == escape(self.title.downcase)
-      errors.add :title, "Title must reduce to the same slug, this needs a better error message.  Perhaps you want to move the page instead?"
+      #TODO: Bad error message
+      errors.add :title, "Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
     end
   end
-  
   
   def prepare_article_slug
     self.slug = escape(self.title.downcase)
