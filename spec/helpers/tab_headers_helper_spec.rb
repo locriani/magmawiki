@@ -13,21 +13,42 @@ describe TabHeadersHelper do
         validated_output.errors.should be_empty
       end
     end
+    
+    it 'should have an appropriate active-state class' do
+      booleans = [true, false]
+      
+      booleans.each do |boolean|
+        output = @method.call(@object, boolean)
+        validated_output = Nokogiri::HTML output
+        
+        if true == boolean
+          validated_output.css("div.active").should_not be_empty
+          validated_output.css("div.inactive").should be_empty
+        else
+          validated_output.css("div.active").should be_empty
+          validated_output.css("div.inactive").should_not be_empty
+        end
+      end
+    end
+    it 'should have an appropriate position class' do
+      pending
+    end
   end
   
-  # context, object pairs
+  #           ['context',   'object'    ]
   contexts = [['article',   'article'   ],
-              ['talk',      nil         ], #nil because talk_forum is not an object yet
+              ['talk',      'talk_forum'], #fails because talk_forum is not an object yet
               ['read',      'article'   ],
               ['edit',      'article'   ],
               ['history',   'article'   ],
+              ['star',      'article'   ],
               ['menu',      'article'   ]]
   
   contexts.each do |c|
-    context "#{c.first}" do
+    context c[0] do
       before(:each) do
-        @method = helper.method("#{c.first}_tab".to_sym)
-        @object = Factory.create(c.last.to_sym)
+        @method = helper.method("#{c[0]}_tab".to_sym)
+        @object = Factory.create(c[1].to_sym)
       end
       
       it_should_behave_like 'all tabs'
