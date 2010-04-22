@@ -12,6 +12,7 @@ class Article < ActiveRecord::Base
   
   accepts_nested_attributes_for :current_revision, :revisions
   
+  attr_accessible :title
   # Rails uses to_param to construct the string for the object.
   # This *should* support unicode; but that's a theory.
   def to_param
