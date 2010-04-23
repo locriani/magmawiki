@@ -1,19 +1,6 @@
-<%= render :partial => 'layouts/toolbar_header',
-	:locals => {:article			=> @article,
-				:article_active		=> true,
-				:talk_forum			=> nil,
-				:talk_forum_active	=> false,
-				:read_active		=> false,
-				:edit_active		=> false,
-				:history_active		=> true,
-				:star_active		=> false,
-				:menu_active		=> false
-				} -%>
-<div id="body">
-	<% @article.revisions.find_all_ordered.each do |revision| %>
-		<p>
-			<%= link_to "Revision #{revision.id}", show_revision_path(revision, @article) -%>
-			<%=h revision.created_at.to_s	-%>
-		</p>
-	<% end %>
-</div>
+<% @article.revisions.find_all_ordered.each do |revision| %>
+	<p>
+		<%= link_to "Revision #{revision.id}", show_revision_path(revision, @article) -%>
+		<%=h revision.created_at.to_s	-%>
+	</p>
+<% end %>

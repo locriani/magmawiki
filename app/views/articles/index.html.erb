@@ -1,21 +1,7 @@
-<%= render :partial => 'layouts/toolbar_header',
-	:locals => {:article			=> @article,
-				:article_active		=> false,
-				:talk_forum			=> nil,
-				:talk_forum_active	=> false,
-				:read_active		=> false,
-				:edit_active		=> false,
-				:history_active		=> false,
-				:star_active		=> false,
-				:menu_active		=> false
-				} -%>
-
-<div id="body">
-	<h2>Articles:</h2>
-	<% @articles.each do |article| %>
-		<h3><%=link_to (h article.title), show_article_path(article) %></h3>
-	<% end %>
-	<br />
-</div>
+<h2>Articles:</h2>
+<% @articles.each do |article| %>
+	<h3><%=link_to (h article.title), show_article_path(article) %></h3>
+<% end %>
+<br />
 
 <% content_for :title do %>Articles<% end %>  

@@ -7,7 +7,7 @@ module TabHeadersHelper
   # Parameters:
   # article:: The article object relevant to this tab.  If there is no article, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
-  def article_tab(article, is_active)
+  def article_tab(article = nil, is_active = false)
       
     if article.nil? || article.id.nil?
       output_string = active_div(is_active, "left") { "<a href=\"#\">Article</a>" }
@@ -23,7 +23,7 @@ module TabHeadersHelper
   # Parameters:
   # talk_forum:: The talk_forum object relevant to this tab.  If there is no talk forum, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
-  def talk_tab(talk_forum, is_active)
+  def talk_tab(talk_forum = nil, is_active = false)
     if talk_forum.nil? || talk_forum.id.nil?
       output_string = active_div(is_active, "right") { "<a href=\"#\">Talk</a>" }
     else
@@ -40,7 +40,7 @@ module TabHeadersHelper
   # Parameters:
   # article:: The article object relevant to this tab.  If there is no article, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
-  def read_tab(article, is_active)
+  def read_tab(article = nil, is_active = false)
     if article.nil? || article.id.nil?
       # We actually probably need to grey this out if there is no relevant article yet
       output_string = active_div(is_active, "left") { "<a href=\"#\">Read</a>" }
@@ -57,7 +57,7 @@ module TabHeadersHelper
   # Parameters:
   # article:: The article object relevant to this tab.  If there is no article, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
-  def edit_tab(article, is_active)
+  def edit_tab(article = nil, is_active = false)
     if article.nil? || article.id.nil?
       # We are probably on the edit action if the article does not exist.  Thus, linking elsewhere
       # would not be appropriate.
@@ -75,7 +75,7 @@ module TabHeadersHelper
   # Parameters:
   # article:: The article object relevant to this tab.  If there is no article, pass in nil.
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
-  def history_tab(article, is_active)
+  def history_tab(article = nil, is_active = false)
     if article.nil? || article.id.nil?
       # We don't have the backend code set up yet (revisions)
       output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
@@ -86,14 +86,14 @@ module TabHeadersHelper
     return output_string
   end
   
-  def star_tab(article, is_active)
+  def star_tab(article = nil, is_active = false)
     #incomplete
 	  output_string = active_div(is_active) { "<div id=\"star-tool\"><a href=\"#\"></a></div>" }
 
     return output_string
   end
   
-  def menu_tab(article, is_active)
+  def menu_tab(article = nil, is_active = false)
     output_string = active_div(is_active, "right") {
       %{
       <a href="#">

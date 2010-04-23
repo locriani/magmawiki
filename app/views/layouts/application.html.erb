@@ -2,13 +2,20 @@
 	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 	<head>
-		<title><%= h"Magmawiki #{yield(:title)}" %></title>
-		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' %>
-		<%= stylesheet_link_tag 'reset', 'application', 'header', :cache => 'cache/all' %>
-		<%= yield(:head) %>
+		<title><%= h"Magmawiki #{yield(:title)}" -%></title>
+		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' -%>
+		<%= stylesheet_link_tag 'reset', 'application', 'header', :cache => 'cache/all' -%>
+		<%= yield(:head) -%>
 	</head>
   	<body>
-			<%= yield %>
+		<%= render :partial => 'layouts/toolbar_header', :locals => define_toolbar_variables(@toolbar_locals) -%>
+		<div id="body">
+		<% flash.each do |name, msg| %>
+			<%= content_tag :div, (h msg), :id => "flash_#{name}" -%>
+		<% end %>
+			
+		<%= yield %>
+		</div>
 	</body>
 </html>
-<!-- <%= "Prepared in #{@request_timer.total_time}ms by #{request.env['SERVER_NAME']}" %> -->
+<!-- <%= "Prepared in #{@request_timer.total_time}ms by #{request.env['SERVER_NAME']}" -%> -->
