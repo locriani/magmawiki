@@ -30,6 +30,20 @@ describe Revision do
           list_index = list_index + 1
         end
       end
-    end 
+    end
+    
+    it 'should raise an ArgumentError when the passed in parameter is not \'DESC\' or nil' do
+      invalid_inputs = [1, 7, Object.new, StandardError, 'desc', 'nil', '']
+
+      invalid_inputs.each do |input|
+        lambda { Revision.find_all_ordered(input) }.should raise_error(ArgumentError)
+      end
+
+      valid_inputs = ['DESC', nil]
+
+      valid_inputs.each do |input|
+        lambda { Revision.find_all_ordered(input) }.should_not raise_error
+      end
+    end
   end
 end

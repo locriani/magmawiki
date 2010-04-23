@@ -549,7 +549,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line83">83</a>   	  output_string = active_div(is_active) { &quot;&lt;a href=\&quot;#\&quot;&gt;History&lt;/a&gt;&quot; }</pre></td>
+            <td><pre><a name="line83">83</a>   	  output_string = active_div(is_active) { link_to &quot;History&quot;, show_history_path(article) }</pre></td>
           </tr>
         
           
@@ -597,7 +597,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line91">91</a> 	  output_string = active_div(is_active) { &quot;&lt;a href=\&quot;#\&quot;&gt;History&lt;/a&gt;&quot; }</pre></td>
+            <td><pre><a name="line91">91</a> 	  output_string = active_div(is_active) { &quot;&lt;div id=\&quot;star-tool\&quot;&gt;&lt;a href=\&quot;#\&quot;&gt;&lt;/a&gt;&lt;/div&gt;&quot; }</pre></td>
           </tr>
         
           
@@ -633,7 +633,7 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line97">97</a>     output_string = active_div(is_active) {</pre></td>
+            <td><pre><a name="line97">97</a>     output_string = active_div(is_active, &quot;right&quot;) {</pre></td>
           </tr>
         
           
@@ -651,49 +651,49 @@
           
           
           <tr class="inferred">
-            <td><pre><a name="line100">100</a> 		  &lt;div id=&quot;arrow-menu&quot;&gt;</pre></td>
+            <td><pre><a name="line100">100</a>       ▼</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line101">101</a> 		    &lt;a href=&quot;#&quot;&gt;lool&lt;/a&gt;&lt;br&gt;</pre></td>
+            <td><pre><a name="line101">101</a> 		  &lt;/a&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line102">102</a> 		    &lt;a href=&quot;#&quot;&gt;what&lt;/a&gt;&lt;br&gt;</pre></td>
+            <td><pre><a name="line102">102</a> 		  &lt;div id=&quot;arrow-menu&quot;&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line103">103</a> 		    &lt;a href=&quot;#&quot;&gt;huh&lt;/a&gt;&lt;br&gt;</pre></td>
+            <td><pre><a name="line103">103</a> 		    &lt;a href=&quot;#&quot;&gt;lool&lt;/a&gt;&lt;br /&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line104">104</a> 		    &lt;a href=&quot;#&quot;&gt;yeah&lt;/a&gt;</pre></td>
+            <td><pre><a name="line104">104</a> 		    &lt;a href=&quot;#&quot;&gt;what&lt;/a&gt;&lt;br /&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line105">105</a> 		  &lt;/div&gt;</pre></td>
+            <td><pre><a name="line105">105</a> 		    &lt;a href=&quot;#&quot;&gt;huh&lt;/a&gt;&lt;br /&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line106">106</a> 		  ▼</pre></td>
+            <td><pre><a name="line106">106</a> 		    &lt;a href=&quot;#&quot;&gt;yeah&lt;/a&gt;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line107">107</a> 		  &lt;/a&gt;</pre></td>
+            <td><pre><a name="line107">107</a> 		  &lt;/div&gt;</pre></td>
           </tr>
         
           
@@ -782,8 +782,8 @@
         
           
           
-          <tr class="inferred">
-            <td><pre><a name="line122">122</a>       &lt;div class = &quot;group #{active} #{position}&quot;&gt;</pre></td>
+          <tr class="marked">
+            <td><pre><a name="line122">122</a>       &lt;div class = &quot;group #{active} #{h position}&quot;&gt;</pre></td>
           </tr>
         
           
@@ -843,7 +843,7 @@
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 22 05:23:17 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Apr 22 23:55:19 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

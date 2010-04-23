@@ -28,17 +28,17 @@
         <tbody>
           <tr>
             <td class="left_align"><a href="app-models-revision_rb.html">app/models/revision.rb</a></td>
+            <td class='right_align'><tt>15</tt></td>
             <td class='right_align'><tt>13</tt></td>
-            <td class='right_align'><tt>11</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>84.62%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:85px"></div>
-            <div class="uncovered" style="width:15px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>81.82%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:82px"></div>
-            <div class="uncovered" style="width:18px"></div>
+            <div class="covered" style="width:100px"></div>
+            <div class="uncovered" style="width:0px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -81,61 +81,73 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line5">5</a>     if !(order == &quot;DESC&quot; || order == nil)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line6">6</a>       throw &quot;oops&quot; #TODO: Throw a real error, duufus</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="uncovered">
-            <td><pre><a name="line7">7</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line8">8</a>     </pre></td>
+            <td><pre><a name="line5">5</a>     _order = order</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line9">9</a>     with_scope :find =&gt; options do</pre></td>
+            <td><pre><a name="line6">6</a>     _options = options</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line10">10</a>       all(:order =&gt; [&quot;created_at &quot;, order])</pre></td>
+            <td><pre><a name="line7">7</a>     if !(_order == &quot;DESC&quot; || _order == nil)</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line8">8</a>       raise ArgumentError, &quot;argument must be nil or DESC&quot;</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line11">11</a>     end</pre></td>
+            <td><pre><a name="line9">9</a>     end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line12">12</a>   end</pre></td>
+            <td><pre><a name="line10">10</a>     </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line11">11</a>     with_scope :find =&gt; _options do</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line12">12</a>       all(:order =&gt; [&quot;created_at &quot;, _order])</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a> end</pre></td>
+            <td><pre><a name="line13">13</a>     end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line14">14</a>   end</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="inferred">
+            <td><pre><a name="line15">15</a> end</pre></td>
           </tr>
         
       </tbody>
     </table>
 
-    <p>Generated on Thu Apr 22 05:23:17 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
+    <p>Generated on Thu Apr 22 23:55:19 -0500 2010 with <a href="http://github.com/relevance/rcov">rcov 0.9.2.1</a></p>
 
   </body>
 </html>

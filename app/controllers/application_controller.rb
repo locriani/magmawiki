@@ -24,11 +24,11 @@ end
 
 class RequestTimer
   def initialize
-    @start_time = Time.now
+    @start_time = Time.now.utc
   end
   def finish
     @stopped = true
-    @total_time = (Time.now - @start_time) * 1000
+    @total_time = (Time.now.utc - @start_time) * 1000
   end
   
   def total_time

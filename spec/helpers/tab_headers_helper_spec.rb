@@ -22,9 +22,13 @@ describe TabHeadersHelper do
         validated_output = Nokogiri::HTML output
         
         if true == boolean
+          # If we pass in true to #is_active, it should be active
+          # and it should not be inactive.  If both are true, we have a problem
+          # with our classes.
           validated_output.css("div.active").should_not be_empty
           validated_output.css("div.inactive").should be_empty
         else
+          # et vice versa
           validated_output.css("div.active").should be_empty
           validated_output.css("div.inactive").should_not be_empty
         end
@@ -33,11 +37,15 @@ describe TabHeadersHelper do
     it 'should have an appropriate position class' do
       pending
     end
+    
+    it 'should link to the appropriate location' do
+      pending
+    end
   end
   
   #           ['context',   'object'    ]
   contexts = [['article',   'article'   ],
-              ['talk',      'talk_forum'], #fails because talk_forum is not an object yet
+              ['talk',      'talk_forum'],
               ['read',      'article'   ],
               ['edit',      'article'   ],
               ['history',   'article'   ],
