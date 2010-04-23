@@ -16,13 +16,15 @@ end
 Given /^revision (\d+) has text "([^\"]*)"$/ do |revision_number, text|
   revision_number = revision_number.to_i
   
-  @article.revisions.find_all_ordered[revision_number].body = text
-  @article.revisions.find_all_ordered[revision_number].save
+  # CHEATING
+  revision = Revision.find_by_id(revision_number)
+  revision.body = text
+  revision.save!
 end
 
 Then /^(?:|I )should see a list of (\d+) revision(?:|s)$/ do |number_of_revisions|
   number_of_revisions = number_of_revisions.to_i
   number_of_revisions.times do |i|
-    Then "I should see \"revision #{i + 1}\""
+    Then "I should see \"Revision #{i + 1}\""
   end
 end

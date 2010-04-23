@@ -7,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
     
     # read
     map.connect         'wiki/',            :action => 'index'
-    map.show_article    'wiki/show/:id',    :action => 'show'
+    map.show_article    'wiki/read/:id',    :action => 'show'
     
     # update
     map.edit_article    'wiki/edit/:id',    :action => 'edit'
@@ -17,9 +17,9 @@ ActionController::Routing::Routes.draw do |map|
     # NYI
   end
   
-  map.show_history      'wiki/history/:id',                                   :action => 'show'
-  map.show_revision     'wiki/revision/show/:revision_id/:id/',               :action => 'show'
-  map.diff_revision     'wiki/revision/diff/:revision_1/:revision_2/:id/',    :action => 'diff'
+  map.show_history      'wiki/revision/history/:id',                          :controller => :revisions, :action => 'index'
+  map.show_revision     'wiki/revision/show/:revision_id/:id/',               :controller => :revisions, :action => 'show'
+  map.diff_revision     'wiki/revision/diff/:revision_1/:revision_2/:id/',    :controller => :revisions,  :action => 'diff'
 
   map.root :controller => :articles, :action => :show, :id => "Main_page"
 end

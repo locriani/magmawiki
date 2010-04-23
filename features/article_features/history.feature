@@ -8,6 +8,7 @@ Feature: History
 		And revision 1 has text "I am a revision"
 		When I follow "history"
 		Then I should see a list of 20 revisions
+		When I follow "Revision 1"
 		Then I should see "You are viewing an older revision of this page"
 		And I should see "I am a revision"
 
@@ -16,6 +17,6 @@ Feature: History
 		And revision 3 has text "what"
 		When I follow "history"
 		Then I should see a list of 15 revisions
-		When I follow "revision 3"
+		When I follow "Revision 3"
 		Then I should see "You are viewing an older revision of this page"
 		And I should see "what"

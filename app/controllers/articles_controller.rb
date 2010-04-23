@@ -3,8 +3,6 @@ class ArticlesController < ApplicationController
     @articles = Article.all
     respond_to do |format|
       format.html
-      # format.xml
-      # format.json
     end
   end
   

@@ -80,7 +80,7 @@ module TabHeadersHelper
       # We don't have the backend code set up yet (revisions)
       output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
   	else
-  	  output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
+  	  output_string = active_div(is_active) { link_to "History", show_history_path(article) }
   	end
   	
     return output_string
