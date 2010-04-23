@@ -8,10 +8,12 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
-    
+    @toolbar_locals = { :article	          => @article,
+  						          :article_active		  => true,
+  						          :read_active		    => true}
     if @article.nil?
       redirect_to new_article_url
-    else    
+    else
       respond_to do |format|
         format.html
       end
@@ -21,15 +23,17 @@ class ArticlesController < ApplicationController
   def new
     @article = Article.new
     @article.current_revision = @article.revisions.build
+    
+    @toolbar_locals = { :article	          => @article,
+  						          :article_active		  => true,
+  						          :edit_active		    => true}
+    
     respond_to do |format|
       format.html
     end
   end
   
   def create
-    #TODO: VERY HACKISH, NEEDS CLEANUP OH MY GOD MY EYES
-    # Most of this shouldn't be in the controller anyways, as it's article / revision specific logic
-    # and should be in the model
     @article = Article.new(params[:article])
     revision = @article.revisions.build(params[:revision])
     revision.is_current = true
@@ -43,7 +47,11 @@ class ArticlesController < ApplicationController
   
   def edit
     @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
-    @article.current_revision.summary = "" # We don't care about the previous revision's summary, because this is a new revision
+    # We don't care about the previous revision's summary, because this will be a new revision
+    @article.current_revision.summary = ""
+    @toolbar_locals = { :article	          => @article,
+  						          :article_active		  => true,
+  						          :edit_active		    => true}
   end
   
   def update
