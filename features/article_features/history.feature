@@ -20,3 +20,11 @@ Feature: History
 		When I follow "Revision 3"
 		Then I should see "You are viewing an older revision of this page"
 		And I should see "what"
+
+	Scenario: Revision summaries
+		Given I am reading an article with 7 revisions
+		And revision 4 has edit summary "I was modifying this article"
+		When I follow "history"
+		Then I should see "I was modifying this article"
+		
+	Scenario: Minor revisions

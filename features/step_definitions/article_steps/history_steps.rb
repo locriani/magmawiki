@@ -28,3 +28,11 @@ Then /^(?:|I )should see a list of (\d+) revision(?:|s)$/ do |number_of_revision
     Then "I should see \"Revision #{i + 1}\""
   end
 end
+
+Given /^revision (\d+) has edit summary "([^\"]*)"$/ do |revision_number, text|
+  revision_number = revision_number.to_i
+  
+  revision = Revision.find_by_id(revision_number)
+  revision.summary = text
+  revision.save!
+end
