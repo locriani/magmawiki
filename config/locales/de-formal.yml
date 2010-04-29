@@ -1,13 +1,13 @@
 ﻿de-formal:
     recaptcha:
-        error: "Die Eingabe für das Captcha war nicht die erwartete, Bitte noch einmal versuchen."
+        error: "Die Eingabe für das Captcha war nicht die erwartete, bitte noch einmal versuchen."
         
     article:
         default:        "Artikel"
         main_page:      "Hauptseite"
         create_message: "Artikel erfolgreich angelegt."
-        update_message: "artikel erfolgreich geändert."
-        slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, wollen sie die Seite vielleicht vershieben?"
+        update_message: "Artikel erfolgreich geändert."
+        slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, wollen Sie die Seite vielleicht verschieben?"
         
     talk:
         default:        "Diskussion"
