@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   before_filter :initialize_toolbar
   helper :all
-  helper_method :current_user_session, :current_user, :titile, :head, :initialize_toolbar
+  helper_method :current_user_session, :current_user, :titile, :head, :initialize_toolbar, :recaptcha_tags
   protect_from_forgery
   
   # Scrub sensitive parameters from the log
@@ -35,7 +35,7 @@ private
   
   def require_user
     unless current_user
-      flash[:notice] = "You must be logged in to access this page"
+      flash[:notice] = I18n.t 'session.login'
       redirect_to new_user_session_url
       return false
     end
@@ -43,16 +43,20 @@ private
 
   def require_no_user
     if current_user
-      flash[:notice] = "You must be logged out to access this page"
+      flash[:notice] = I18n.t 'session.logout'
       return false
     end
   end
   
+  def recaptcha_tags(options ={})
+    
+  end
+  
   def verify_recaptcha(options = {})
-    if magma_settings['RECAPTCHA_ENABLED'] = true
-      return Recaptcha::Verify::verify_recaptcha(options)
-    else
+    # if magma_settings['RECAPTCHA_ENABLED'] = true
+    #   return Recaptcha::Verify::verify_recaptcha(options)
+    # else
       return true
-    end
+    # end
   end
 end

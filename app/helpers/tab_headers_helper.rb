@@ -10,9 +10,9 @@ module TabHeadersHelper
   def article_tab(article = nil, is_active = false)
       
     if article.nil? || article.id.nil?
-      output_string = active_div(is_active, "left") { "<a href=\"#\">Article</a>" }
+      output_string = active_div(is_active, "left") { "<a href=\"#\">#{I18n.t 'article.default'}</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to "Article", show_article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to (I18n.t 'article.default'), show_article_path(article) }
   	end
   	  return output_string
   end
@@ -25,10 +25,10 @@ module TabHeadersHelper
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
   def talk_tab(talk_forum = nil, is_active = false)
     if talk_forum.nil? || talk_forum.id.nil?
-      output_string = active_div(is_active, "right") { "<a href=\"#\">Talk</a>" }
+      output_string = active_div(is_active, "right") { "<a href=\"#\">#{I18n.t 'talk.default'}</a>" }
     else
       # TODO: This will need to be replaced with link_to code once the talk_forum object has been set up
-      output_string = active_div(is_active, "right") { "<a href=\"#\">Talk</a>" }
+      output_string = active_div(is_active, "right") { "<a href=\"#\">#{I18n.t 'talk.default'}</a>" }
     end
     
     return output_string
@@ -43,9 +43,9 @@ module TabHeadersHelper
   def read_tab(article = nil, is_active = false)
     if article.nil? || article.id.nil?
       # We actually probably need to grey this out if there is no relevant article yet
-      output_string = active_div(is_active, "left") { "<a href=\"#\">Read</a>" }
+      output_string = active_div(is_active, "left") { "<a href=\"#\">#{I18n.t 'read.default'}</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to "Read", show_article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to (I18n.t 'read.default'), show_article_path(article) }
   	end
   	
   	return output_string
@@ -61,9 +61,9 @@ module TabHeadersHelper
     if article.nil? || article.id.nil?
       # We are probably on the edit action if the article does not exist.  Thus, linking elsewhere
       # would not be appropriate.
-      output_string = active_div(is_active) { "<a href=\"#\">Edit</a>" }
+      output_string = active_div(is_active) { "<a href=\"#\">#{I18n.t 'edit.default'}</a>" }
   	else
-  	  output_string = active_div(is_active) { link_to "Edit", edit_article_path(article) }
+  	  output_string = active_div(is_active) { link_to (I18n.t 'edit.default'), edit_article_path(article) }
   	end
   	
     return output_string
@@ -78,9 +78,9 @@ module TabHeadersHelper
   def history_tab(article = nil, is_active = false)
     if article.nil? || article.id.nil?
       # We don't have the backend code set up yet (revisions)
-      output_string = active_div(is_active) { "<a href=\"#\">History</a>" }
+      output_string = active_div(is_active) { "<a href=\"#\">#{I18n.t 'history.default'}</a>" }
   	else
-  	  output_string = active_div(is_active) { link_to "History", show_history_path(article) }
+  	  output_string = active_div(is_active) { link_to (I18n.t 'history.default'), show_history_path(article) }
   	end
   	
     return output_string

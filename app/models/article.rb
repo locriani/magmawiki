@@ -25,7 +25,7 @@ private
   def slug_immutability
     unless self.slug == escape(self.title)
       #TODO: Bad error message, i18n
-      errors.add :title, "Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
+      errors.add :title, (I18n.t 'article.slug_error')
     end
   end
   

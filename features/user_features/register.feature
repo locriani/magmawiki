@@ -6,9 +6,7 @@ Feature: Registration
 	Scenario: Register a new account
 		Given I am on the home page
 		And I am not logged in
-		When I follow "login / register"
-		Then I should see "Need an account?"
-		When I follow "Need an account?"
+		When I follow "Register"
 		Then I should see "Stuff about registering an account"
 		When I fill in the following:
 			| Username:         | ienjoycats            |
@@ -16,4 +14,4 @@ Feature: Registration
 			| Password:         | lotsofcats            |
 			| Confirm Password: | lotsofcats            |
 		And I press "Register"
-		Then I should see "Registration successful"
+		Then I should see "Your account was created successfully."

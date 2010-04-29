@@ -38,7 +38,7 @@ class ArticlesController < ApplicationController
     revision = @article.revisions.build(params[:revision])
     revision.is_current = true
     if @article.save
-      flash[:notice] = "Article created successfully." #TODO: i18n
+      flash[:notice] = I18n.t 'article.create_message'
       redirect_to show_article_url(@article)
     else
       render :action => :new
@@ -65,7 +65,7 @@ class ArticlesController < ApplicationController
       current_revision.is_current = false
       current_revision.save
       
-      flash[:notice] = "Update successful"
+      flash[:notice] = I18n.t 'article.update_message'
       redirect_to show_article_url(@article)
     else
       render :action => :edit

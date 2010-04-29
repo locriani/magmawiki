@@ -1,5 +1,37 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See http://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
-  hello: "Hello world"
+    recaptcha:
+        error: "Your entry for the captcha did not match what was expected.  Please try again."
+        
+    article:
+        default:        "Article"
+        main_page:      "Main Page"
+        create_message: "Article created successfully."
+        update_message: "Article updated successfully."
+        slug_error:     "(This error message sucks) Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
+        
+    talk:
+        default:        "Discussion"
+        
+    user:
+        default:        "User"
+        create:         "Register"
+        create_message: "Your account was created successfully."
+        
+    session:
+        login:          "Login"
+        logout:         "Logout"
+        login_error:    "You must be logged in to access this page."
+        logout_error:   "You must be logged out to access this page."
+    
+    read:
+        default:        "Read"
+    
+    edit:
+        default:        "Edit"
+    
+    history:
+        default:        "History"
+        revision:
+            default:    "Revision"
+            older:      "You are viewing an older revision of this page."
+        
