@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   before_filter :initialize_toolbar
   helper :all
-  helper_method :current_user_session, :current_user, :titile, :head, :initialize_toolbar, :recaptcha_tags
+  helper_method :current_user_session, :current_user, :title, :head, :initialize_toolbar
   protect_from_forgery
   
   # Scrub sensitive parameters from the log
@@ -47,16 +47,13 @@ private
       return false
     end
   end
-  
-  def recaptcha_tags(options ={})
     
-  end
-  
   def verify_recaptcha(options = {})
-    # if magma_settings['RECAPTCHA_ENABLED'] = true
-    #   return Recaptcha::Verify::verify_recaptcha(options)
-    # else
+    if MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:enabled] == true
+      options[:private_key] = MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:private_key]
+      return Recaptcha::Verify::verify_recaptcha(options)
+    else
       return true
-    # end
+    end
   end
 end
