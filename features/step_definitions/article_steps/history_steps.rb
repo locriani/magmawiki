@@ -4,7 +4,6 @@ Given /^(?:|I )am reading an article with (\d+) revision(?:|s)$/ do |number_of_r
   
   number_of_revisions.times do |i|
     revision = @article.revisions.create(:body => "something")
-    sleep 1
     if (i + 1) == number_of_revisions
       revision.is_current = true
       revision.save

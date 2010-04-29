@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang='en' xml:lang='en' xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>app/models/revision.rb</title>
+    <title>app/controllers/user_sessions_controller.rb</title>
     <link href="screen.css" media="all" rel="stylesheet" type="text/css" />
     <link href="print.css" media="print" rel="stylesheet" type="text/css" />
     
@@ -10,7 +10,7 @@
   </head>
   <body>
     <h1>Magmawiki C0 Coverage Information - RCov</h1>
-    <h2>app/models/revision.rb</h2>
+    <h2>app/controllers/user_sessions_controller.rb</h2>
 
     
 
@@ -27,18 +27,18 @@
         </thead>
         <tbody>
           <tr>
-            <td class="left_align"><a href="app-models-revision_rb.html">app/models/revision.rb</a></td>
-            <td class='right_align'><tt>15</tt></td>
-            <td class='right_align'><tt>13</tt></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><a href="app-controllers-user_sessions_controller_rb.html">app/controllers/user_sessions_controller.rb</a></td>
+            <td class='right_align'><tt>12</tt></td>
+            <td class='right_align'><tt>9</tt></td>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>83.33%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:83px"></div>
+            <div class="uncovered" style="width:17px"></div>
           </div></td>
-            <td class="left_align"><div class="percent_graph_legend"><tt class=''>100.00%</tt></div>
+            <td class="left_align"><div class="percent_graph_legend"><tt class=''>77.78%</tt></div>
           <div class="percent_graph">
-            <div class="covered" style="width:100px"></div>
-            <div class="uncovered" style="width:0px"></div>
+            <div class="covered" style="width:78px"></div>
+            <div class="uncovered" style="width:22px"></div>
           </div></td>
           </tr>
         </tbody>
@@ -57,55 +57,55 @@
           
           
           <tr class="marked">
-            <td><pre><a name="line1">1</a> class Revision &lt; ActiveRecord::Base</pre></td>
+            <td><pre><a name="line1">1</a> class UserSessionsController &lt; ApplicationController</pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line2">2</a>   belongs_to :article, :counter_cache =&gt; :revision_count</pre></td>
+            <td><pre><a name="line2">2</a>   before_filter :require_no_user, :only =&gt; [:new, :create]</pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line3">3</a>   before_filter :require_user, :only =&gt; :destroy</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line3">3</a>   </pre></td>
+            <td><pre><a name="line4">4</a>   </pre></td>
           </tr>
         
           
           
           <tr class="marked">
-            <td><pre><a name="line4">4</a>   def self.find_all_ordered(order = nil, options = {})</pre></td>
+            <td><pre><a name="line5">5</a>   def new</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line5">5</a>     _order = order</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line6">6</a>     @user_session = UserSession.new</pre></td>
           </tr>
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line6">6</a>     _options = options</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line7">7</a>     if !(_order == &quot;DESC&quot; || _order == nil)</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line8">8</a>       raise ArgumentError, &quot;argument must be nil or DESC&quot;</pre></td>
+          <tr class="uncovered">
+            <td><pre><a name="line7">7</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line9">9</a>     end</pre></td>
+            <td><pre><a name="line8">8</a>   </pre></td>
+          </tr>
+        
+          
+          
+          <tr class="marked">
+            <td><pre><a name="line9">9</a>   def create</pre></td>
           </tr>
         
           
@@ -116,32 +116,14 @@
         
           
           
-          <tr class="marked">
-            <td><pre><a name="line11">11</a>     with_scope :find =&gt; _options do</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="marked">
-            <td><pre><a name="line12">12</a>       all(:order =&gt; [&quot;created_at &quot;, _order])</pre></td>
+          <tr class="inferred">
+            <td><pre><a name="line11">11</a>   end</pre></td>
           </tr>
         
           
           
           <tr class="inferred">
-            <td><pre><a name="line13">13</a>     end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line14">14</a>   end</pre></td>
-          </tr>
-        
-          
-          
-          <tr class="inferred">
-            <td><pre><a name="line15">15</a> end</pre></td>
+            <td><pre><a name="line12">12</a> end</pre></td>
           </tr>
         
       </tbody>

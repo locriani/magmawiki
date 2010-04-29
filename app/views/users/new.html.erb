@@ -1,0 +1,14 @@
+<p>Stuff about registering an account</p>
+<% form_for @user do |f| %>
+	<%= f.error_messages -%>
+	<%= f.label :login, "Username:" -%>
+	<%= f.text_field :login -%>
+	<%= f.label :email, "Email:" -%>
+	<%= f.text_field :email -%>
+	<%= f.label :password, "Password:" -%>
+	<%= f.password_field :password %>
+	<%= f.label :password_confirmation, "Confirm Password:" -%>
+	<%= f.password_field :password_confirmation -%>
+	<%= recaptcha_tags %>
+	<%= f.submit "Register" -%>
+<% end %>

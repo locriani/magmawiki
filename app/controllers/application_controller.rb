@@ -2,14 +2,15 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :start_timing
   before_filter :initialize_toolbar
   helper :all
+  helper_method :current_user_session, :current_user, :titile, :head, :initialize_toolbar
   protect_from_forgery
   
   # Scrub sensitive parameters from the log
   filter_parameter_logging :password, :password_confirmation, :authenticity_token
-  
+
+private
   def title(page_title)
     content_for(:title) { page_title }
   end
@@ -21,22 +22,33 @@ class ApplicationController < ActionController::Base
   def initialize_toolbar
     @toolbar_locals = {}
   end
-  def start_timing
-    @request_timer = RequestTimer.new
-  end
-end
 
-class RequestTimer
-  def initialize
-    @start_time = Time.now.utc
+  def current_user_session
+    return @current_user_session if defined?(@current_user_session)
+    @current_user_session = UserSession.find
   end
-  def finish
-    @stopped = true
-    @total_time = (Time.now.utc - @start_time) * 1000
+
+  def current_user
+    return @current_user if defined?(@current_user)
+    @current_user = current_user_session && current_user_session.user
   end
   
-  def total_time
-    finish unless @stopped == true
-    @total_time
+  def require_user
+    unless current_user
+      store_location
+      flash[:notice] = "You must be logged in to access this page"
+      redirect_to new_user_session_url
+      return false
+    end
   end
+
+  def require_no_user
+    if current_user
+      store_location
+      flash[:notice] = "You must be logged out to access this page"
+      redirect_to account_url
+      return false
+    end
+  end
+  
 end
