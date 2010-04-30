@@ -5,6 +5,7 @@ en:
     article:
         default:        "Article"
         main_page:      "Main Page"
+        random:         "random article"
         create_message: "Article created successfully."
         update_message: "Article updated successfully."
         slug_error:     "(This error message sucks) Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
@@ -14,6 +15,7 @@ en:
         
     user:
         default:        "User"
+        contribs:       "my contributions"
         create:         "Register"
         create_message: "Your account was created successfully."
         
