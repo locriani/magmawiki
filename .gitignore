@@ -8,3 +8,4 @@ coverage/**/*
 coverage.data
 doc/**/*
 *.bak
+.project
