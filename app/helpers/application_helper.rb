@@ -13,4 +13,7 @@ module ApplicationHelper
                            
     return expected_parameters.merge(input_parameters)
   end
+  def captcha
+    CAPTCHA
+  end
 end

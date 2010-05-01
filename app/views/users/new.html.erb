@@ -9,6 +9,6 @@
 	<%= f.password_field :password %>
 	<%= f.label :password_confirmation, "Confirm Password:" -%>
 	<%= f.password_field :password_confirmation -%>
-	<%#= recaptcha_tags %>
+	<%= captcha.recaptcha_tags %>
 	<%= f.submit "Register" -%>
 <% end %>
