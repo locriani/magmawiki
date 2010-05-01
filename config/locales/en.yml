@@ -14,6 +14,10 @@ en:
         default:        "Discussion"
         
     user:
+        name:           "Username"
+        email:          "Email"
+        password:       "Password"
+        pass_confirm:   "Confirm Password"
         default:        "User"
         contribs:       "my contributions"
         create:         "Register"

@@ -14,6 +14,10 @@
         default:        "Diskussion"
         
     user:
+        name:           "Nutzername"
+        email:          "Email"
+        password:       "Passwort"
+        pass_confirm:   "Passwort bestätigen"
         default:        "Benutzer"
         contribs:       "Ihre Bearbeitungen"
         create:         "Registrieren"
