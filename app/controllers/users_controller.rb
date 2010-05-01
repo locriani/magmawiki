@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if verify_recaptcha(:model => @user, :message => (I18n.t 'recaptcha.error')) && @user.save
+    if CAPTCHA.verify_recaptcha(:model => @user, :message => (I18n.t 'recaptcha.error')) && @user.save
       flash[:notice] = I18n.t 'user.create_message'
       redirect_to root_url
     else
