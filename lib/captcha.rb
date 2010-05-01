@@ -2,7 +2,6 @@ module Captcha
   class Recaptcha
     def initialize(options = {})
       @global_settings = {
-                          :global_settings  => true,
                           :enabled          => false,
                           :public_key       => nil,
                           :private_key      => nil,
@@ -44,15 +43,7 @@ module Captcha
     def html_tags(options)
       tags = %{<script type="text/javascript"
       src="http://api.recaptcha.net/challenge?k=#{options[:public_key]}">
-      </script>
-      <noscript>
-      <iframe src="http://api.recaptcha.net/noscript?k=#{options[:public_key]}"
-      height="300" width="500" frameborder="0"></iframe><br>
-      <textarea name="recaptcha_challenge_field" rows="3" cols="40">
-      </textarea>
-      <input type="hidden" name="recaptcha_response_field" 
-      value="manual_challenge">
-      </noscript>}
+      </script>}
     end
   end
 end

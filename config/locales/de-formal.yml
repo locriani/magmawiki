@@ -5,6 +5,7 @@
     article:
         default:        "Artikel"
         main_page:      "Hauptseite"
+        random:         "Zufälliger Artikel"
         create_message: "Artikel erfolgreich angelegt."
         update_message: "Artikel erfolgreich geändert."
         slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, wollen Sie die Seite vielleicht verschieben?"
@@ -13,7 +14,12 @@
         default:        "Diskussion"
         
     user:
+        name:           "Nutzername"
+        email:          "Email"
+        password:       "Passwort"
+        pass_confirm:   "Passwort bestätigen"
         default:        "Benutzer"
+        contribs:       "Ihre Bearbeitungen"
         create:         "Registrieren"
         create_message: "Ihr Account wurde erfolgreich angelegt."
 
