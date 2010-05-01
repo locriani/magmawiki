@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%= "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"#{I18n.default_locale}\" lang=\"#{I18n.default_locale}\">" %>
+<%= "<html lang=\"#{I18n.locale}\">" %>
 	<head>
 		<title><%= h"Magmawiki #{yield(:title)}" -%></title>
 		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' -%>
@@ -9,11 +9,10 @@
   	<body>
 		<%= render :partial => 'layouts/toolbar_header', :locals => define_toolbar_variables(@toolbar_locals) -%>
 		<div id="body">
-		<% flash.each do |name, msg| %>
-			<%= content_tag :div, (h msg), :id => "flash_#{name}" -%>
-		<% end %>
-			
-		<%= yield %>
+			<% flash.each do |name, msg| %>
+				<%= content_tag :div, (h msg), :id => "flash_#{name}" -%>
+			<% end %>
+			<%= yield %>
 		</div>
 	</body>
 </html>

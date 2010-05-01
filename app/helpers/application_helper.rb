@@ -13,12 +13,4 @@ module ApplicationHelper
                            
     return expected_parameters.merge(input_parameters)
   end
-  def captcha_enabled? #TODO: Refactor me!
-    if MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:enabled] == true
-      options[:public_key] = MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:public_key]
-      return true
-    else
-      return false
-    end
-  end
 end

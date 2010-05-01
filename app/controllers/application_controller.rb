@@ -47,13 +47,4 @@ private
       return false
     end
   end
-    
-  def verify_recaptcha(options = {})
-    if MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:enabled] == true
-      options[:private_key] = MAGMAWIKI_SETTINGS[:magmawiki][:recaptcha][:private_key]
-      return Recaptcha::Verify::verify_recaptcha(options)
-    else
-      return true
-    end
-  end
 end
