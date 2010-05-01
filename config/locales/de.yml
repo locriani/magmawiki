@@ -1,18 +1,10 @@
-﻿de-formal:
-    recaptcha:
-        error: "Die Eingabe für das Captcha war nicht die erwartete, bitte noch einmal versuchen."
-        
+﻿de:
     article:
-        default:        "Artikel"
-        main_page:      "Hauptseite"
-        random:         "Zufälliger Artikel"
-        create_message: "Artikel erfolgreich angelegt."
-        update_message: "Artikel erfolgreich geändert."
         slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, wollen Sie die Seite vielleicht verschieben?"
-        
+
     talk:
         default:        "Diskussion"
-        
+
     user:
         name:           "Nutzername"
         email:          "Email"
@@ -31,13 +23,12 @@
 
     read:
         default:        "Lesen"
-    
+
     edit:
         default:        "Bearbeiten"
-    
+
     history:
         default:        "History"
         revision:
             default:    "Revision"
             older:      "Sie betrachten gerade eine ältere Version dieser Seite."
-        
