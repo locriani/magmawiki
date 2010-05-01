@@ -38,7 +38,7 @@ MAGMAWIKI_CONFIG = recursively_symbolize_keys(YAML.load(raw_config)['magmawiki']
 
 undef recursively_symbolize_keys
 
-I18n.locale = MAGMAWIKI_CONFIG[:locale][:default]
+I18n.default_locale = MAGMAWIKI_CONFIG[:locale][:default]
 
 CAPTCHA = Captcha::Recaptcha.new(MAGMAWIKI_CONFIG[:captcha])
 
