@@ -43,10 +43,10 @@ module Captcha
     
     def html_tags(options)
       tags = %{<script type="text/javascript"
-      src="http://api.recaptcha.net/challenge?k=#{options[:public_key].to_s}">
+      src="http://api.recaptcha.net/challenge?k=#{options[:public_key]}">
       </script>
       <noscript>
-      <iframe src="http://api.recaptcha.net/noscript?k=#{options[:public_key].to_s}"
+      <iframe src="http://api.recaptcha.net/noscript?k=#{options[:public_key]}"
       height="300" width="500" frameborder="0"></iframe><br>
       <textarea name="recaptcha_challenge_field" rows="3" cols="40">
       </textarea>
