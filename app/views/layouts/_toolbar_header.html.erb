@@ -1,9 +1,9 @@
 <!--<div id="logo"></div> -->
 <div id="login-bar">
    <%= link_to (I18n.t 'article.main_page'), root_url -%>
-   <%= I18n.t 'article.random' %>
+   <%=t 'article.random' %>
    username
-   <%= I18n.t 'user.contribs' %>
+   <%=t 'user.contribs' %>
    <%= link_to (I18n.t 'session.login'), new_user_session_url -%>
    <%= link_to (I18n.t 'user.create'), new_user_url -%>
 </div>
