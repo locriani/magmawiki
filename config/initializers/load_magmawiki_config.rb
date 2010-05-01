@@ -40,6 +40,5 @@ undef recursively_symbolize_keys
 
 I18n.default_locale = MAGMAWIKI_CONFIG[:locale][:default].to_sym
 I18n::Backend::Simple.send(:include, I18n::Backend::Fallbacks)
-raise "Fallbacks not working" if I18n.fallbacks.nil?
 CAPTCHA = Captcha::Recaptcha.new(MAGMAWIKI_CONFIG[:captcha])
 
