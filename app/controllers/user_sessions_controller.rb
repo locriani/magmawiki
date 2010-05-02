@@ -7,6 +7,12 @@ class UserSessionsController < ApplicationController
   end
   
   def create
+    @user_session = UserSession.new(params[:user_session])
     
+    if @user_session.save
+      redirect_to root_url
+    else
+      flash[:error] = I18n.t 'session.login.error'
+    end
   end
 end
