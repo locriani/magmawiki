@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <%= "<html lang=\"#{I18n.locale}\">" %>
 	<head>
-		<title><%= h"Magmawiki #{yield(:title)}" -%></title>
+		<title><%= h"#{MAGMAWIKI_CONFIG[:title]} #{yield(:title)}" -%></title>
 		<%= javascript_include_tag 'http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js' -%>
 		<%= stylesheet_link_tag 'reset', 'application', 'header', :cache => 'cache/all' -%>
 		<%= yield(:head) -%>
