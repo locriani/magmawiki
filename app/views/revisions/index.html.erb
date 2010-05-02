@@ -1,6 +1,6 @@
 <% @article.revisions.find_all_ordered.each do |revision| %>
 	<p>
-		<%= link_to "#{I18n.t 'history.revision.default'} #{revision.id}", show_revision_path(revision, @article) -%>
+		<%= link_to "#{t 'history.revision.default'} #{revision.id}", show_revision_path(revision, @article) -%>
 		<%=h revision.created_at.to_s	-%>
 		<%=h revision.summary -%>
 	</p>

@@ -1,7 +1,8 @@
 magmawiki:
-    domain: magmawiki.com
+    title:              "magmawiki - woohoo wiki stuff"
+    domain:             magmawiki.com
     locale:
-        default: en
+        default:        en
     captcha:
         enabled:        false
         public_key:     YOUR_RECAPTCHA_PUBLIC_KEY_HERE
