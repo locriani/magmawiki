@@ -1,5 +1,6 @@
 en:
     recaptcha:
+        default: "reCAPTCHA"
         error: "Your entry for the captcha did not match what was expected.  Please try again."
         
     article:
@@ -24,10 +25,14 @@ en:
         create_message: "Your account was created successfully."
         
     session:
-        login:          "Login"
-        logout:         "Logout"
-        login_error:    "You must be logged in to access this page."
-        logout_error:   "You must be logged out to access this page."
+        login:
+            default:        "Login"
+            error:          "Incorrect username or password."
+            access_error:   "You must be logged in to access this page."
+            
+        logout:
+            default:        "Logout"
+            access_error:   "You must be logged out to access this page."
     
     read:
         default:        "Read"

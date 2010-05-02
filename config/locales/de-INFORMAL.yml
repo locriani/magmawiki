@@ -7,8 +7,11 @@ de-INFORMAL:
         create_message: "Dein Account wurde erfolgreich angelegt."
 
     session:
-        login_error:    "Du musst Dich einloggen um auf die Seite zugreifen zu können."
-        logout_error:   "Du musst Dich ausloggen um auf die Seite zugreifen zu können."
+        login:
+            access_error:    "Du musst Dich einloggen um auf die Seite zugreifen zu können."
+            
+        logout:
+            access_error:   "Du musst Dich ausloggen um auf die Seite zugreifen zu können."
 
     history:
         revision:
