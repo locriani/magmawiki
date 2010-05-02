@@ -1,6 +1,8 @@
 de:
+    self:               "Deutsch (Sie)"
+
     recaptcha:
-        error: "Die Eingabe für das Captcha war nicht die erwartete, bitte noch einmal versuchen." 
+        error:          "Die Eingabe für das Captcha war nicht die erwartete, bitte noch einmal versuchen." 
 
     article:
         default:        "Artikel" 

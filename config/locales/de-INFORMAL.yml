@@ -1,4 +1,6 @@
 de-INFORMAL:
+    self:               "Deutsch (Du)"
+
     article:
         slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, willst Du die Seite vielleicht verschieben?"
 
@@ -16,3 +18,4 @@ de-INFORMAL:
     history:
         revision:
             older:      "Du betrachtest gerade eine ältere Version dieser Seite."
+

@@ -1,4 +1,6 @@
 en:
+    self:               "English"
+
     recaptcha:
         default: "reCAPTCHA"
         error: "Your entry for the captcha did not match what was expected.  Please try again."
@@ -10,10 +12,10 @@ en:
         create_message: "Article created successfully."
         update_message: "Article updated successfully."
         slug_error:     "(This error message sucks) Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
-        
+
     talk:
         default:        "Discussion"
-        
+
     user:
         name:           "Username"
         email:          "Email"
@@ -23,7 +25,7 @@ en:
         contribs:       "my contributions"
         create:         "Register"
         create_message: "Your account was created successfully."
-        
+
     session:
         login:
             default:        "Login"
@@ -37,13 +39,13 @@ en:
     
     read:
         default:        "Read"
-    
+
     edit:
         default:        "Edit"
-    
+
     history:
         default:        "History"
         revision:
             default:    "Revision"
             older:      "You are viewing an older revision of this page."
-        
+
