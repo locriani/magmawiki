@@ -1,43 +1,16 @@
 ﻿de-informal:
-    recaptcha:
-        error: "Die Eingabe für das Captcha war nicht die erwartete, bitte noch einmal versuchen."
-        
+
     article:
-        default:        "Artikel"
-        main_page:      "Hauptseite"
-        random:         "Zufälliger Artikel"
-        create_message: "Artikel erfolgreich angelegt."
-        update_message: "Artikel erfolgreich geändert."
         slug_error:     "Das Ändern des Titels wird nur bei Grosschreibungs- und Interpunktionsfehlern empfohlen, willst Du die Seite vielleicht verschieben?"
-        
-    talk:
-        default:        "Diskussion"
-        
+
     user:
-        name:           "Nutzername"
-        email:          "Email"
-        password:       "Passwort"
-        pass_confirm:   "Passwort bestätigen"
-        default:        "Benutzer"
-        contribs:       "Ihre Bearbeitungen"
-        create:         "Registrieren"
+        contribs:       "Deine Bearbeitungen"
         create_message: "Dein Account wurde erfolgreich angelegt."
 
     session:
-        login:          "Login"
-        logout:         "Logout"
         login_error:    "Du musst Dich einloggen um auf die Seite zugreifen zu können."
         logout_error:   "Du musst Dich ausloggen um auf die Seite zugreifen zu können."
 
-    read:
-        default:        "Lesen"
-    
-    edit:
-        default:        "Bearbeiten"
-    
     history:
-        default:        "History"
         revision:
-            default:    "Revision"
             older:      "Du betrachtest gerade eine ältere Version dieser Seite."
-        
