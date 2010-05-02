@@ -1,3 +1,18 @@
+# == Schema Information
+# Schema version: 20100428021347
+#
+# Table name: articles
+#
+#  id             :integer         not null, primary key
+#  title          :string(255)     
+#  talk_forum_id  :integer         
+#  created_at     :datetime        
+#  updated_at     :datetime        
+#  slug           :string(255)     
+#  lock_version   :integer         default(0), not null
+#  revision_count :integer         default(0), not null
+#
+
 # The article class is the interface to the most basic unit of the wiki, the revision.
 # Each article maintains an ordered set of revisions, and a most current revision, which
 # is displayed when an article is requested.
