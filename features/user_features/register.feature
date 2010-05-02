@@ -7,7 +7,7 @@ Feature: Registration
 		Given I am on the home page
 		And I am not logged in
 		When I follow "Register"
-		Then I should see "Stuff about registering an account"
+		# Then I should see "Stuff about registering an account" what's the UI message for this?
 		When I fill in the following:
 			| Username:         | ienjoycats            |
 			| Email:            | manycats@facebook.zoo |

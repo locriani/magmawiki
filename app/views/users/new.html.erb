@@ -1,4 +1,4 @@
-<p><%= t 'user.'</p>
+<p><%= t 'user.' -%></p>
 <% form_for @user do |f| %>
 	<%= f.error_messages -%>
 	<%= f.label :login, (I18n.t 'user.name') + ":" -%>
