@@ -11,20 +11,25 @@ en:
         random:         "random article"
         create_message: "Article created successfully."
         update_message: "Article updated successfully."
-        slug_error:     "(This error message sucks) Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
+        slug_error:     "Changing the title is only for correcting capitalization and punctuation.  Perhaps you want to move the page instead?"
 
     talk:
         default:        "Discussion"
 
     user:
+        default:        "User"
         name:           "Username"
         email:          "Email"
         password:       "Password"
         pass_confirm:   "Confirm Password"
-        default:        "User"
-        contribs:       "my contributions"
-        create:         "Register"
-        create_message: "Your account was created successfully."
+        contribs:       "My Contributions"
+        create:
+            default:    "Register"
+            info:       "Registering an account does all kinds of cool stuff like candy"
+            success:    "Your account was created successfully."
+        
+        
+        create_message: "Your account was created successfully." # this needs to be deprecated
 
     session:
         login:
