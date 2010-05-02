@@ -10,6 +10,7 @@ class UserSessionsController < ApplicationController
     @user_session = UserSession.new(params[:user_session])
     
     if @user_session.save
+      flash[:notice] = I18n.t 'session.login.success'
       redirect_to root_url
     else
       flash[:error] = I18n.t 'session.login.error'
