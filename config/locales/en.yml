@@ -27,6 +27,7 @@ en:
     session:
         login:
             default:        "Login"
+            success:        "Successfully logged in."
             error:          "Incorrect username or password."
             access_error:   "You must be logged in to access this page."
             
