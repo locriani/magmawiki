@@ -26,10 +26,13 @@ de:
         create_message: "Ihr Account wurde erfolgreich angelegt."
 
     session:
-        login:          "Login"
-        logout:         "Logout"
-        login_error:    "Sie müssen sich einloggen um auf die Seite zugreifen zu können."
-        logout_error:   "Sie müssen sich ausloggen um auf die Seite zugreifen zu können."
+        login:
+            default:        "Login"
+            access_error:   "Sie müssen sich einloggen um auf die Seite zugreifen zu können."
+            
+        logout:
+            default:        "Logout"
+            access_error:   "Sie müssen sich ausloggen um auf die Seite zugreifen zu können."
 
     read:
         default:        "Lesen"
