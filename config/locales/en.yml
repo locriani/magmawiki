@@ -2,8 +2,8 @@ en:
     self:               "English"
 
     recaptcha:
-        default: "reCAPTCHA"
-        error: "Your entry for the captcha did not match what was expected.  Please try again."
+        default:        "reCAPTCHA"
+        error:          "Your entry for the captcha did not match what was expected.  Please try again."
         
     article:
         default:        "Article"
