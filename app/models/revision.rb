@@ -1,3 +1,17 @@
+# == Schema Information
+# Schema version: 20100428021347
+#
+# Table name: revisions
+#
+#  id         :integer         not null, primary key
+#  body       :text            
+#  article_id :integer         
+#  created_at :datetime        
+#  updated_at :datetime        
+#  summary    :string(255)     
+#  is_current :boolean         
+#
+
 class Revision < ActiveRecord::Base
   belongs_to :article, :counter_cache => :revision_count
   
