@@ -6,10 +6,13 @@ de-INFORMAL:
 
     user:
         contribs:       "Deine Bearbeitungen"
-        create_message: "Dein Account wurde erfolgreich angelegt."
+        create:
+	    info:       "Einen Account anzulegen beschert Dir viele Tolle, bunte Dinge, zum Beispiel Bonbons." # Straight translation, hehe
+            success:    "Dein Account wurde erfolgreich angelegt."
 
     session:
         login:
+	    success:         "Du wurdest Erfolgreich eingeloggt."
             access_error:    "Du musst Dich einloggen um auf die Seite zugreifen zu können."
             
         logout:
