@@ -2,7 +2,7 @@ de:
     self:               "Deutsch (Sie)"
 
     recaptcha:
-    	default:        "reCAPTCHA"
+        default:        "reCAPTCHA"
         error:          "Die Eingabe für das Captcha war nicht die Erwartete, bitte noch einmal versuchen." 
 
     article:
@@ -17,22 +17,22 @@ de:
         default:        "Diskussion"
 
     user:
-    	default:        "Benutzer"
+        default:        "Benutzer"
         name:           "Nutzername"
         email:          "Email"
         password:       "Passwort"
         pass_confirm:   "Passwort bestätigen"
         contribs:       "Ihre Bearbeitungen"
         create:
-	    default:    "Registrieren"
-	    info:       "Einen Account anzulegen bringt Ihnen viele tolle bunte Dinge, zum Beispiel Bonbons" #This is a really straight translation so far :-)
-	    success:    "Ihr Account wurde erfolgreich angelegt."
+            default:    "Registrieren"
+            info:       "Einen Account anzulegen bringt Ihnen viele tolle bunte Dinge, zum Beispiel Bonbons" #This is a really straight translation so far :-)
+            success:    "Ihr Account wurde erfolgreich angelegt."
 
     session:
         login:
             default:        "Login"
-	    success:        "Sie sind erfolgreich eingeloggt wurden."
-	    error:          "Falscher Nutzername oder Passwort."
+            success:        "Sie sind erfolgreich eingeloggt wurden."
+            error:          "Falscher Nutzername oder Passwort."
             access_error:   "Sie müssen sich einloggen um auf die Seite zugreifen zu können."
             
         logout:
