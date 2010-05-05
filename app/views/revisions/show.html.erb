@@ -2,5 +2,5 @@
 <h1><%=h @article.title -%></h1>
 <p><%=h @revision.body -%></p>
 <div id="revision-summary">
-	<p>Edit Summary: <%=h @revision.summary -%></p>
+	<p><%=t 'history.revision.summary' -%>: <%=h @revision.summary -%></p>
 </div>
