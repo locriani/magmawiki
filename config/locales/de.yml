@@ -50,4 +50,5 @@ de:
         revision:
             default:    "Revision"
             older:      "Sie betrachten gerade eine ältere Version dieser Seite."
+            summary:    "Bearbeitungs History"
 
