@@ -16,10 +16,19 @@
 # The article class is the interface to the most basic unit of the wiki, the revision.
 # Each article maintains an ordered set of revisions, and a most current revision, which
 # is displayed when an article is requested.
-class Article < ActiveRecord::Base  
-  has_many :revisions
-  has_one :current_revision, :class_name => 'Revision', :conditions => ["is_current = ?", true]
-  
+class Article < ActiveRecord::Base
+
+  ## Associations
+
+  has_many :revisions, :order => "updated_at DESC"
+  has_one :current_revision, :class_name => 'Revision', :order=>"created_at DESC"
+
+  has_many :topics
+  has_many :comments, :through=>:topics
+
+
+  ## Validations
+
   before_validation_on_create  :prepare_article_slug
 
   validates_presence_of   :title
@@ -30,12 +39,15 @@ class Article < ActiveRecord::Base
   accepts_nested_attributes_for :current_revision, :revisions
   
   attr_accessible :title
+
+
   # Rails uses to_param to construct the string for the object.
   # This *should* support unicode; but that's a theory.
   def to_param
     self.slug
   end
-  
+
+
 private
   def slug_immutability
     unless self.slug == escape(self.title)

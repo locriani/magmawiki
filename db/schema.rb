@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100507065544) do
+ActiveRecord::Schema.define(:version => 20100513034408) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,23 +23,61 @@ ActiveRecord::Schema.define(:version => 20100507065544) do
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
 
+  create_table "comments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "topic_id"
+    t.string   "subject"
+    t.text     "body"
+    t.integer  "parent_id"
+    t.integer  "left"
+    t.integer  "right"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["left"], :name => "index_comments_on_left"
+  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
+  add_index "comments", ["right"], :name => "index_comments_on_right"
+  add_index "comments", ["topic_id"], :name => "index_comments_on_topic_id"
+  add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
   create_table "revisions", :force => true do |t|
     t.text     "body"
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "summary"
-    t.boolean  "is_current"
+    t.string   "engine_name"
+    t.boolean  "approved"
   end
 
-  add_index "revisions", ["article_id", "is_current"], :name => "index_revisions_on_article_id_and_is_current"
+  add_index "revisions", ["approved"], :name => "index_revisions_on_approved"
   add_index "revisions", ["article_id"], :name => "index_revisions_on_article_id"
-  add_index "revisions", ["is_current"], :name => "index_revisions_on_is_current"
+  add_index "revisions", ["article_id"], :name => "index_revisions_on_article_id_and_is_current"
 
   create_table "talk_forums", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "topics", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "revision_id"
+    t.integer  "user_id"
+    t.string   "subject"
+    t.string   "type"
+    t.string   "status"
+    t.string   "tagged_text"
+    t.integer  "tag_start"
+    t.integer  "tag_end"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "topics", ["article_id"], :name => "index_topics_on_article_id"
+  add_index "topics", ["revision_id"], :name => "index_topics_on_revision_id"
+  add_index "topics", ["status"], :name => "index_topics_on_status"
+  add_index "topics", ["type"], :name => "index_topics_on_type"
 
   create_table "user_preferences", :force => true do |t|
     t.string   "preference"

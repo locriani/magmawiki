@@ -1,0 +1,28 @@
+<h1>Topics:</h1>
+
+<% for topic in @topics %>
+    <%= topic.title %>
+
+    <% for comment in topic.comments %>
+        <p>
+          Name:
+            <%= comment.user.name %>
+        </p>
+
+        <p>
+        Subject:
+            <%= comment.subject %>
+        </p>
+
+        <p>
+        Body:
+            <pre>
+              <%= comment.body %>
+            </pre>
+        </p>
+
+    <% end %>
+    <hr>
+<% end %>
+
+<%= button_to "New topic", :action=>"new", :controller=>"topic" %>

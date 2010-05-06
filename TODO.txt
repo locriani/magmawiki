@@ -1,0 +1,4 @@
+Routes/URLs
+
+ * Accept any capitalization in the url, but normalize it to the proper capitalization.
+   |_ "before_filter :find_article"?
