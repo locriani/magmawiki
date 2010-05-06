@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20100507065544
+# Schema version: 20100513034408
 #
 # Table name: revisions
 #
@@ -9,8 +9,8 @@
 #  created_at  :datetime        
 #  updated_at  :datetime        
 #  summary     :string(255)     
-#  approved    :boolean         
 #  engine_name :string(255)     
+#  approved    :boolean         
 #
 
 MARKUP_ENGINES = {
