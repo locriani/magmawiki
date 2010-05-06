@@ -39,4 +39,29 @@ textarea#revision_body{
     text-align: center;
 }
 
+.title, h1, h2, h3, h4, h5, h6 {
+    margin: 1.25em 0em 0.5em 0em;
+}
 
+.title {
+    font-size: 3em;
+    font-weight: bold;
+    margin-left: 0.25em;
+    margin-top: 0em;
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1em; }
+h4 { font-size: 1em; }
+
+p { margin: 1em 0em 1em 0em; }
+
+
+.article-text {
+    margin: 1em 1em 1em 1.5em;
+}
+
+.editsection {
+    float: right;
+}

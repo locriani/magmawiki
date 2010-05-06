@@ -25,10 +25,10 @@ module TabHeadersHelper
   # is_active:: Boolean indicator as to whether or not the tab will have active styles.
   def talk_tab(talk_forum = nil, is_active = false)
     if talk_forum.nil? || talk_forum.id.nil?
-      output_string = active_div(is_active, "right") { "<a href=\"#\">#{I18n.t 'talk.default'}</a>" }
+      output_string = active_div(is_active, "right") { "<a href=\"#{discuss_url(@article)}\">#{I18n.t 'talk.default'}</a>" }
     else
       # TODO: This will need to be replaced with link_to code once the talk_forum object has been set up
-      output_string = active_div(is_active, "right") { "<a href=\"#\">#{I18n.t 'talk.default'}</a>" }
+      output_string = active_div(is_active, "right") { "<a href=\"#{discuss_url(@article)}\">#{I18n.t 'talk.default'}</a>" }
     end
     
     return output_string

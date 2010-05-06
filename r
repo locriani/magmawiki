@@ -1,0 +1,1 @@
+rake routes|less -S
