@@ -65,3 +65,12 @@ p { margin: 1em 0em 1em 0em; }
 .editsection {
     float: right;
 }
+
+ul li {
+    margin: 0 0 0 2em;
+    list-style-type: disc;
+}
+
+li {
+    padding-bottom: .3em;
+}
