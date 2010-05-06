@@ -1,1 +1,0 @@
-rake backup:db:dump

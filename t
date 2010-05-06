@@ -1,1 +1,0 @@
-RSPEC=true autotest

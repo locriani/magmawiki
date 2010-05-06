@@ -47,7 +47,6 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-
     unless @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
       @article = Article.new(:title=>params[:id])
       @article.current_revision = Revision.new
@@ -58,7 +57,6 @@ class ArticlesController < ApplicationController
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :edit_active        => true}
-
   end
   
   def update
@@ -75,13 +73,4 @@ class ArticlesController < ApplicationController
     end
   end
   
-  def destroy
-  end
-
-private
-
-  def article_for_slug(slug)
-
-  end
-
 end
