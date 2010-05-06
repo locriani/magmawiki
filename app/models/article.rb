@@ -23,8 +23,7 @@ class Article < ActiveRecord::Base
   has_many :revisions, :order => "updated_at DESC"
   has_one :current_revision, :class_name => 'Revision', :order=>"created_at DESC"
 
-  has_many :topics
-  has_many :comments, :through=>:topics
+  has_many :comments
 
 
   ## Validations

@@ -24,22 +24,32 @@ ActiveRecord::Schema.define(:version => 20100513034408) do
   add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "revision_id"
     t.integer  "user_id"
-    t.integer  "topic_id"
     t.string   "subject"
     t.text     "body"
-    t.integer  "parent_id"
-    t.integer  "left"
-    t.integer  "right"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "marking_id"
   end
 
-  add_index "comments", ["left"], :name => "index_comments_on_left"
+  add_index "comments", ["lft"], :name => "index_comments_on_lft"
   add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
-  add_index "comments", ["right"], :name => "index_comments_on_right"
-  add_index "comments", ["topic_id"], :name => "index_comments_on_topic_id"
+  add_index "comments", ["rgt"], :name => "index_comments_on_rgt"
   add_index "comments", ["user_id"], :name => "index_comments_on_user_id"
+
+  create_table "markings", :force => true do |t|
+    t.integer "revision_id"
+    t.string  "text"
+    t.integer "start"
+    t.integer "end"
+  end
+
+  add_index "markings", ["revision_id"], :name => "index_markings_on_revision_id"
 
   create_table "revisions", :force => true do |t|
     t.text     "body"
@@ -59,25 +69,6 @@ ActiveRecord::Schema.define(:version => 20100513034408) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "topics", :force => true do |t|
-    t.integer  "article_id"
-    t.integer  "revision_id"
-    t.integer  "user_id"
-    t.string   "subject"
-    t.string   "type"
-    t.string   "status"
-    t.string   "tagged_text"
-    t.integer  "tag_start"
-    t.integer  "tag_end"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "topics", ["article_id"], :name => "index_topics_on_article_id"
-  add_index "topics", ["revision_id"], :name => "index_topics_on_revision_id"
-  add_index "topics", ["status"], :name => "index_topics_on_status"
-  add_index "topics", ["type"], :name => "index_topics_on_type"
 
   create_table "user_preferences", :force => true do |t|
     t.string   "preference"
