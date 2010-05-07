@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100428021347) do
+ActiveRecord::Schema.define(:version => 20100507065544) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -37,6 +37,14 @@ ActiveRecord::Schema.define(:version => 20100428021347) do
   add_index "revisions", ["is_current"], :name => "index_revisions_on_is_current"
 
   create_table "talk_forums", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "user_preferences", :force => true do |t|
+    t.string   "preference"
+    t.string   "value"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
