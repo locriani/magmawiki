@@ -4,7 +4,7 @@ en:
     recaptcha:
         default:        "reCAPTCHA"
         error:          "Your entry for the captcha did not match what was expected.  Please try again."
-        
+
     article:
         default:        "Article"
         main_page:      "Main Page"
@@ -29,9 +29,6 @@ en:
             default:    "Register"
             info:       "Registering an account does all kinds of cool stuff like candy"
             success:    "Your account was created successfully."
-        
-        
-        create_message: "Your account was created successfully." # this needs to be deprecated
 
     session:
         login:
@@ -43,7 +40,7 @@ en:
         logout:
             default:        "Logout"
             access_error:   "You must be logged out to access this page."
-    
+
     read:
         default:        "Read"
 
