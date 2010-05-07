@@ -23,6 +23,8 @@ en:
         password:       "Password"
         pass_confirm:   "Confirm Password"
         contribs:       "My Contributions"
+        preferences:
+            default:    "User Preferences"
         create:
             default:    "Register"
             info:       "Registering an account does all kinds of cool stuff like candy"

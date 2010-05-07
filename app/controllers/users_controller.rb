@@ -12,4 +12,14 @@ class UsersController < ApplicationController
       render :action => :new
     end
   end
+  
+  def edit
+    # unless current_user.permissions.edit_other_users?
+      @user = current_user
+    # end
+  end
+  
+  def update
+    
+  end
 end

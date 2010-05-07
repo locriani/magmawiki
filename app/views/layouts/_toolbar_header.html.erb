@@ -4,29 +4,34 @@
 	<%=t 'article.random' %>
 	username
 	<%=t 'user.contribs' %>
-	<%= link_to (t 'session.login.default'), new_user_session_url -%>
-	<%= link_to (t 'user.create.default'), new_user_url -%>
+	<% if current_user.nil? -%>
+		<%= link_to (t 'session.login.default'),	new_user_session_url		-%>
+		<%= link_to (t 'user.create.default'),		new_user_url				-%>
+	<% else %>
+		<%= link_to (h current_user.login),			edit_user_url(current_user)	-%>
+		<%= link_to (t 'session.logout.default'),	"#"	-%>
+	<% end %>
 </div>
 
 <div id="main-tools"></div>
 <div>
   <div id="article-tools">
       <div id="article-tools-left">
-      <%= article_tab(article, article_active)  -%>
-      <%= talk_tab(talk_forum, talk_forum_active) -%>
+	      <%= article_tab(article, article_active)  -%>
+	      <%= talk_tab(talk_forum, talk_forum_active) -%>
       </div>
 
       <div id="search">
-    <%#= render partial => "layouts/search" -%>
-    <input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> 
+	    <%#= render partial => "layouts/search" -%>
+	    <input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> 
       </div>
 
       <div id="article-tools-right">
-      <%= read_tab(article, read_active)      -%>
-      <%= edit_tab(article, edit_active)      -%>
-      <%= history_tab(article, history_active)  -%>
-      <%= star_tab(article, star_active)      -%>
-      <%= menu_tab(article, menu_active)      -%>
+	      <%= read_tab(article, read_active)      	-%>
+	      <%= edit_tab(article, edit_active)      	-%>
+	      <%= history_tab(article, history_active)  -%>
+	      <%= star_tab(article, star_active)      	-%>
+	      <%= menu_tab(article, menu_active)      	-%>
       </div>
   </div>
 </div>
