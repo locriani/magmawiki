@@ -2,14 +2,13 @@
 <div id="login-bar">
 	<%= link_to (t 'article.main_page'), root_url -%>
 	<%=t 'article.random' %>
-	username
-	<%=t 'user.contribs' %>
 	<% if current_user.nil? -%>
-		<%= link_to (t 'session.login.default'),	new_user_session_url		-%>
+		<%= link_to (t 'session.login.default'),	login_url					-%>
 		<%= link_to (t 'user.create.default'),		new_user_url				-%>
 	<% else %>
+		<%=t 'user.contribs' %>
 		<%= link_to (h current_user.login),			edit_user_url(current_user)	-%>
-		<%= link_to (t 'session.logout.default'),	"#"	-%>
+		<%= link_to (t 'session.logout.default'),	logout_url					-%>
 	<% end %>
 </div>
 

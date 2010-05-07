@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      flash[:notice] = I18n.t 'user.create_message'
+      flash[:notice] = I18n.t 'user.create.success'
       redirect_to root_url
     else
       render :action => :new
