@@ -55,4 +55,5 @@ en:
         revision:
             default:    "Revision"
             older:      "You are viewing an older revision of this page."
+            summary:    "Edit Summary"
 
