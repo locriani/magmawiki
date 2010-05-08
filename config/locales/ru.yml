@@ -1,4 +1,5 @@
 ru:
+    self: "Russian" #TODO: not translated
     recaptcha:
         error: "Текст набранной вами CAPTCHA не совпал с ожидаемым. Пожалуйста, попробуйте снова."
         
