@@ -25,6 +25,7 @@
 class User < ActiveRecord::Base
   has_many :user_preferences
   acts_as_authentic
+  attr_accessor :locale
   
   # This allows us to use user.preferences as an accessor.
   def preferences
@@ -39,7 +40,8 @@ class Preferences
   end
   
   def [](key)
-    @user.user_preferences.find_by_preference(key.to_s)
+    preference = @user.user_preferences.find_by_preference(key.to_s)
+    preference.value unless preference.nil?
   end
   
   def []=(key, value)

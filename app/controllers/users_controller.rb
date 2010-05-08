@@ -15,11 +15,15 @@ class UsersController < ApplicationController
   
   def edit
     # unless current_user.permissions.edit_other_users?
-      @user = current_user
+    @user = current_user
+    # else
+    # @user = User.find(params[:id])
     # end
   end
   
   def update
-    
+    current_user.preferences[:locale] = params[:user][:locale]
+    flash[:notice] = I18n.t 'user.update.success'
+    redirect_to root_url
   end
 end
