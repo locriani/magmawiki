@@ -4,15 +4,21 @@
 class ApplicationController < ActionController::Base
   before_filter :initialize_toolbar, :set_locale
   helper :all
-  helper_method :current_user_session, :current_user, :title, :head, :initialize_toolbar
+  helper_method :current_user_session, :current_user, :title, :head, :initialize_toolbar, :current_locale
   protect_from_forgery
   
   # Scrub sensitive parameters from the log
   filter_parameter_logging :password, :password_confirmation, :authenticity_token
 
 private
+  def current_locale
+    locale = current_user.preferences[:locale] unless current_user.nil?
+    locale = I18n.locale if locale.nil?
+    return locale
+  end
+  
   def set_locale
-    I18n.locale = current_user.preferences[:locale] unless current_user.nil?
+    I18n.locale = current_locale
   end
   
   def title(page_title)

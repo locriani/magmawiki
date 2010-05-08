@@ -1,5 +1,6 @@
 Given /^I am not logged in$/ do
-  @current_user = nil
+  I18n.default_locale = "en"
+  I18n.locale = "en"
 end
 
 Given /^I have an account with username "([^\"]*)" and password "([^\"]*)"$/ do |username, password|

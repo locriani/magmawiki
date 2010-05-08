@@ -25,6 +25,7 @@ en:
         contribs:       "My Contributions"
         preferences:
             default:    "User Preferences"
+            locale:     "Language"
         create:
             default:    "Register"
             info:       "Registering an account does all kinds of cool stuff like candy"

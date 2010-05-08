@@ -16,6 +16,6 @@ Feature: Locales
 		When I follow "john"
 		Then I should see "User Preferences"
 		And I should see "Language:"
-		When I select "Deutsch (Sie)" from "Language: "
+		When I select "Deutsch (Sie)" from "Language:"
 		And I press "Submit"
 		Then I should see "Hauptseite"
