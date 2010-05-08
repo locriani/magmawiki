@@ -49,6 +49,10 @@ ActiveRecord::Schema.define(:version => 20100507065544) do
     t.datetime "updated_at"
   end
 
+  add_index "user_preferences", ["user_id", "preference"], :name => "index_user_preferences_on_user_id_and_preference", :unique => true
+  add_index "user_preferences", ["user_id"], :name => "index_user_preferences_on_user_id"
+  add_index "user_preferences", ["value"], :name => "index_user_preferences_on_value"
+
   create_table "users", :force => true do |t|
     t.string   "login",                              :null => false
     t.string   "email",                              :null => false

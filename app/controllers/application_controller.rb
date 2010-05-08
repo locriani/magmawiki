@@ -2,7 +2,7 @@
 # Likewise, all the methods added will be available for all controllers.
 
 class ApplicationController < ActionController::Base
-  before_filter :initialize_toolbar
+  before_filter :initialize_toolbar, :set_locale
   helper :all
   helper_method :current_user_session, :current_user, :title, :head, :initialize_toolbar
   protect_from_forgery
@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation, :authenticity_token
 
 private
+  def set_locale
+    I18n.locale = current_user.preferences[:locale] unless current_user.nil?
+  end
+  
   def title(page_title)
     content_for(:title) { page_title }
   end
