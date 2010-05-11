@@ -43,9 +43,6 @@ form.new_user h1, form.new_user_session h1 {
 form.new_user h1 a, form.new_user_session h1 a{
 float:right;
 }
-form.new_user_session #user_session_submit{
-
-}
 form.new_user div, form.new_user_session div {
     position:relative;
     padding-left:5px;
@@ -66,15 +63,21 @@ form.new_user div.entry input, form.new_user_session div.entry input {
     right:0;
     border: 1px solid #9DF;
 }
+
 form.new_user div.submit input, form.new_user_session div.submit input {
     height:22px;
     padding-left:5px;
-    float:right;
 }
 form.new_user div, form.new_user_session div {
     height:23px;
     margin:0;
     margin-top:4px;
+}
+.submit {
+width:99%;
+text-align:center;
+margin-top:5px !important;
+margin-bottom:3px !important;
 }
 .button {
     -moz-box-sizing:content-box;
@@ -98,8 +101,8 @@ form.new_user div, form.new_user_session div {
     position: relative;
     outline:0 none;
     border:0 none;
-    margin:0;
-    width:33%;
+    margin:0 3px;
+    width:35%;
 }
 .button:hover {
     background-color: #111;
@@ -130,3 +133,4 @@ form.new_user div, form.new_user_session div {
 .grey.button:hover {
     background-color: #ec;
 }
+
