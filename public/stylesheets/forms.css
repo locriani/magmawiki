@@ -4,7 +4,7 @@ form.new_user, form.new_user_session {
     background-color: #eef5ff;
     border: 1px solid #9DF;
     font-size: .9em;
-    margin: 1em 0em 0em;
+    margin: 1em auto;
     width: 33em;
     text-align: left;
 /*    border-top-left-radius:6px;
