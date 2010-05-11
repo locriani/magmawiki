@@ -1,6 +1,7 @@
 body{
     background: #F7F7F7;
     font-family: Helvetica, arial, sans-serif;
+    font-size:.85em;
     padding: 0px 18px;
     padding-top: 7px;
 }
@@ -9,7 +10,6 @@ a:link, a:visited{
     color:#08c;
     text-decoration:none;
 }
-
 
 div#body{
       margin: 0;
@@ -33,3 +33,5 @@ textarea#revision_body{
 .new-wrapper-body{
     text-align: center;
 }
+
+
