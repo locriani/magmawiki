@@ -29,6 +29,17 @@
         if(o.bars < 1 || o.bars > 4) {
           console.log("[Warning] Chroma-Hash expects a number parameter between 1 and 4, given " + o.bars);
         }
+	var colorArray = new Array();
+	colorArray[0] = "000010";
+	colorArray[1] = "034363";
+	colorArray[2] = "395016";
+	colorArray[3] = "0088CC";
+	colorArray[4] = "719f2d";
+	colorArray[5] = "33bbff";
+	colorArray[6] = "a4d260";
+	colorArray[7] = "99ddff";
+	colorArray[8] = "d2e9af";
+	colorArray[9] = "E5F6FF";
 
         var colors = ["primary", "secondary", "tertiary", "quaternary"].slice(0, o.bars);
 
@@ -92,7 +103,7 @@
                 return ((c >> 4) * 0x10).toString(16);
               }).join('');
 
-              $(this).animate({backgroundColor:"#" + hex});
+              $(this).animate({backgroundColor:"#" + colorArray[color % 10]});
             });
           }
         };
