@@ -86,7 +86,6 @@ form.new_user div.submit, form.new_user_session div.submit {
     -moz-box-sizing:content-box;
     background: #222 url("/images/alert-overlay.png") repeat-x;
     display: inline-block;
-    padding: 5px;
     color: #fff;
     text-align:center;
     text-decoration: none;
