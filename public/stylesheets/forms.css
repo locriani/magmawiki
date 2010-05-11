@@ -43,23 +43,63 @@ form.new_user_session label {
     outline:0px;
     border:0px;
 }
-.button:hover							{ background-color: #111; color: #fff; }
-.button:active							{ top: 1px; }
+.button:hover {
+    background-color: #111;
+    color: #fff;
+}
+.button:active {
+    top: 1px;
+}
 
-.small.button, .small.button:visited 			{ font-size: 11px; padding: ; }
+.small.button, .small.button:visited {
+    font-size: 11px;
+    padding: ;
+}
 .button, .button:visited,
-.medium.button, .medium.button:visited 		{ font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
-.large.button, .large.button:visited 			{ font-size: 14px; padding: 8px 14px 9px; }
+.medium.button, .medium.button:visited {
+    font-size: 13px;
+    font-weight: bold;
+    line-height: 1;
+    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
+}
+.large.button, .large.button:visited {
+    font-size: 14px;
+    padding: 8px 14px 9px;
+}
 
-.green.button, .green.button:visited		{ background-color: #91bd09; }
-.green.button:hover						{ background-color: #749a02; }
-.blue.button, .blue.button:visited		{ background-color: #2daebf; }
-.blue.button:hover							{ background-color: #007d9a; }
-.red.button, .red.button:visited			{ background-color: #e33100; }
-.red.button:hover							{ background-color: #872300; }
-.magenta.button, .magenta.button:visited		{ background-color: #a9014b; }
-.magenta.button:hover							{ background-color: #630030; }
-.orange.button, .orange.button:visited		{ background-color: #ff5c00; }
-.orange.button:hover							{ background-color: #d45500; }
-.yellow.button, .yellow.button:visited		{ background-color: #ffb515; }
-.yellow.button:hover							{ background-color: #fc9200; }
+.green.button, .green.button:visited {
+    background-color: #91bd09;
+}
+.green.button:hover {
+    background-color: #749a02;
+}
+.blue.button, .blue.button:visited {
+    background-color: #2daebf;
+}
+.blue.button:hover {
+    background-color: #007d9a;
+}
+.red.button, .red.button:visited {
+    background-color: #e33100;
+}
+.red.button:hover {
+    background-color: #872300;
+}
+.magenta.button, .magenta.button:visited {
+    background-color: #a9014b;
+}
+.magenta.button:hover {
+    background-color: #630030;
+}
+.orange.button, .orange.button:visited {
+    background-color: #ff5c00;
+}
+.orange.button:hover {
+    background-color: #d45500;
+}
+.yellow.button, .yellow.button:visited {
+    background-color: #ffb515;
+}
+.yellow.button:hover {
+    background-color: #fc9200;
+}
