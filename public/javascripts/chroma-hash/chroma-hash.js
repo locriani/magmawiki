@@ -66,7 +66,7 @@
             properties = {
                           position:   'absolute',
                           opacity:     1.0,
-                          left:       position.left + width - 2,
+                          left:       position.left + width + 6,
                           top:        position.top,
                           height:     height - 4 + "px",
                           width:      8 + "px",
