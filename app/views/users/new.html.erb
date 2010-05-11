@@ -1,13 +1,21 @@
 <p><%= t 'user.create.info' %></p>
 <% form_for @user do |f| %>
 	<%= f.error_messages -%>
-	<%= f.label :login, (I18n.t 'user.name') + ":" -%>
-	<%= f.text_field :login -%>
-	<%= f.label :email, (I18n.t 'user.email') + ":" -%>
-	<%= f.text_field :email -%>
-	<%= f.label :password, (I18n.t 'user.password') + ":" -%>
-	<%= f.password_field :password %>
-	<%= f.label :password_confirmation, (I18n.t 'user.pass_confirm') + ":" -%>
-	<%= f.password_field :password_confirmation -%>
+	<label>
+		<%= f.label :login, (I18n.t 'user.name') + ":" -%>
+		<%= f.text_field :login -%>
+	</label>
+	<label>
+		<%= f.label :email, (I18n.t 'user.email') + ":" -%>
+		<%= f.text_field :email -%>
+	</label>
+	<label>
+		<%= f.label :password, (I18n.t 'user.password') + ":" -%>
+		<%= f.password_field :password %>
+	</label>
+	<label>
+		<%= f.label :password_confirmation, (I18n.t 'user.pass_confirm') + ":" -%>
+		<%= f.password_field :password_confirmation -%>
+	</label>
 	<%= f.submit "Register" -%>
 <% end %>
