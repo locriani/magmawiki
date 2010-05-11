@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   # Scrub sensitive parameters from the log
   filter_parameter_logging :password, :password_confirmation, :authenticity_token
 
+  ActionView::Base.field_error_proc = Proc.new{ |html_tag, instance| "#{html_tag}" }
 private
   def current_locale
     locale = current_user.preferences[:locale] unless current_user.nil?
