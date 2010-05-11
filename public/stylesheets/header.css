@@ -1,6 +1,7 @@
 div#login-bar {
     position:fixed;
     text-align: center;
+    font-size:.9em;
     margin:auto;
     margin-top: -7px;
     margin-bottom: 20px;
@@ -42,7 +43,7 @@ div#article-tools {
     margin: 0 2em;
     margin-right: 0px;
     padding-bottom:0px;
-    height:22px;
+    height:18px;
 }
 
 div#article-tools .group {
@@ -55,7 +56,7 @@ div#article-tools .group {
     border-bottom: 1px solid #FFF;
     background: #FFF;
     font-size:80%;
-    height:19px;
+    height:15px;
 }
 
 div#article-tools .inactive {
@@ -84,8 +85,8 @@ div#article-tools .right {
 
 div#star-tool {
     background: url('/images/star.png') no-repeat;
-    width:16px;
-    height: 16px;
+    width:11px;
+    height: 11px;
     margin-top:-1px;
 }
 

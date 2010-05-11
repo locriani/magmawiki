@@ -1,0 +1,65 @@
+form.new_user_session {
+    display:block;
+    background-color: #eef5ff;
+    border: 1px solid #0088CC;
+    font-size: .9em;
+    margin: 1em 0em 0em;
+    padding: 2px;
+    text-align: left;
+    width: 100%;
+    border-top-left-radius:6px;
+    -moz-border-radius-topleft:6px;
+    -webkit-border-top-left-radius:6px;
+    border-bottom-right-radius:6px;
+    -moz-border-radius-bottomright:6px;
+    -webkit-border-bottom-right-radius:6px;
+}
+form.new_user_session p {
+    border: 1px solid #0088CC;
+    font-size:16px;
+    height:18px;
+    font-weight:bold;
+    background-color: #8ce; padding-left: 1em; padding-right: 1em; border-top-left-radius:4px; -moz-border-radius-topleft:4px; -webkit-border-top-left-radius:4px; border-bottom-right-radius:4px; -moz-border-radius-bottomright:4px; -webkit-border-bottom-right-radius:4px;
+}
+form.new_user_session label {
+    display:block;
+}
+			
+.button {
+    background: #222 url("http://www.zurb.com/images/alert-overlay.png") repeat-x;
+    display: inline-block;
+    padding: 5px 10px 6px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 1;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-box-shadow: 0 1px 3px #999;
+    -webkit-box-shadow: 0 1px 3px #999;
+    text-shadow: 0 -1px 1px #222;
+    border-bottom: 1px solid #222;
+    position: relative;
+    outline:0px;
+    border:0px;
+}
+.button:hover							{ background-color: #111; color: #fff; }
+.button:active							{ top: 1px; }
+
+.small.button, .small.button:visited 			{ font-size: 11px; padding: ; }
+.button, .button:visited,
+.medium.button, .medium.button:visited 		{ font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
+.large.button, .large.button:visited 			{ font-size: 14px; padding: 8px 14px 9px; }
+
+.green.button, .green.button:visited		{ background-color: #91bd09; }
+.green.button:hover						{ background-color: #749a02; }
+.blue.button, .blue.button:visited		{ background-color: #2daebf; }
+.blue.button:hover							{ background-color: #007d9a; }
+.red.button, .red.button:visited			{ background-color: #e33100; }
+.red.button:hover							{ background-color: #872300; }
+.magenta.button, .magenta.button:visited		{ background-color: #a9014b; }
+.magenta.button:hover							{ background-color: #630030; }
+.orange.button, .orange.button:visited		{ background-color: #ff5c00; }
+.orange.button:hover							{ background-color: #d45500; }
+.yellow.button, .yellow.button:visited		{ background-color: #ffb515; }
+.yellow.button:hover							{ background-color: #fc9200; }
