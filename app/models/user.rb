@@ -24,8 +24,11 @@
 
 class User < ActiveRecord::Base
   has_many :user_preferences
-  acts_as_authentic
   attr_accessor :locale
+  
+  acts_as_authentic do |c|
+    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
+  end
   
   # This allows us to use user.preferences as an accessor.
   def preferences
