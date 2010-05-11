@@ -30,7 +30,7 @@
           console.log("[Warning] Chroma-Hash expects a number parameter between 1 and 4, given " + o.bars);
         }
 	var colorArray = new Array();
-	colorArray[0] = "000010";
+	colorArray[0] = "000080";
 	colorArray[1] = "034363";
 	colorArray[2] = "395016";
 	colorArray[3] = "0088CC";
