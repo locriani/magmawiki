@@ -50,7 +50,7 @@ form.new_user div, form.new_user_session div {
     position:relative;
     padding-left:5px;
     display:block;
-    height:22px;
+    height:30px;
     margin-bottom:.125em;
 }
 form.new_user div.entry label, form.new_user_session div.entry label {
@@ -61,9 +61,13 @@ form.new_user div.entry label, form.new_user_session div.entry label {
     padding-bottom:0px;
 }
 form.new_user div.entry input, form.new_user_session div.entry input {
+    font-size:14px;
     position:absolute;
     bottom:0;
     right:0;
+    height:22px;
+    padding:0;
+    margin:0;
     border: 1px solid #9DF;
 }
 form.new_user div.submit input, form.new_user_session div.submit input {
