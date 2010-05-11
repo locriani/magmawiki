@@ -1,8 +1,8 @@
-form {
+form.new_user, form.new_user_session {
     -moz-box-shadow: 0 1px 3px #999;
     -webkit-box-shadow: 0 1px 3px #999;
     background-color: #eef5ff;
-    border: 1px solid #0088CC;
+    border: 1px solid #9DF;
     font-size: .9em;
     margin: 1em 0em 0em;
     padding: 2px;
@@ -15,52 +15,67 @@ form {
     -moz-border-radius-bottomright:6px;
     -webkit-border-bottom-right-radius:6px;
 }
-form h1 {
-    background: #08C url("/images/alert-overlay.png") repeat-x;
+form.new_user h1, form.new_user_session h1 {
+    height:14px;
+    max-height:14px;
+    background: #fff url('/images/Gradient-blue.png') repeat-x;
     display: block;
-    padding: 5px 10px 6px;
-    margin-bottom:5px;
-    color: #FFF;
+    padding: 5px;
+    margin-bottom:1em;
+    color: #08C;
     text-decoration: none;
     font-weight: bold;
-    line-height: 1;
+    line-height: 12px;
     border-top-left-radius:4px;
     -moz-border-radius-topleft:4px;
     -webkit-border-top-left-radius:4px;
     border-bottom-right-radius:4px;
     -moz-border-radius-bottomright:4px;
     -webkit-border-bottom-right-radius:4px;
-    text-shadow: 0 -1px 1px #08C; 
-    border-bottom: 1px solid #08C;
+    text-shadow: 0 -1px 1px #fff; 
+    border: 1px solid #9DF;
     position: relative;
     outline:0px;
-    border:0px;
 }
-form p {
+form.new_user div, form.new_user_session div {
+    position:relative;
     padding-left:5px;
     display:block;
-    height: 22px;
+    height:22px;
+    margin-bottom:.125em;
 }
-form p label {
-    float:left;
-    display:inline;
+form.new_user div.entry label, form.new_user_session div.entry label {
+    position:absolute;
+    bottom:4px;
+    left:2px;
+    vertical-align:bottom;
+    padding-bottom:0px;
 }
-form p input {
-    float:right;
-    border: 1px solid #08C;
-    display: inline;
+form.new_user div.entry input, form.new_user_session div.entry input {
+    position:absolute;
+    bottom:0;
+    right:0;
+    border: 1px solid #9DF;
 }
-form input {
+form.new_user div.submit input, form.new_user_session div.submit input {
+    height:22px;
     padding-left:5px;
+    float:right;
+}
+form.new_user div, form.new_user_session div {
+    height:23px;
+    margin:0;
+    margin-top:4px;
 }
 .button {
     -moz-box-sizing:content-box;
     background: #222 url("/images/alert-overlay.png") repeat-x;
     display: inline-block;
-    padding: 5px 10px 6px;
+    padding: 5px;
     color: #fff;
+    text-align:center;
     text-decoration: none;
-    font-weight: none;
+    font-weight:bold;
     line-height: 1;
     border-top-left-radius:4px;
     -moz-border-radius-topleft:4px;
@@ -71,10 +86,11 @@ form input {
     -moz-box-shadow: 0 1px 1px #999;
     -webkit-box-shadow: 0 1px 1px #999;
     text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-    border-bottom: 1px rgba(0,0,0,0.25);
     position: relative;
-    outline:0px;
-    border:0px;
+    outline:0 none;
+    border:0 none;
+    margin:0;
+    width:33%;
 }
 .button:hover {
     background-color: #111;
@@ -85,53 +101,17 @@ form input {
 }
 
 .small.button, .small.button:visited {
-    font-size: 11px;
+    font-size:11px;
 }
 .button, .button:visited,
 .medium.button, .medium.button:visited {
     font-size: 13px;
     font-weight: bold;
     line-height: 1;
-    text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
-}
-.large.button, .large.button:visited {
-    font-size: 14px;
-    padding: 8px 14px 9px;
-}
-
-.green.button, .green.button:visited {
-    background-color: #91bd09;
-}
-.green.button:hover {
-    background-color: #749a02;
 }
 .blue.button, .blue.button:visited {
     background-color: #08C;
 }
 .blue.button:hover {
     background-color: #007d9a;
-}
-.red.button, .red.button:visited {
-    background-color: #e33100;
-}
-.red.button:hover {
-    background-color: #872300;
-}
-.magenta.button, .magenta.button:visited {
-    background-color: #a9014b;
-}
-.magenta.button:hover {
-    background-color: #630030;
-}
-.orange.button, .orange.button:visited {
-    background-color: #ff5c00;
-}
-.orange.button:hover {
-    background-color: #d45500;
-}
-.yellow.button, .yellow.button:visited {
-    background-color: #ffb515;
-}
-.yellow.button:hover {
-    background-color: #fc9200;
 }

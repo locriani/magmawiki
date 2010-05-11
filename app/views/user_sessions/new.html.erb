@@ -1,13 +1,15 @@
 <% form_for @user_session, :url => user_session_url do |f| %>
 	<h1>I already have an account</h1>
-	<p>
+	<div class="entry">
 		<%= f.label :login, "Username:" -%>
 		<%= f.text_field :login -%>
-	</p>
-	<p>
+	</div>
+	<div class="entry">
 		<%= f.label :password, "Password:" -%>
 		<%= f.password_field :password -%>
-	</p>
-	<%= f.submit "Submit", :class => "small blue button" %>
+	</div>
+	<div class="submit">
+		<%= f.submit "Submit", :class => "small blue button" %>
+	</div>
 <% end %>
 

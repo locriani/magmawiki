@@ -10,10 +10,9 @@ div#login-bar {
     border: 1px solid #B3B3B3; 
     border-top:none;
     background: #FFF;
-    left:50%;
-    width:50em;
-    max-width:50em;
-    margin-left:-25em;
+    width:50%;
+    left:0;
+    right:0;
     -webkit-border-bottom-left-radius: 4px;
     -webkit-border-bottom-right-radius: 4px;
     -moz-border-radius-bottomleft: 4px;
