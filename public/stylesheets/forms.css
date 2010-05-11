@@ -8,34 +8,43 @@ form.new_user, form.new_user_session {
     padding: 2px;
     width: 25em;
     text-align: left;
-    border-top-left-radius:6px;
-    -moz-border-radius-topleft:6px;
-    -webkit-border-top-left-radius:6px;
-    border-bottom-right-radius:6px;
-    -moz-border-radius-bottomright:6px;
-    -webkit-border-bottom-right-radius:6px;
+    //border-top-left-radius:6px;
+    //-moz-border-radius-topleft:6px;
+    //-webkit-border-top-left-radius:6px;
+    //border-bottom-right-radius:6px;
+    //-moz-border-radius-bottomright:6px;
+    //-webkit-border-bottom-right-radius:6px;
 }
 form.new_user h1, form.new_user_session h1 {
     height:14px;
     max-height:14px;
-    background: #fff url('/images/Gradient-blue.png') repeat-x;
+    background: #FFF url('/images/Gradient-blue.png') repeat-x;
     display: block;
-    padding: 5px;
+    margin-top:-2px;
+    margin-left:-2px;
+    margin-right:-2px;
     margin-bottom:1em;
-    color: #08C;
+    color: #08c;
     text-decoration: none;
     font-weight: bold;
     line-height: 12px;
-    border-top-left-radius:4px;
-    -moz-border-radius-topleft:4px;
-    -webkit-border-top-left-radius:4px;
-    border-bottom-right-radius:4px;
-    -moz-border-radius-bottomright:4px;
-    -webkit-border-bottom-right-radius:4px;
-    text-shadow: 0 -1px 1px #fff; 
-    border: 1px solid #9DF;
+    //border-top-left-radius:4px;
+    //-moz-border-radius-topleft:4px;
+    //-webkit-border-top-left-radius:4px;
+    //border-bottom-right-radius:4px;
+    //-moz-border-radius-bottomright:4px;
+    //-webkit-border-bottom-right-radius:4px;
+    //text-shadow: 0 1px -1px #fff; 
+    border-bottom: 1px solid #9DF;
     position: relative;
     outline:0px;
+    padding:4px 6px;
+}
+form.new_user h1 a, form.new_user_session h1 a{
+float:right;
+}
+form.new_user_session #user_session_submit{
+
 }
 form.new_user div, form.new_user_session div {
     position:relative;
@@ -77,13 +86,13 @@ form.new_user div, form.new_user_session div {
     text-decoration: none;
     font-weight:bold;
     line-height: 1;
-    border-top-left-radius:4px;
-    -moz-border-radius-topleft:4px;
-    -webkit-border-top-left-radius:4px;
-    border-bottom-right-radius:4px;
-    -moz-border-radius-bottomright:4px;
-    -webkit-border-bottom-right-radius:4px;
-    -moz-box-shadow: 0 1px 1px #999;
+    //border-top-left-radius:4px;
+    //-moz-border-radius-topleft:4px;
+    //-webkit-border-top-left-radius:4px;
+    //border-bottom-right-radius:4px;
+    //-moz-border-radius-bottomright:4px;
+    //-webkit-border-bottom-right-radius:4px;
+    //-moz-box-shadow: 0 1px 1px #999;
     -webkit-box-shadow: 0 1px 1px #999;
     text-shadow: 0 -1px 1px rgba(0,0,0,0.25);
     position: relative;
@@ -114,4 +123,10 @@ form.new_user div, form.new_user_session div {
 }
 .blue.button:hover {
     background-color: #007d9a;
+}
+.grey.button, .grey.button:visited {
+    background-color: #666;
+}
+.grey.button:hover {
+    background-color: #ec;
 }
