@@ -1,10 +1,12 @@
 div#login-bar {
     position:fixed;
     text-align: center;
+    font-size:.9em;
     margin:auto;
     margin-top: -7px;
     margin-bottom: 20px;
-    padding-top: 1px;
+    padding-top: 2px;
+    padding-bottom:4px;
     border: 1px solid #B3B3B3; 
     border-top:none;
     background: #FFF;
@@ -42,20 +44,21 @@ div#article-tools {
     margin: 0 2em;
     margin-right: 0px;
     padding-bottom:0px;
-    height:22px;
+    height:18px;
 }
 
 div#article-tools .group {
     float: left;
     padding: 0px 7px;
-    padding-top: 6px;
-    padding-bottom:0px;
+    padding-top: 5px;
+    padding-bottom:1px;
     margin-right:1px;
     border: 1px solid #bd8; 
     border-bottom: 1px solid #FFF;
     background: #FFF;
     font-size:80%;
-    height:19px;
+    height:15px;
+    text-transform: lowercase;
 }
 
 div#article-tools .inactive {
@@ -67,7 +70,8 @@ div#article-tools .inactive {
 }
 
 div#article-tools .active a:link, div#article-tools .active a:visited {
-    color: #E0A752;
+    //color: #E0A752;
+	font-weight:bold;
 }
 
 div#article-tools .left {
@@ -84,8 +88,8 @@ div#article-tools .right {
 
 div#star-tool {
     background: url('/images/star.png') no-repeat;
-    width:16px;
-    height: 16px;
+    width:11px;
+    height: 11px;
     margin-top:-1px;
 }
 
