@@ -141,3 +141,9 @@ div#search {
     margin-top:-7px;
     margin-bottom: 6px;
 }
+
+#searchInput {
+border: 1px solid #B3B3B3;
+height: 16;
+margin-top:0px;
+}
