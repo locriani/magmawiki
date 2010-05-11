@@ -1,8 +1,6 @@
 <% form_for @user_session, :url => user_session_url do |f| %>
 	<h1>Login<a>[x] </a></h1>
-	<div class="entry"> <!-- TODO: THIS IS A HACK -->
 		<%= f.error_messages %>
-	</div>
 	<div class="entry">
 		<%= f.label :login, "Username:" -%>
 		<%= f.text_field :login -%>
