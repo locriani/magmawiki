@@ -1,21 +1,23 @@
-<p><%= t 'user.create.info' %></p>
 <% form_for @user do |f| %>
+<h1><%= t 'user.create.info' %></h1>
 	<%= f.error_messages -%>
-	<label>
+	<div class="entry">
 		<%= f.label :login, (I18n.t 'user.name') + ":" -%>
 		<%= f.text_field :login -%>
-	</label>
-	<label>
+	</div>
+	<div class="entry">
 		<%= f.label :email, (I18n.t 'user.email') + ":" -%>
 		<%= f.text_field :email -%>
-	</label>
-	<label>
+	</div>
+	<div class="entry">
 		<%= f.label :password, (I18n.t 'user.password') + ":" -%>
 		<%= f.password_field :password %>
-	</label>
-	<label>
+	</div>
+	<div class="entry">
 		<%= f.label :password_confirmation, (I18n.t 'user.pass_confirm') + ":" -%>
 		<%= f.password_field :password_confirmation -%>
-	</label>
-	<%= f.submit "Register" -%>
+	</div>
+	<div class="submit">
+	<%= f.submit "Register", :class => "small blue button"-%>
+	</div>
 <% end %>

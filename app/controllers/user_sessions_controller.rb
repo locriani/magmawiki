@@ -14,6 +14,7 @@ class UserSessionsController < ApplicationController
       redirect_to root_url
     else
       flash[:error] = I18n.t 'session.login.error'
+      render :action => :new
     end
   end
   
