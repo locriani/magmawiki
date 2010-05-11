@@ -1,5 +1,5 @@
 <% form_for @user_session, :url => user_session_url do |f| %>
-	<h1>I already have an account</h1>
+	<h1>Login<a>X</a></h1>
 	<div class="entry">
 		<%= f.label :login, "Username:" -%>
 		<%= f.text_field :login -%>
@@ -9,7 +9,7 @@
 		<%= f.password_field :password -%>
 	</div>
 	<div class="submit">
-		<%= f.submit "Submit", :class => "small blue button" %>
+		<%= f.submit "Submit", :class => "small blue button"%>
 	</div>
 <% end %>
 
