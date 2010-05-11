@@ -1,9 +1,15 @@
 <%= link_to "Need an account?", new_user_path -%>
 <% form_for @user_session, :url => user_session_url do |f| %>
-	<%= f.label :login, "Username: " -%>
-	<%= f.text_field :login -%>
-	<%= f.label :password, "Password: " -%>
-	<%= f.password_field :password -%>
-	<%= f.submit "Submit" %>
+	<p>Login:</p>
+	<label>
+		<%= f.label :login, "Username: " -%>
+		<%= f.text_field :login -%>
+	</label>
+	<label>
+		<%= f.label :password, "Password: " -%>
+		<%= f.password_field :password -%>
+	</label>
+	<%= f.submit "submit", :class => "small blue button" %>
 <% end %>
+
 	

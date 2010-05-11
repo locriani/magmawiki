@@ -3,6 +3,10 @@ body{
     font-family: Helvetica, arial, sans-serif;
     padding: 0px 18px;
     padding-top: 7px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555;
+    
 }
 
 a:link, a:visited{
