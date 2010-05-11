@@ -2,7 +2,7 @@
 <% form_for @user do |f| -%>
 	<label>
 		<%= f.label :locale, I18n.t('user.preferences.locale') + ':' -%>
-		<%= f.collection_select :locale, available_locales, :label, :value, :default => current_locale -%>
+		<%= f.collection_select :locale, available_locales, :label, :value, { :default => current_locale.to_s } -%>
 	</label>
 	<%= f.submit "Submit" -%>
 <% end %>

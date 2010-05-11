@@ -44,7 +44,7 @@ private
   end
   
   def require_user
-    unless current_user
+    if current_user.nil?
       flash[:notice] = I18n.t 'session.login.access_error'
       redirect_to new_user_session_url
       return false
@@ -52,7 +52,7 @@ private
   end
 
   def require_no_user
-    if current_user
+    unless current_user.nil?
       flash[:notice] = I18n.t 'session.logout.access_error'
       redirect_to root_url
       return false
