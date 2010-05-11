@@ -1,5 +1,5 @@
 <% form_for @user_session, :url => user_session_url do |f| %>
-	<h1>I already have an account</h1>
+	<h1>Login <a href="#">[hide]</a></h1>
 	<div class="entry">
 		<%= f.label :login, "Username:" -%>
 		<%= f.text_field :login -%>
@@ -12,4 +12,6 @@
 		<%= f.submit "Submit", :class => "small blue button" %>
 	</div>
 <% end %>
-
+<form class = "new_user_session">
+	<h1>A collapsed box. <a href="#">[show]</a></h1>
+</form>
