@@ -7,6 +7,10 @@ body{
     color: #555;
 }
 
+dd{
+margin-left:2em;
+}
+
 a:link, a:visited{
     color:#08c;
     text-decoration:none;
