@@ -5,16 +5,25 @@ module Parser
     def parse(text)
       text = ERB::Util::html_escape(text)
       
-      text['&ndash;']   = '-'
+      text.gsub!(/&ndash;/,'-')
       text['&quot;']    = '"'
       
       text.gsub!(/\&amp;(nbsp);/, '&\1')
       
       text = convert_tables(text)
       text = convert_html(text)
+
+			text
     end
     
   private
+		def convert_html(text)
+			text.gsub!(/\'\'\'([^\n\']+)\'\'\'/,'<strong>\\1</strong>')
+			text.gsub!(/\'\'([^\'\n]+)\'\'?/,'<em>\\1</em>')
+			
+			text
+		end
+
     def convert_tables(text)
       lines = text.split("\n")
       
@@ -68,6 +77,7 @@ module Parser
               table << "\t\t<td " + internals[0] + ">" + simpleText(internals[1])
             end
 						td_open = true
+					end
 				elsif line[0,1] == "!"
 					internals = line[1, line.length-1].spit('| ', 2)
 					table << "</td>\d" if th_open
