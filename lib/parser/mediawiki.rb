@@ -2,46 +2,72 @@ require 'erb'
 
 module Parser
   class MediaWiki
-    def parse(text, options = {})
-      assign_options(options)
+    def parse(text)
       text = ERB::Util::html_escape(text)
-      text = parse_mediawiki_headers(text)
-      text = parse_linebreaks(text)
-      text
+      
+      text['&ndash;']   = '-'
+      text['&quot;']    = '"'
+      
+      text.gsub!(/\&amp;(nbsp);/, '&\1')
+      
+      text = convert_tables(text)
+      text = convert_html(text)
     end
     
-  private    
-    def assign_options(options)
+  private
+    def convert_tables(text)
+      lines = text.split("\n")
       
-    end
-    
-    def parse_mediawiki_headers(text)
+      inner_table = 0
+      inner_table_data = []
       
-      6.downto 1 do |n|
-        text.gsub!(/[=]{#{n}}(.+)[=]{#{n}}/, "<h#{n}>\\1</h#{n}>")
+      lines.each do |line|
+        inner_table = (inner_table + 1) if line[0,2] == '{|'
+        inner_table_data[inner_table] << line + "\n"
+        if inner_table > 0
+          if line[0,2] == '|}'
+            inner_table_converted = convert_individual_table(inner_table_data[inner_table])
+            inner_table_data[inner_table] = ""
+            inner_table = inner_table - 1
+            inner_table_data[inner_table] << inner_table_converted + "\n"
+          end
+        end
       end
       
-      text
+      return inner_table_data[0]
     end
     
-    def parse_linebreaks(text)
-      text = parse_html_linebreaks(text)
-      text = parse_mediawiki_linebreaks(text)
+    def convert_individual_table(text)
+      lines = text.split("\n")
+      in_table = false;
       
-      text
-    end
-    
-    def parse_html_linebreaks(text)
-      text.gsub!(/&lt;[\s]*br[\s]*[\/]*[\s]*&gt;/, '<br />')
-      
-      text
-    end
-    def parse_mediawiki_linebreaks(text)
-      text.gsub!(/[\n]{2}/, '</p>')
-      text.gsub!(/\z/, '</p>')
-      text.gsub!(/\A/, '<p>')
-      
-      text
+      lines.each do |line|
+        line.strip!
+        if line[0,1] == '{'
+          internals = line[1, line.length].split('| ', 2)
+          table_open = true
+          table = "<table " + internals[0] + ">\n"
+        elsif line[0,1] == "|"
+          line['|'] = ""
+          if line[0,5] == '-----'
+            table << "</th>\n"    if th_open
+            table << "</td>\n"    if td_open
+            table << "\t</tr>\n"  if row_open
+            table << "\t<tr>\n"
+            row_open = true
+            td_open = false
+            th_open = false
+          elsif line[0,1] == '}'
+            break
+          else
+            internals = line.split('| ', 2)
+            table << "</td>\n" if td_open
+            if internals.size == 1
+              table << "\t\t<td>" + simpleText(internals[0])
+            else
+              # THIS IS WHERE I LEFT OFF THERE ARE STILL TAGS MISSING
+            end
+            
     end
   end
 end
