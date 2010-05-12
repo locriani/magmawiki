@@ -1,4 +1,4 @@
 <h1><%=h @article.title %></h1>
 <div class="article-text">
-<%=h @article.current_revision.body %>
+<%=Parser::MediaWiki.new.parse(@article.current_revision.body) %>
 </div>

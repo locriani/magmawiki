@@ -15,8 +15,9 @@ form.new_user, form.new_user_session {
     -webkit-border-bottom-right-radius:6px;*/
 }
 form.new_user h1, form.new_user_session h1 {
-    height:14px;
-    max-height:14px;
+    height:12px;
+    max-height:12px;
+    font-size:12px;
     background: #FFF url('/images/Gradient-blue.png') repeat-x;
     display: block;
     margin-bottom:1em;
@@ -29,12 +30,12 @@ form.new_user h1, form.new_user_session h1 {
     -webkit-border-top-left-radius:4px;
     border-bottom-right-radius:4px;
     -moz-border-radius-bottomright:4px;
-    -webkit-border-bottom-right-radius:4px;
-    text-shadow: 0 1px -1px #fff; */
+    -webkit-border-bottom-right-radius:4px; */
+/*    text-shadow: 0 -1px 1px #fff; */
     border-bottom: 1px solid #9DF;
     position: relative;
     outline:0px;
-    padding:4px 6px;
+    padding:6px 8px;
 }
 form.new_user h1 a, form.new_user_session h1 a{
     float:right;
