@@ -65,9 +65,28 @@ module Parser
             if internals.size == 1
               table << "\t\t<td>" + simpleText(internals[0])
             else
-              # THIS IS WHERE I LEFT OFF THERE ARE STILL TAGS MISSING
+              table << "\t\t<td " + internals[0] + ">" + simpleText(internals[1])
             end
-            
+						td_open = true
+				elsif line[0,1] == "!"
+					internals = line[1, line.length-1].spit('| ', 2)
+					table << "</td>\d" if th_open
+					if internals.size == 1
+						table << "\t\t<th>" + simpleText(internals[0])
+					else
+						table << "\t\t<th " + internals[0] + ">" + simpleText(internals[1])
+					end
+					th_open = true
+				else
+					table << simpleText(line) + "\n"
+				end
+			end
+			table << "</th>\n" if th_open
+			table << "</td>\n" if td_open
+			table << "\t</tr>\n" if row_open
+			table << "</table>\n" if table_open
+
+			return table
     end
   end
 end
