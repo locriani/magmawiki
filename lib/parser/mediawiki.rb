@@ -29,6 +29,17 @@ module Parser
 			#text.gsub(/\[\[(.*?)(\|.*?)?\]\]/)  { |match| wikilink_helper($1, $2) }
 
 			text.gsub!(/\[\[([^\|\n\]]+)([\|](.+?))?\]\]/) { |match| internalwiki_helper($1, $3) }
+
+
+			#colon indents -- this is not working properly :'(
+
+			while text.gsub!(/(\n\s?|^|\<dl\>)(:*?):([^:\n]+.*?)(\n|$)/,"\n\\2<dd>\\3</dd>\n")
+				text.gsub!(/(((:*?)\<dd\>.*?\<\/dd\>\s\n?)+)/,'<dl>\\0</dl>')
+			end
+
+			while text.gsub!(/\<\/dl\>\<\/dl\>/,'</dl>'); end
+			while text.gsub!(/\<dl\>\<dl\>/,'<dl>'); end
+
 			#text.gsub!(/\[\[([^\|\n\]:]+)\]\]/) { |match| internalwiki_helper($1, $2) }
 
 			#text.gsub!(/\[([^\[\]\|\n\': ]+)\]/) { |match| externallink_helper($1, $2) }
