@@ -18,19 +18,17 @@ module Parser
     
   private
 		def convert_html(text)
-			
-			#please fix line breaks
 
 			#bold
 			text.gsub!(/\'\'\'([^\n\']+)\'\'\'/,'<strong>\\1</strong>')
 
 			#italics
 			text.gsub!(/\'\'([^\'\n]+)\'\'?/,'<em>\\1</em>')
-			
+			text.gsub!(/&lt;(\/?)span(.*?)&gt;/,"<\\1span\\2>")
 			#interwiki links
 			#text.gsub(/\[\[(.*?)(\|.*?)?\]\]/)  { |match| wikilink_helper($1, $2) }
 
-			text.gsub!(/\[\[([^\|\n\]]+)([\|]([^\]]+))?\]\]/) { |match| internalwiki_helper($1, $3) }
+			text.gsub!(/\[\[([^\|\n\]]+)([\|](.+?))?\]\]/) { |match| internalwiki_helper($1, $3) }
 			#text.gsub!(/\[\[([^\|\n\]:]+)\]\]/) { |match| internalwiki_helper($1, $2) }
 
 			#text.gsub!(/\[([^\[\]\|\n\': ]+)\]/) { |match| externallink_helper($1, $2) }
@@ -46,7 +44,7 @@ module Parser
 
 			text.gsub!(/&lt;(\/?)(small|sup|sub|u)&gt;/,'<\\1\\2>')
 
-			#text.gsub!(/\n*&lt;br *\/?&gt;\n*/,"\n")
+
 			text.gsub!(/&lt;(\/?)(math|pre|code|nowiki)&gt;/,'<\\1pre>')
 			text.gsub!(/&lt;!--/,'<!--')
 			text.gsub!(/--&gt;/,' -->')
@@ -55,13 +53,19 @@ module Parser
 				text.gsub!(/(^|\s)[=]{#{n}}(.+)[=]{#{n}}\s/, "<h#{n}>\\2</h#{n}>")
 			end
 
-			#text.gsub!(/(\n[ ]*[^#* ][^\n]*)\n(([ ]*[*]([^\n]*)\n)+)/,'\\1<ul>'+"\n"+'\\2'+'</ul>'+"\n")
-			#text.gsub!(/(\n[ ]*[^#* ][^\n]*)\n(([ ]*[#]([^\n]*)\n)+)/,'\\1<ol>'+"\n"+'\\2'+'</ol>'+"\n")
+			text.gsub!(/(\n[ ]*[^#* ][^\n]*)\n(([ ]*[*]([^\n]*)\n)+)/,'\\1<ul>'+"\n"+'\\2'+'</ul>'+"\n")
+			text.gsub!(/(\n[ ]*[^#* ][^\n]*)\n(([ ]*[#]([^\n]*)\n)+)/,'\\1<ol>'+"\n"+'\\2'+'</ol>'+"\n")
 
-			#text.gsub!(/\n[ ]*[\*#]+([^\n]*)/,'<li>\\1</li>')
+			text.gsub!(/\n[ ]*[\*#]+([^\n]*)/,'<li>\\1</li>')
 			text.gsub!(/----/,'<hr />')
-
-			#text.gsub!(/[>]<br\/>[<]/,"><")
+			
+			#line breaks
+			text.gsub!(/([^\n\s].*)\n\s\n/, '\\1</p><p>')
+			text.gsub!(/\A/,'<p>')
+			text.gsub!(/\Z/,'</p>')
+			text.gsub!(/\<p\>\s\n/,'<p><br/>')
+			while text.gsub!(/\<br\/\>\s\n/,'<br/><br/>'); end
+			#text.gsub!(/\<p\>\s*\<\/p\>\s*\n$/,''); <--- this should remove the empty <p></p> but it doesn't :(		
 
 			text
 		end
