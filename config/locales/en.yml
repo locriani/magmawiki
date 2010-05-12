@@ -28,7 +28,7 @@ en:
             locale:     "Language"
         create:
             default:    "Register"
-            info:       "Registering an account does all kinds of cool stuff like candy"
+            info:       "Register an account"
             success:    "Your account was created successfully."
 
     session:

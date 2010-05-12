@@ -18,7 +18,7 @@ module Parser
     def parse_mediawiki_headers(text)
       
       6.downto 1 do |n|
-        text.gsub!(/[=]{#{n}}(.+)[=]{#{n}}/, "<h#{n}>\\1</h#{n}>")
+        text.gsub!(/(^|\s)[=]{#{n}}(.+)[=]{#{n}}\s/, "<h#{n}>\\2</h#{n}>")
       end
       
       text
@@ -33,7 +33,8 @@ module Parser
     
     def parse_html_linebreaks(text)
       text.gsub!(/&lt;[\s]*br[\s]*[\/]*[\s]*&gt;/, '<br />')
-      
+      text.gsub!(/&lt;(\/?)(span.*?)&gt;/,'<\\1\\2>')
+      text.gsub!(/&quot;/,'"')
       text
     end
     def parse_mediawiki_linebreaks(text)
