@@ -9,3 +9,5 @@ magmawiki:
         private_key:    YOUR_RECAPTCHA_PRIVATE_KEY_HERE
     skin:
         default: magmawiki
+    parser:
+        default: mediawiki

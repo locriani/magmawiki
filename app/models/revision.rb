@@ -55,7 +55,7 @@ class Revision < ActiveRecord::Base
   end
 
   def engine_proc
-    p [:engine_name, engine_name]
+    # p [:engine_name, engine_name]
     MARKUP_ENGINES[engine_name] or proc{|text| text}
   end
 

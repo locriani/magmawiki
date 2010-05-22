@@ -1,3 +1,4 @@
+# TODO: Cleanup and refactoring of this code to accept more customization independent of skin
 module TabHeadersHelper
   # article_tab requires two parameters, and prepares the semantic markup (html) for
   # the article tab in either the active or inactive state.

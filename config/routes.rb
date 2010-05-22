@@ -8,19 +8,19 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => 'articles' do |map|
     # create
-    map.new_article     '/new',         :action => 'new'
-    map.create_article  '/create/:id',  :action => 'create'
+    map.new_article     'wiki/new',         :action => 'new'
+    map.create_article  'wiki/create/:id',  :action => 'create'
 
     # update
-    map.edit_article    '/edit/:id',    :action => 'edit'
-    map.update_article  '/update/:id',  :action => 'update'
+    map.edit_article    'wiki/edit/:id',    :action => 'edit'
+    map.update_article  'wiki/update/:id',  :action => 'update'
 
     # comments
-    map.discuss         '/discuss/:id', :controller=>'topic', :action => 'index'
+    map.discuss         '/discuss/:id',     :controller=>'topic', :action => 'index'
 
     # read
-    map.connect         '/',            :action => 'index'
-    map.show_article    '/:id',         :action => 'show'
+    map.connect         'wiki/',            :action => 'index'
+    map.show_article    'wiki/:id',         :action => 'show'
 
     # destroy
     # NYI
