@@ -50,7 +50,6 @@ class Article < ActiveRecord::Base
 private
   def slug_immutability
     unless self.slug == escape(self.title)
-      #TODO: Bad error message, i18n
       errors.add :title, (I18n.t 'article.slug_error')
     end
   end
@@ -59,6 +58,7 @@ private
     self.slug = escape(self.title)
   end
   
+  # TODO: Refactor this for unicode support and better url parsing
   def escape(input_string)
     output_string = input_string.downcase
     # We don't want to stick anything that's not a number or letter in our urls
