@@ -76,7 +76,7 @@ class Revision < ActiveRecord::Base
   end
 
   def prev_diff
-    self.diff_against(prev)
+    prev ? diff_against(prev) : to_html
   end
 
   #
