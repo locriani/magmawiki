@@ -74,3 +74,17 @@ ul li {
 li {
     padding-bottom: .3em;
 }
+
+
+del.diff {
+    color: #f7bcae;
+    background-color: #980000;
+    //text-decoration: line-through;
+    text-decoration: none;
+}
+
+ins.diff {
+    color: chartreuse;
+    background-color: darkgreen;
+    text-decoration: none;
+}
