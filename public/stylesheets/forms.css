@@ -20,6 +20,7 @@ form.new_user h1, form.new_user_session h1 {
     font-size:12px;
     background: #FFF url('/images/Gradient-blue.png') repeat-x;
     display: block;
+	margin:0;
     margin-bottom:1em;
     color: #08c;
     text-decoration: none;
