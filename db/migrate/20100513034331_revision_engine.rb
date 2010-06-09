@@ -8,6 +8,6 @@ class RevisionEngine < ActiveRecord::Migration
   end
 
   def self.down
-    raise "There's no going back!!!!"
+    raise ActiveRecord::IrreversibleMigration
   end
 end

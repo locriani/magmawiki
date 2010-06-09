@@ -8,31 +8,27 @@ ActionController::Routing::Routes.draw do |map|
 
   map.with_options :controller => 'articles' do |map|
     # create
-    map.new_article     'new',         :action => 'new'
-    map.create_article  'create/:id',  :action => 'create'
+    map.new_article     '/new',         :action => 'new'
+    map.create_article  '/create/:id',  :action => 'create'
 
     # update
-    map.edit_article    'edit/:id',    :action => 'edit'
-    map.update_article  'update/:id',  :action => 'update'
+    map.edit_article    '/edit/:id',    :action => 'edit'
+    map.update_article  '/update/:id',  :action => 'update'
 
     # comments
     map.discuss         '/discuss/:id',     :controller=>'topic', :action => 'index'
 
     # read
-    map.connect         'read/',            :action => 'index'
-    map.show_article    'read/:id',         :action => 'show'
+    map.connect         '/wiki/',            :action => 'index'
+    map.show_article    '/wiki/:id',         :action => 'show'
 
     # destroy
     # NYI
   end
   
-  map.show_history      '/revision/history/:id',                          :controller => :revisions, :action => 'index'
-  map.show_revision     '/revision/show/:revision_id/:id/',               :controller => :revisions, :action => 'show'
-  map.diff_revision     '/revision/diff/:revision_1/:revision_2/:id/',    :controller => :revisions,  :action => 'diff'
+  map.show_history      '/revision/history/:id',                                :controller => :revisions, :action => 'index'
+  map.show_revision     '/revision/:revision_id/show/:id/',                     :controller => :revisions, :action => 'show'
+  map.diff_revision     '/revision/:revision_1_id/diff/:revision_2_id/:id/',    :controller => :revisions,  :action => 'diff'
   
   map.root :controller => :articles, :action => :show, :id => "Main_page"
-
-  ## Default routes
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
 end
