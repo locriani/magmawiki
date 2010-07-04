@@ -7,6 +7,7 @@ class WikiCloth
   def initialize(opt={})
     self.load(opt[:data],opt[:params]) unless opt[:data].nil? || opt[:data].blank?
     self.options[:link_handler] = opt[:link_handler] unless opt[:link_handler].nil?
+	self.options[:articles] = opt[:articles]
   end
 
   def load(data,p={})
@@ -16,8 +17,9 @@ class WikiCloth
   end
 
   def render(opt={})
-    self.options = { :output => :html, :link_handler => self.link_handler, :params => self.params }.merge(opt)
+    self.options = { :output => :html, :link_handler => self.link_handler, :params => self.params, :articles => options[:articles]}.merge(opt)
     self.options[:link_handler].params = options[:params]
+	#self.options[:articles] = "lol" #opt[:articles]
     buffer = WikiBuffer.new("",options)
     self.html.each_char { |c| buffer.add_char(c) }
     buffer.to_s
