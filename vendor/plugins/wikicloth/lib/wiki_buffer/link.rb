@@ -5,16 +5,21 @@ class WikiBuffer::Link < WikiBuffer
   def initialize(data="",options={})
     super(data,options)
     @in_quotes = false
+	@link_end = false
   end
 
   def internal_link
     @internal_link ||= false
   end
-
+  
   def to_s
     link_handler = @options[:link_handler]
     unless self.internal_link
-      return link_handler.external_link("#{params[0]}".strip, "#{params[1]}".strip)
+      if params[0] =~ /(http|irc\:)/ 
+	    return link_handler.external_link("#{params[0]}".strip, "#{params[1]}".strip)
+	  else
+	    return "[" + params[0] + "]"
+	  end
     else
       case
       when params[0] =~ /^:(.*)/
@@ -52,15 +57,33 @@ class WikiBuffer::Link < WikiBuffer
       self.params << ""
 
     # end of link
-    when current_char == ']' && ((previous_char == ']' && self.internal_link == true) || self.internal_link == false)  && @in_quotes == false
-      self.data.chop! if self.internal_link == true
+    when ((current_char =~ /[^A-Za-z]/ && @link_end && self.internal_link == true) || (current_char == ']' && self.internal_link == false))  && @in_quotes == false
+	  self.data.chop! if (self.internal_link == true && previous_char != ']')
       self.current_param = self.data
-      self.data = ""
+	  #self.current_param = "<span style='color:red;'>" + self.data + "</span>" if @options[:articles].find_by_slug(params[0].downcase, :include => :current_revision).nil?
+      self.data = "" #current_char
+	  self.data = current_char if (self.internal_link == true)
+	  @extra_char = current_char
       return false
 
     else
-      self.data += current_char unless current_char == ' ' && self.data.blank?
+	  if current_char == ']' && previous_char == ']' && self.internal_link == true
+	    @link_end = true
+		self.data.chop!
+	  else
+	    self.data += current_char unless current_char == ' ' && self.data.blank?
+	  end
     end
+	
+	#when current_char == ']' && ((previous_char == ']' && self.internal_link == true) || self.internal_link == false)  && @in_quotes == false
+    #  self.data.chop! if self.internal_link == true
+    #  self.current_param = self.data
+    #  self.data = ""
+    #  return false
+
+    #else
+    #  self.data += current_char unless current_char == ' ' && self.data.blank?
+    #end
 
     return true
   end

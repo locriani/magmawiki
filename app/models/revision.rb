@@ -18,7 +18,8 @@ MARKUP_ENGINES = {
     WikiCloth::WikiCloth.new(
       :data=>body, 
       :link_handler=>CustomLinkHandler.new,
-      :params=>{}  # template variables
+      :params=>{},  # template variables
+	  :articles=>Article
     ).to_html
   end
 }

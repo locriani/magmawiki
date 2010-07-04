@@ -16,6 +16,12 @@ a:link, a:visited{
     text-decoration:none;
 }
 
+h2{
+border-bottom-color: #AAA;
+border-bottom-style: solid;
+border-bottom-width: 1px;
+}
+
 div#body{
       margin: 0;
       margin-top: 4px;

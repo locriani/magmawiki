@@ -23,6 +23,10 @@ class WikiBuffer
     @data ||= ""
   end
 
+  def extra_char
+    @extra_char ||= ""
+  end
+  
   def params
     @params ||= [ "" ]
   end
@@ -101,9 +105,13 @@ class WikiBuffer
         tmp = @buffers.pop
         @buffers[-1].data += tmp.to_s
         # any data left in the buffer we feed into the parent
-        unless tmp.data.blank?
+        unless tmp.data.length == 0
           tmp.data.each_char { |c| self.add_char(c) }
         end
+		
+		#unless @buffers[-1].extra_char.blank?
+          #@buffers[-1].extra_char.each_char { |c| self.add_char(c) }
+        #end
       end
     end
   end
@@ -225,6 +233,10 @@ class WikiBuffer
 
   def data=(val)
     @data = val
+  end
+  
+  def extra_char(val)
+    @extra_char = val
   end
 
   def current_char=(val)

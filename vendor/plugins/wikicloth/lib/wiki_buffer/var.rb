@@ -25,8 +25,17 @@ class WikiBuffer::Var < WikiBuffer
     else
       ret = @options[:link_handler].include_resource("#{params[0]}".strip,params[1..-1])
     end
-    ret ||= "<!-- TEMPLATE[#{params[0]}] NOT FOUND -->"
-    ret
+	if @options[:articles].nil?
+	  ret ||= "<!-- no article object -->"
+	else
+	  tmpname = params[0].gsub(/\s/,"_")
+	  article = @options[:articles].find_by_slug(tmpname.downcase, :include => :current_revision)
+	  if article.nil?
+	    ret ||= "<!-- TEMPLATE[#{params[0]}] NOT FOUND -->"
+	  else
+        ret ||= article.current_revision.body
+	  end
+	end
   end
 
   def is_function?
