@@ -12,8 +12,26 @@ class WikiCloth
 
   def load(data,p={})
     data.gsub!(/<!--(.|\s)*?-->/,"")
+	data.gsub!(/\{\{(.*?)\}\}/){ |match| expand_templates($1,[]) }
     self.params = p
     self.html = data
+  end
+
+  def expand_templates(template, stack)
+	tmpname = template.gsub(/\s/,"_")
+	article = @options[:articles].find_by_slug(tmpname.downcase, :include => :current_revision)
+	
+    if article.nil?
+	  data = "<!-- varfunc(" + tmpname + ") -->"
+	else
+	  unless stack.includes(tmpname) 
+        data = article.current_revision.body
+	  else
+	    data = "template loop! OHNOES!"
+	  end
+	end
+
+	data.gsub!(/\{\{(.*?)\}\}/){ |match| expand_templates($1,stack + [tmpname])}
   end
 
   def render(opt={})

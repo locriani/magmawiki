@@ -49,6 +49,7 @@ class WikiBuffer::Link < WikiBuffer
       self.current_param = self.data
       self.data = ""
       self.params << ""
+	  @pipe = true
 
     # URL label
     when current_char == ' ' && self.internal_link == false && params[1].nil? && !self.data.blank?
@@ -58,7 +59,7 @@ class WikiBuffer::Link < WikiBuffer
 
     # end of link
     when ((current_char =~ /[^A-Za-z]/ && @link_end && self.internal_link == true) || (current_char == ']' && self.internal_link == false))  && @in_quotes == false
-	  self.data.chop! if (self.internal_link == true && previous_char != ']')
+	  #self.data.chop! if (self.internal_link == true && previous_char != ']' && current_char != ']')
       self.current_param = self.data
 	  #self.current_param = "<span style='color:red;'>" + self.data + "</span>" if @options[:articles].find_by_slug(params[0].downcase, :include => :current_revision).nil?
       self.data = "" #current_char
@@ -70,6 +71,10 @@ class WikiBuffer::Link < WikiBuffer
 	  if current_char == ']' && previous_char == ']' && self.internal_link == true
 	    @link_end = true
 		self.data.chop!
+		if @pipe.nil?
+		  self.current_param = self.data
+		  self.params << self.data
+		end
 	  else
 	    self.data += current_char unless current_char == ' ' && self.data.blank?
 	  end
