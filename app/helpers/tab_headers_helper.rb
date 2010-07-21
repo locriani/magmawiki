@@ -13,7 +13,7 @@ module TabHeadersHelper
     if article.nil? || article.id.nil?
       output_string = active_div(is_active, "left") { "<a href=\"#\">#{I18n.t 'article.default'}</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to (I18n.t 'article.default'), show_article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to( (I18n.t 'article.default'), show_article_path(article) ) }
   	end
   	  return output_string
   end
@@ -46,7 +46,7 @@ module TabHeadersHelper
       # We actually probably need to grey this out if there is no relevant article yet
       output_string = active_div(is_active, "left") { "<a href=\"#\">#{I18n.t 'read.default'}</a>" }
   	else
-  	  output_string = active_div(is_active, "left") { link_to (I18n.t 'read.default'), show_article_path(article) }
+  	  output_string = active_div(is_active, "left") { link_to( (I18n.t 'read.default'), show_article_path(article) ) }
   	end
   	
   	return output_string
@@ -64,7 +64,7 @@ module TabHeadersHelper
       # would not be appropriate.
       output_string = active_div(is_active) { "<a href=\"#\">#{I18n.t 'edit.default'}</a>" }
   	else
-  	  output_string = active_div(is_active) { link_to (I18n.t 'edit.default'), edit_article_path(article) }
+  	  output_string = active_div(is_active) { link_to( (I18n.t 'edit.default'), edit_article_path(article) ) }
   	end
   	
     return output_string
@@ -81,7 +81,7 @@ module TabHeadersHelper
       # We don't have the backend code set up yet (revisions)
       output_string = active_div(is_active) { "<a href=\"#\">#{I18n.t 'history.default'}</a>" }
   	else
-  	  output_string = active_div(is_active) { link_to (I18n.t 'history.default'), show_history_path(article) }
+  	  output_string = active_div(is_active) { link_to ( (I18n.t 'history.default'), show_history_path(article) ) }
   	end
   	
     return output_string
