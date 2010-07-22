@@ -40,16 +40,17 @@ class CustomLinkHandler < WikiCloth::WikiLinkHandler
     tmpname = resource.gsub(/\s/,"_")
     article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
     unless article.nil?
-      unless stack.includes(tmpname)
+      unless stack.include?(tmpname)
         data = article.current_revision.body
       else
         data = "template loop! OHNOES!"
       end
     else
-      data = "<!-- varfunc(" + tmpname + ") -->"
+      data = super(resource,options)
     end
 
     data.gsub!(/\{\{(.*?)\}\}/){ |match| include_resource($1,options, stack + [tmpname]) }
+    data
   end
 
 end
