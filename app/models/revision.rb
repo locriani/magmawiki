@@ -42,7 +42,8 @@ end
 class Revision < ActiveRecord::Base
 
   belongs_to :article, :counter_cache => :revision_count
-  has_many :revisions, :through => :article
+  has_one :wiki_session
+  has_many :revisions, :through => :article_id
   has_many :threads
 
   def self.find_all_ordered(order = nil, options = {})

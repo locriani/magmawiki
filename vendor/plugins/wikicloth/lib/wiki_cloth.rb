@@ -12,7 +12,7 @@ class WikiCloth
 
   def load(data,p={})
     data.gsub!(/<!--(.|\s)*?-->/,"")
-	data.gsub!(/\{\{(.*?)\}\}/){ |match| expand_templates($1,[]) }
+    # data.gsub!(/\{\{(.*?)\}\}/){ |match| expand_templates($1,[]) }
     self.params = p
     self.html = data
   end

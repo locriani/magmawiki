@@ -23,6 +23,7 @@
 #
 
 class User < ActiveRecord::Base
+  has_many :wiki_sessions
   has_many :user_preferences
   attr_accessor :locale
   
