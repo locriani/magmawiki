@@ -17,27 +17,9 @@ class WikiCloth
     self.html = data
   end
 
-  def expand_templates(template, stack)
-	tmpname = template.gsub(/\s/,"_")
-	article = @options[:articles].find_by_slug(tmpname.downcase, :include => :current_revision)
-	
-    if article.nil?
-	  data = "<!-- varfunc(" + tmpname + ") -->"
-	else
-	  unless stack.includes(tmpname) 
-        data = article.current_revision.body
-	  else
-	    data = "template loop! OHNOES!"
-	  end
-	end
-
-	data.gsub!(/\{\{(.*?)\}\}/){ |match| expand_templates($1,stack + [tmpname])}
-  end
-
   def render(opt={})
     self.options = { :output => :html, :link_handler => self.link_handler, :params => self.params, :articles => options[:articles]}.merge(opt)
     self.options[:link_handler].params = options[:params]
-	#self.options[:articles] = "lol" #opt[:articles]
     buffer = WikiBuffer.new("",options)
     self.html.each_char { |c| buffer.add_char(c) }
     buffer.to_s
