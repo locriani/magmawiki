@@ -41,15 +41,20 @@ class CustomLinkHandler < WikiCloth::WikiLinkHandler
     article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
     unless article.nil?
       unless stack.include?(tmpname)
-        data = article.current_revision.body
+        wiki_page = WikiCloth::WikiCloth.new({
+            :data => article.current_revision.body,
+            :link_handler => self,
+            :params => params
+          })
+        data = wiki_page.to_html
       else
         data = "template loop! OHNOES!"
       end
     else
       data = super(resource,options)
     end
-
-    data.gsub!(/\{\{(.*?)\}\}/){ |match| include_resource($1,options, stack + [tmpname]) }
+# let wikicloth do all the heavy lifting
+#    data.gsub!(/\{\{(.*?)\}\}/){ |match| include_resource($1,options, stack + [tmpname]) }
     data
   end
 
