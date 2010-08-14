@@ -45,7 +45,7 @@ describe TabHeadersHelper do
   
   #           ['context',   'object'    ]
   contexts = [['article',   'article'   ],
-              ['talk',      'talk_forum'],
+              # ['talk',      'talk_forum'],
               ['read',      'article'   ],
               ['edit',      'article'   ],
               ['history',   'article'   ],
