@@ -18,7 +18,7 @@ MARKUP_ENGINES = {
     WikiCloth::WikiCloth.new(
       :data=>body, 
       :link_handler=>CustomLinkHandler.new,
-      :params=>{}  # template variables
+      :params=>{}
     ).to_html
   end
 }
@@ -36,12 +36,30 @@ class CustomLinkHandler < WikiCloth::WikiLinkHandler
      { :href => url_for(page) }
   end
 
+  def include_resource(resource,options=[],stack=[])
+    tmpname = resource.gsub(/\s/,"_")
+    article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
+    unless article.nil?
+      unless stack.include?(tmpname)
+        data = article.current_revision.body
+      else
+        data = "template loop! OHNOES!"
+      end
+    else
+      data = super(resource,options)
+    end
+
+    data.gsub!(/\{\{(.*?)\}\}/){ |match| include_resource($1,options, stack + [tmpname]) }
+    data
+  end
+
 end
 
 class Revision < ActiveRecord::Base
 
   belongs_to :article, :counter_cache => :revision_count
-  has_many :revisions, :through => :article
+  has_one :wiki_session
+  has_many :revisions, :through => :article_id
   has_many :threads
 
   def self.find_all_ordered(order = nil, options = {})

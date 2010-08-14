@@ -6,8 +6,8 @@ module WikiCloth
 class WikiBuffer::HTMLElement < WikiBuffer
 
   ALLOWED_ELEMENTS = ['a','b','i','div','span','sup','sub','strike','s','u','font','big','ref','tt','del',
-	'small','blockquote','strong','pre','code','references','ol','li','ul','dd','dt','dl','center',
-	'h2','h3','h4','h5','h6']
+	'small','blockquote','strong','pre','code','references','ol','li','ul','dd','dt','dl','center', 'h1',
+	'h2','h3','h4','h5','h6', 'p']
   ALLOWED_ATTRIBUTES = ['id','name','style','class','href','start','value']
   ESCAPED_TAGS = [ 'nowiki', 'pre', 'code' ]
   SHORT_TAGS = [ 'meta','br','hr','img' ]
@@ -73,7 +73,7 @@ class WikiBuffer::HTMLElement < WikiBuffer
     tmp = elem.tag!(self.element_name, self.element_attributes) { |x| x << self.element_content }
     unless ALLOWED_ELEMENTS.include?(self.element_name)
       tmp.gsub!(/[\-!\|&"\{\}\[\]]/) { |r| self.escape_char(r) }
-      return tmp.gsub('<', '&lt;').gsub('>', '&gt;')
+      return tmp.gsub('<', self.element_name).gsub('>', '&gt;')
     end
     tmp
   end
