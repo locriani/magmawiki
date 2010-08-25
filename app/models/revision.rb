@@ -15,42 +15,21 @@
 
 MARKUP_ENGINES = {
   "wikicloth" => proc do |body|
-    WikiCloth::WikiCloth.new(
-      :data=>body, 
-      :link_handler=>CustomLinkHandler.new,
-      :params=>{}
-    ).to_html
+    WikiParser.new(:data => body, :params => {}).to_html
   end
 }
 
-
 # TODO: Put this code somewhere else!
-class CustomLinkHandler < WikiCloth::WikiLinkHandler
+class WikiParser < WikiCloth::Parser
 
-  def url_for(page)
-    #"javascript:alert('You clicked on: #{page}');"
-    page
+  url_for do |url|
+    url.gsub(/\s/,"_")
   end
 
-  def link_attributes_for(page)
-     { :href => url_for(page) }
-  end
-
-  def include_resource(resource,options=[],stack=[])
-    tmpname = resource.gsub(/\s/,"_")
+  template do |template|
+    tmpname = template.gsub(/\s/,"_")
     article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
-    unless article.nil?
-      unless stack.include?(tmpname)
-        data = article.current_revision.body
-      else
-        data = "template loop! OHNOES!"
-      end
-    else
-      data = super(resource,options)
-    end
-
-    data.gsub!(/\{\{(.*?)\}\}/){ |match| include_resource($1,options, stack + [tmpname]) }
-    data
+    article.nil? ? nil : article.current_revision.body
   end
 
 end
