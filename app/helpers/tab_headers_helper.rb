@@ -81,7 +81,7 @@ module TabHeadersHelper
       # We don't have the backend code set up yet (revisions)
       output_string = active_div(is_active) { "<a href=\"#\">#{I18n.t 'history.default'}</a>" }
   	else
-  	  output_string = active_div(is_active) { link_to ( (I18n.t 'history.default'), show_history_path(article) ) }
+  	  output_string = active_div(is_active) { link_to( (I18n.t 'history.default'), show_history_path(article) ) }
   	end
   	
     return output_string
