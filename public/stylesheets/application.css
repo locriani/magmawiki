@@ -16,10 +16,31 @@ a:link, a:visited{
     text-decoration:none;
 }
 
+h1{
+font-size:188%;
+}
+
 h2{
 border-bottom-color: #AAA;
 border-bottom-style: solid;
 border-bottom-width: 1px;
+font-size: 150%;
+font-weight:normal;
+}
+
+h2 .editsection{
+	font-size: 67%;
+	font-weight:normal;
+}
+
+h3{
+	font-size: 130%;
+	font-weight: bold;
+}
+
+h3 .editsection{
+	font-size: 77%;
+	font-weight: normal;
 }
 
 div#body{
@@ -46,20 +67,19 @@ textarea#revision_body{
 }
 
 .title, h1, h2, h3, h4, h5, h6 {
-    margin: 1.25em 0em 0.5em 0em;
+    margin: .25em 0em 0.5em 0em;
 }
 
 .title {
     font-size: 3em;
     font-weight: bold;
-    margin-left: 0.25em;
+    margin-left: 0em;
     margin-top: 0em;
 }
 
-h1 { font-size: 2.5em; }
-h2 { font-size: 1.5em; }
-h3 { font-size: 1em; }
-h4 { font-size: 1em; }
+h1 {
+margin-left: .7em;
+}
 
 p { margin: 1em 0em 1em 0em; }
 
@@ -73,8 +93,14 @@ p { margin: 1em 0em 1em 0em; }
 }
 
 ul li {
-    margin: 0 0 0 2em;
+    margin: 0 0 0 -1em;
     list-style-type: disc;
+}
+
+pre{
+border: 2px dashed #bd8;
+padding: 5px;
+background-color:#F7F7F7;
 }
 
 li {
