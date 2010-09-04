@@ -13,9 +13,10 @@
 #  revision_count :integer         default(0), not null
 #
 
-# The article class is the interface to the most basic unit of the wiki, the revision.
-# Each article maintains an ordered set of revisions, and a most current revision, which
-# is displayed when an article is requested.
+#
+# Each Article maintains an ordered set of Revisions, and the latest revision
+# ("current revision") which is displayed when an article is requested.
+#
 class Article < ActiveRecord::Base
 
   ## Associations
@@ -26,6 +27,12 @@ class Article < ActiveRecord::Base
   has_many :comments
 
 
+  ## Attributes
+  
+  accepts_nested_attributes_for :current_revision, :revisions
+  attr_accessible :title
+
+  
   ## Validations
 
   before_validation_on_create  :prepare_article_slug
@@ -33,27 +40,29 @@ class Article < ActiveRecord::Base
   validates_presence_of   :title
   validates_presence_of   :slug
   validates_uniqueness_of :slug
-  validate :slug_immutability
   
-  accepts_nested_attributes_for :current_revision, :revisions
-  
-  attr_accessible :title
-
-
-  # Rails uses to_param to construct the string for the object.
-  # This *should* support unicode; but that's a theory.
-  def to_param
-    self.slug
-  end
-
-
-private
-  def slug_immutability
-    unless self.slug == escape(self.title)
+  #
+  # Miscellaneous validations...
+  #
+  validate do |article|
+    # is slug immutable?
+    unless article.slug == escape(article.title)
       errors.add :title, (I18n.t 'article.slug_error')
     end
   end
   
+  
+  #
+  # Rails uses to_param to construct the string for the object.
+  # This *should* support unicode; but that's a theory.
+  #
+  def to_param
+    self.slug
+  end
+
+  
+private
+
   def prepare_article_slug
     self.slug = escape(self.title)
   end
@@ -68,6 +77,7 @@ private
     # and strip trailing underscores
     output_string.chomp('_')
   end
+  
 end
 
 

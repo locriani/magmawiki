@@ -12,6 +12,9 @@ class ArticlesController < ApplicationController
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :read_active        => true}
+                        
+    @title = @article.title
+    
     if @article.nil?
       redirect_to edit_article_url(params[:id])
     else

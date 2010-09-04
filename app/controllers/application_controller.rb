@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
 
   # TODO: This is a hack to cleanup error fields in forms until we get a chance to actually look at the problem (and our css) in detail
   ActionView::Base.field_error_proc = Proc.new{ |html_tag, instance| "#{html_tag}" }
+
+  
 private
   def current_locale
     locale = current_user.preferences[:locale] unless current_user.nil?
@@ -21,14 +23,6 @@ private
   
   def set_locale
     I18n.locale = current_locale
-  end
-  
-  def title(page_title)
-    content_for(:title) { page_title }
-  end
-  
-  def head(page_head)
-    content_for(:head) { page_head }
   end
   
   def initialize_toolbar

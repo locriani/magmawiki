@@ -1,7 +1,11 @@
 <!DOCTYPE html>
 <%= "<html lang=\"#{I18n.locale}\">" %>
 	<head>
-		<title><%= h"#{MAGMAWIKI_CONFIG[:title]} #{yield(:title)}" -%></title>
+		<title>
+		  <% title = yield(:title) || @title %>
+		  <%= h "#{title} ::" if title -%> 
+		  <%= h MAGMAWIKI_CONFIG[:title] -%>
+    </title>
 		<%= javascript_include_tag 'jquery-1.4.2.min', 'chroma-hash/chroma-hash', 'application' %>
 		<%= stylesheet_link_tag 'reset', 'application', 'header', 'forms' %>
 		<%# stylesheet_link_tag 'reset', 'application', 'header', 'forms' #, :cache => 'cache/all' %>
