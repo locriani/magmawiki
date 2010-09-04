@@ -1,3 +1,1 @@
-This is an in progress work in progress.
-
-This is still in progress.
+Magmawiki is a new Ruby on Rails Wiki engine. The goal is to eventually replace Mediawiki (which powers the Dwarf Fortress wiki) with something considerably more stable, user-friendly, maintainable, and extensible. It currently supports most of the Mediawiki markup language (via. WikiCloth), and will eventually feature a better templating system, scripting, and some other goodies. It will also be able to import existing Mediawiki installations.
