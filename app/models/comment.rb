@@ -1,18 +1,20 @@
 # == Schema Information
-# Schema version: 20100513034408
+# Schema version: 20100712040454
 #
 # Table name: comments
 #
-#  id         :integer         not null, primary key
-#  user_id    :integer         
-#  topic_id   :integer         
-#  subject    :string(255)     
-#  body       :text            
-#  parent_id  :integer         
-#  left       :integer         
-#  right      :integer         
-#  created_at :datetime        
-#  updated_at :datetime        
+#  id          :integer         not null, primary key
+#  article_id  :integer         
+#  revision_id :integer         
+#  user_id     :integer         
+#  subject     :string(255)     
+#  body        :text            
+#  created_at  :datetime        
+#  updated_at  :datetime        
+#  parent_id   :integer         
+#  lft         :integer         
+#  rgt         :integer         
+#  marking_id  :integer         
 #
 
 class Comment < ActiveRecord::Base
