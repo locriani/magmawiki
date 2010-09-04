@@ -13,11 +13,10 @@ class ArticlesController < ApplicationController
                         :article_active     => true,
                         :read_active        => true}
                         
-    @title = @article.title
-    
     if @article.nil?
       redirect_to edit_article_url(params[:id])
     else
+      @title = @article.title
       respond_to do |format|
         format.html
       end
