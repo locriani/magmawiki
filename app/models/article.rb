@@ -40,17 +40,7 @@ class Article < ActiveRecord::Base
   validates_presence_of   :title
   validates_presence_of   :slug
   validates_uniqueness_of :slug
-  
-  #
-  # Miscellaneous validations...
-  #
-  validate do |article|
-    # is slug immutable?
-    unless article.slug == escape(article.title)
-      errors.add :title, (I18n.t 'article.slug_error')
-    end
-  end
-  
+  validate :slug_must_be_immutable 
   
   #
   # Rails uses to_param to construct the string for the object.
@@ -63,6 +53,12 @@ class Article < ActiveRecord::Base
   
 private
 
+  def slug_must_be_immutable 
+    unless self.slug == escape(self.title)
+      errors.add :title, (I18n.t 'article.slug_error')
+    end
+  end
+  
   def prepare_article_slug
     self.slug = escape(self.title)
   end
