@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
                         :article_active     => true,
                         :edit_active        => true}
   end
-  
+
   def update
     @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
 

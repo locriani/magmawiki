@@ -7,6 +7,11 @@ body{
     color: #555;
 }
 
+table{
+line-height:1.5em;
+font-family: sans-serif;
+}
+
 dd{
 margin-left:2em;
 }
@@ -99,6 +104,12 @@ ul li {
 
 pre{
 border: 2px dashed #bd8;
+padding: 5px;
+background-color:#F7F7F7;
+}
+
+#toc{
+border: 1px solid #bd8;
 padding: 5px;
 background-color:#F7F7F7;
 }

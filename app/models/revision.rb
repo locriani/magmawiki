@@ -14,8 +14,8 @@
 #
 
 MARKUP_ENGINES = {
-  "wikicloth" => proc do |body|
-    WikiParser.new(:data => body, :params => {}).to_html
+  "wikicloth" => proc do |body, article_id|
+    WikiParser.new(:data => body, :params => {:pagename => Article.find_by_id(article_id).slug}).to_html
   end
 }
 
@@ -69,7 +69,7 @@ class Revision < ActiveRecord::Base
   end
 
   def to_html
-    markup_proc.call(body)
+    markup_proc.call(body, article_id)
   end
 
   def prev_diff
