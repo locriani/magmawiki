@@ -1,0 +1,45 @@
+<%# form_for article, :url => method(url_action).call(article) do |f| %>
+<% form_for article, :url => update_article_section_url(params[:section], params[:id]) do |f| %>
+
+	<%= f.error_messages %>
+	<%= f.hidden_field :lock_version %>
+
+	<div class="new-wrapper">
+
+	    <div>
+		    <%= f.label :title %>
+		    <%= f.text_field :title %>
+	    </div>
+
+	    <div>
+            <% fields_for article.current_revision do |f| %>
+
+                <div class="new-wrapper-body">
+                    <%= f.text_area :body %>
+                </div>
+
+                <div class="new-wrapper-summary">
+                    <%= f.label :summary, "Edit summary: "%>
+                    <%= f.text_field :summary %>
+                </div>
+
+                Markup engine:
+                <select name='revision[engine_name]'>
+                    <% MARKUP_ENGINES.keys.each do |engine_name| %>
+                      <% p engine_name %>
+                      <option value="<%= engine_name %>" <%= "selected" if engine_name == article.current_revision.engine_name %>>
+                        <%= p engine_name; engine_name; %>
+                      </option>
+                    <% end %>
+                </select>
+
+            <% end %>
+	    </div>
+
+       <%= f.submit "submit" %>
+
+       <%= link_to "cancel", :action=>"show", :id=>params[:id] %>
+
+	</div>
+
+<% end %>

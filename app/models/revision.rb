@@ -26,12 +26,6 @@ class WikiParser < WikiCloth::Parser
     url.gsub(/\s/,"_")
   end
 
-  template do |template|
-    tmpname = template.gsub(/\s/,"_")
-    article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
-    article.nil? ? nil : article.current_revision.body
-  end
-
 end
 
 class Revision < ActiveRecord::Base
