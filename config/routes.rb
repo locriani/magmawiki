@@ -32,5 +32,5 @@ ActionController::Routing::Routes.draw do |map|
   map.show_revision     '/revision/:revision_id/show/:id/',                     :controller => :revisions, :action => 'show'
   map.diff_revision     '/revision/:revision_1_id/diff/:revision_2_id/:id/',    :controller => :revisions,  :action => 'diff'
   
-  map.root :controller => :articles, :action => :show, :id => "Main_page"
+  map.root :controller => :articles, :action => :redirect, :id => "Main_page"
 end

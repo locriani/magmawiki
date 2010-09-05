@@ -88,6 +88,10 @@ class ArticlesController < ApplicationController
       render :action => :edit
     end
   end
+  
+  def redirect
+	redirect_to show_article_url(params[:id])
+  end
 
   def updatesec
     @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
