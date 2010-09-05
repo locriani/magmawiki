@@ -13,7 +13,7 @@ ActionController::Routing::Routes.draw do |map|
 
     # update
     map.edit_article    '/edit/:id',    :action => 'edit'
-    map.update_article  '/update/:id',  :action => 'update'
+	map.update_article  '/update/:id',  :action => 'update'
 
     # comments
     map.discuss         '/discuss/:id',     :controller=>'topic', :action => 'index'

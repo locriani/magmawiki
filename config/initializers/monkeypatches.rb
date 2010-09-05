@@ -72,4 +72,12 @@ module Enumerable
 
 end
 
+module WikiCloth
+  class WikiLinkHandler
+    def section_link(section)
+	  "/editsec/#{section}/#{self.params[:pagename]}"
+    end
+  end
+end
+
 
