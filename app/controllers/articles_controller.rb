@@ -61,10 +61,41 @@ class ArticlesController < ApplicationController
                         :edit_active        => true}
   end
 
+  def editsec
+    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
+
+
+    # We don't care about the previous revision's summary, because this will be a new revision
+    @article.current_revision.body = WikiParser.new(:data => @article.current_revision.body).sections[params[:section].to_i][:content]
+    @section = params[:section].to_i
+    @article.current_revision.summary = ""
+    @toolbar_locals = { :article            => @article,
+                        :article_active     => true,
+                        :edit_active        => true}
+  end
+
   def update
     @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
 
     revision = @article.revisions.build(params[:revision])
+    revision.approved = true
+    
+    revision.wiki_session = WikiSession.create(:user => current_user)
+    if @article.update_attributes(params[:article])
+      flash[:notice] = I18n.t 'article.update_message'
+      redirect_to show_article_url(@article)
+    else
+      render :action => :edit
+    end
+  end
+
+  def updatesec
+    @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
+
+    rev = params[:revision]
+    rev[:body] = @article.current_revision.body.sub(WikiParser.new(:data => @article.current_revision.body).sections[params[:section].to_i][:content], rev[:body])
+
+    revision = @article.revisions.build(rev)
     revision.approved = true
     
     revision.wiki_session = WikiSession.create(:user => current_user)
