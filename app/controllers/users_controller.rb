@@ -18,7 +18,8 @@ class UsersController < ApplicationController
   def edit
     # unless current_user.permissions.edit_other_users?
     @user = current_user
-    # else
+	@locale = current_user.preferences[:locale].to_s
+	# else
     # @user = User.find(params[:id])
     # end
   end
