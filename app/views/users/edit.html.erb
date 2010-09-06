@@ -2,7 +2,8 @@
 <% form_for @user do |f| -%>
 	<label>
 		<%= f.label :locale, I18n.t('user.preferences.locale') + ':' -%>
-		<%= f.collection_select :locale, available_locales, :label, :value, { :selected => current_locale.to_s } -%>
+		<%= f.select (:locale, available_locales.map {|u| [u.value.to_s, u.label.to_s]}, :selected => @locale) -%>
 	</label>
 	<%= f.submit "Submit" -%>
 <% end %>
+
