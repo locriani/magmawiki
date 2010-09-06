@@ -3,7 +3,11 @@
 	<label>
 		<%= f.label :locale, I18n.t('user.preferences.locale') + ':' -%>
 		<%= f.select (:locale, available_locales.map {|u| [u.value.to_s, u.label.to_s]}, :selected => @locale) -%>
+		<br/>
+		<%= f.label :email, 'Email:' -%>
+		<%= f.text_field :email %>
 	</label>
+	<br/><br/>
 	<%= f.submit "Submit" -%>
 <% end %>
 

@@ -26,6 +26,8 @@ class UsersController < ApplicationController
   
   def update
     current_user.preferences[:locale] = params[:user][:locale]
+    current_user.email = params[:user][:email]
+	current_user.save
     flash[:notice] = I18n.t 'user.update.success'
     redirect_to root_url
   end
