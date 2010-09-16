@@ -19,14 +19,6 @@ MARKUP_ENGINES = {
   end
 }
 
-# TODO: Put this code somewhere else!
-class WikiParser < WikiCloth::Parser
-
-  url_for do |url|
-    url.gsub(/\s/,"_")
-  end
-
-end
 
 class Revision < ActiveRecord::Base
 

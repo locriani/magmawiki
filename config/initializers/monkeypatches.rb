@@ -1,4 +1,3 @@
-
 class Array
   def squash
     self.flatten.compact.uniq
@@ -84,5 +83,13 @@ module WikiCloth
       article.nil? ? nil : article.current_revision.body
     end
   end
+end
+
+class WikiParser < WikiCloth::Parser
+
+  url_for do |url|
+    url.gsub(/\s/,"_")
+  end
+
 end
 
