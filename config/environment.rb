@@ -10,7 +10,7 @@ Rails::Initializer.run do |config|
   #config.gem "marker"
   config.gem "bcrypt-ruby", :lib => "bcrypt"
   config.gem "authlogic"
-  config.gem "wikicloth", :version => ">= 0.1.7"
+  config.gem "wikicloth", :version => ">= 0.2.0"
   config.gem "i18n"
   config.time_zone = 'UTC'
 end
