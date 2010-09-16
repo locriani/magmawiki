@@ -65,8 +65,8 @@ class ArticlesController < ApplicationController
     @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
 
     @wiki = WikiParser.new(:data => @article.current_revision.body)
-    @article.current_revision.body = @wiki.get_section(params[:section].to_i)
-    @section = params[:section].to_i
+    @article.current_revision.body = @wiki.get_section(params[:section].to_s)
+    @section = params[:section].to_s
 
     # We don't care about the previous revision's summary, because this will be a new revision
     @article.current_revision.summary = ""
@@ -98,7 +98,7 @@ class ArticlesController < ApplicationController
     @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
 
     @wiki = WikiParser.new(:data => @article.current_revision.body)
-	@wiki.put_section(params[:section].to_i, params[:revision][:body].to_s)
+	@wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
 	
     rev = params[:revision]
     rev[:body] = @wiki.to_wiki
