@@ -17,6 +17,7 @@ class ArticlesController < ApplicationController
       redirect_to edit_article_url(params[:id])
     else
       @title = @article.title
+      @body = @article.current_revision.to_html
       respond_to do |format|
         format.html
       end
