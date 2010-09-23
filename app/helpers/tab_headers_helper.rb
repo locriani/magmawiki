@@ -95,18 +95,17 @@ module TabHeadersHelper
   end
   
   def menu_tab(article = nil, is_active = false)
-    output_string = active_div(is_active, "right") {
+    output_string = active_div(is_active, "right") do
       %{
-      <a href="#">
-      ▼
-		  </a>
-		  <div id="arrow-menu">
-		    <a href="#">lool</a><br />
-		    <a href="#">what</a><br />
-		    <a href="#">huh</a><br />
-		    <a href="#">yeah</a>
-		  </div>
-		}}
+        <a href="#">&#9660;</a>
+        <div id="arrow-menu">
+          <a href="#">lool</a><br />
+          <a href="#">what</a><br />
+          <a href="#">huh</a><br />
+          <a href="#">yeah</a>
+          </div>
+      }
+    end
     return output_string
   end
   
