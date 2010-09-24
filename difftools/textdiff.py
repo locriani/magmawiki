@@ -12,7 +12,7 @@ def help():
   print "Output: JSON"
   print
   print "Example input:"
-  print "  file_a: well hello"
+  print "  file_a: well, hello"
   print "  file_b: hullo there"
   print
   print """Example output:
