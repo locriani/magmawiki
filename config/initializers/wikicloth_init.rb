@@ -1,4 +1,3 @@
-
 class WikiParser < WikiCloth::Parser
   url_for do |url|
     url.gsub(/\s/,"_")
