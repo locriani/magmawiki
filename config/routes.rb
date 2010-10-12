@@ -1,36 +1,58 @@
-ActionController::Routing::Routes.draw do |map|
-  # user routes
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
-  
-  map.resources :users
-  map.resource :user_session
+Magmawiki::Application.routes.draw do
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
-  map.with_options :controller => 'articles' do |map|
-    # create
-    map.new_article     '/new',         :action => 'new'
-    map.create_article  '/create/:id',  :action => 'create'
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-    # update
-    map.edit_article    '/edit/:id',    :action => 'edit'
-    map.edit_article_section '/editsec/:section/:id', :action => 'editsec'
-	map.update_article  '/update/:id',  :action => 'update'
-    map.update_article_section  '/updatesec/:section/:id',  :action => 'updatesec'
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
 
-    # comments
-    map.discuss         '/discuss/:id',     :controller=>'topic', :action => 'index'
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
 
-    # read
-    map.connect         '/wiki/',            :action => 'index'
-    map.show_article    '/wiki/:id',         :action => 'show'
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
 
-    # destroy
-    # NYI
-  end
-  
-  map.show_history      '/revision/history/:id',                                :controller => :revisions, :action => 'index'
-  map.show_revision     '/revision/:revision_id/show/:id/',                     :controller => :revisions, :action => 'show'
-  map.diff_revision     '/revision/:revision_1_id/diff/:revision_2_id/:id/',    :controller => :revisions,  :action => 'diff'
-  
-  map.root :controller => :articles, :action => :redirect, :id => "Main_page"
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => "welcome#index"
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end
