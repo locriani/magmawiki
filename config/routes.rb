@@ -9,38 +9,38 @@ Magmawiki::Application.routes.draw do
   
   # Article URLs {
   ################
-    match '/new',     :to => 'article#new',    :as => :new_article
-    match '/create',  :to => 'article#create', :as => :create_article
+    match '/new',     :to => 'articles#new',    :as => :new_article
+    match '/create',  :to => 'articles#create', :as => :create_article
   
-    match '/edit/:id',    :to => 'article#edit',
+    match '/edit/:id',    :to => 'articles#edit',
                           :as => :edit_article
     match '/edit/section/:id/:section/',  #TODO: This entire action is nasty and needs refactoring
-                          :to => 'article#editsec',
+                          :to => 'articles#editsec',
                           :as => :edit_article_section
   
-    match '/update/:id',  :to => 'article#update',
+    match '/update/:id',  :to => 'articles#update',
                           :as => :update_article
     match '/update/section/:id/:section', #TODO: This entire action is nasty and needs refactoring
-                          :to => 'article#updatesec',
+                          :to => 'articles#updatesec',
                           :as => :update_article_section
    
-    match '/wiki/',     :to => 'article#index'
-    match '/wiki/:id',  :to => 'article#show'
+    match '/wiki/',     :to => 'articles#index'
+    match '/wiki/:id',  :to => 'articles#show'
   # }
   ################
   
   # Comments
   # resources :discussions NYI
 
-  match '/revision/history/:id',   :to => 'revision#index',
+  match '/revision/history/:id',   :to => 'revisions#index',
                                   :as => :show_history
   match '/revision/:revision_id/show/:id', #TODO: This entire action is nasty and needs refactoring
-                                  :to => 'revision#show',
+                                  :to => 'revisions#show',
                                   :as => :show_revision
   match '/revision/:revision_1_id/diff/:revision_2_id/:id', #TODO: This entire action is nasty and needs refactoring
-                                  :to => 'revision#diff',
+                                  :to => 'revisions#diff',
                                   :as => :diff_revision
   
   # And our root route
-  root :to => 'article#index'
+  root :to => 'articles#index'
 end
