@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.0.0'
 
 gem 'authlogic', :git => "http://github.com/binarylogic/authlogic.git"
+gem 'wikicloth'
 
 # group :development, :test do
 gem 'sqlite3-ruby', :require => 'sqlite3'

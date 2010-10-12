@@ -5,13 +5,6 @@ More information: http://yehudakatz.com/2009/12/26/the-rails-3-router-rack-it-up
 The culprits: 
 	- config/routes.rb
 
-New file needed: config/application.rb
-You need to add a config/application.rb.
-More information: http://omgbloglol.com/post/353978923/the-path-to-rails-3-approaching-the-upgrade
-
-The culprits: 
-	- config/application.rb
-
 Deprecated ERb helper calls
 Block helpers that use concat (e.g., form_for) should use <%= instead of <%.  The current form will continue to work for now, but you will get deprecation warnings since this form will go away in the future.
 More information: http://weblog.rubyonrails.org/
@@ -23,12 +16,6 @@ The culprits:
 	- /Users/locriani/Documents/Projects/magmawiki/app/views/users/edit.html.erb
 	- /Users/locriani/Documents/Projects/magmawiki/app/views/users/new.html.erb
 
-Deprecated constant(s)
-Constants like RAILS_ENV, RAILS_ROOT, and RAILS_DEFAULT_LOGGER are now deprecated.
-More information: http://litanyagainstfear.com/blog/2010/02/03/the-rails-module/
-
-The culprits: 
-	- /Users/locriani/Documents/Projects/magmawiki/lib/tasks/rspec.rake
 
 Deprecated session secret setting
 Previously, session secret was set directly on ActionController::Base; it's now config.secret_token.
