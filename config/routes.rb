@@ -30,7 +30,7 @@ Magmawiki::Application.routes.draw do
   ################
   
   # Comments
-  # resources :discussions NYI
+  match '/', :to => 'articles#index', :as => :discuss #NYI
 
   match '/revision/history/:id',   :to => 'revisions#index',
                                   :as => :show_history
