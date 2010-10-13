@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
   helper :all
   helper_method :current_user_session, :current_user, :title, :head, :initialize_toolbar, :current_locale
   protect_from_forgery
-  
-  # Scrub sensitive parameters from the log
-  filter_parameter_logging :password, :password_confirmation, :authenticity_token
 
   # TODO: This is a hack to cleanup error fields in forms until we get a chance to actually look at the problem (and our css) in detail
   ActionView::Base.field_error_proc = Proc.new{ |html_tag, instance| "#{html_tag}" }
