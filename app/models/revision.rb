@@ -68,7 +68,7 @@ class Revision < ActiveRecord::Base
   end
 
   #
-  # Diff method
+  # Diff method  #TODO: Wait seriously, why are we using python and popen for a ruby project?
   #
   require 'tempfile'
   require 'open3'

@@ -26,15 +26,4 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   has_one :marking
-
-  # Docs:
-  #   http://rdoc.info/rdoc/collectiveidea/awesome_nested_set/blob/b9aba888f5f28e7ce47af4a36c2ae1df17640b38/CollectiveIdea/Acts/NestedSet/InstanceMethods.html
-
-  acts_as_nested_set(
-    :parent_column  => "parent_id",
-    :left_column    => "left",
-    :right_column   => "right",
-    :scope          => "topic_id"
-  )
-
 end
