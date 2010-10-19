@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%= "<html lang=\"#{I18n.locale}\">" %>
+<%= raw "<html lang=\"#{I18n.locale}\">" %>
 	<head>
 		<title>
 		  <% title = yield(:title) || @title %>
@@ -12,7 +12,6 @@
 		<%= yield(:head) -%>
 	</head>
   	<body>
-		<%= render :partial => 'layouts/toolbar_header', :locals => define_toolbar_variables(@toolbar_locals) -%>
 		<div id="body">
 			<% flash.each do |name, msg| %>
 				<%= content_tag :div, (h msg), :id => "flash_#{name}" -%>
