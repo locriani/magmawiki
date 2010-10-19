@@ -1,5 +1,5 @@
 <h1><%=t 'user.preferences.default' -%></h1>
-<% form_for @user do |f| -%>
+<%= form_for @user do |f| -%>
 	<label>
 		<%= f.label :locale, I18n.t('user.preferences.locale') + ':' -%>
 		<%= f.select (:locale, available_locales.map {|u| [u.value.to_s, u.label.to_s]}, :selected => @locale) -%>
