@@ -1,8 +1,8 @@
 Magmawiki::Application.routes.draw do
-  
+
   # Users and user_sessions for login / logout
-  resources :users
-  resources :user_sessions
+  #resources :users
+  #resources :user_sessions
   
   match 'login',  :to => 'user_sessions#create'
   match 'logout', :to => 'user_sessions#destroy'
@@ -40,7 +40,12 @@ Magmawiki::Application.routes.draw do
   match '/revision/:revision_1_id/diff/:revision_2_id/:id', #TODO: This entire action is nasty and needs refactoring
                                   :to => 'revisions#diff',
                                   :as => :diff_revision
-  
+								  
+  match '/auth/:provider/callback' => 'authentications#create'
+  devise_for :users, :controllers => { :registrations => 'registrations' }  
+  resources :authentications  
+  root :to => 'projects#index'  
+	
   # And our root route
   root :to => 'articles#index'
 end

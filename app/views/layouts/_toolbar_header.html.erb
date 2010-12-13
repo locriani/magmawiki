@@ -6,12 +6,12 @@
 	|
 	<%# =t 'article.random' %>
 	<% if current_user.nil? -%>
-		<%= link_to (t 'session.login.default'), login_url -%> |
-		<%= link_to (t 'user.create.default'), new_user_url -%>
+		<%= link_to (t 'session.login.default'), new_user_session_path -%> |
+		<%= link_to (t 'user.create.default'), new_user_registration_path -%>
 	<% else %>
 		<%#=t 'user.contribs' %>
-		user: <%= link_to (h current_user.login), edit_user_url(current_user) -%> |
-		<%= link_to (t 'session.logout.default'),	logout_url					-%>
+		user: <%= link_to (h current_user.username), edit_user_registration_path -%> |
+		<%= link_to (t 'session.logout.default'),	destroy_user_session_path					-%>
 	<% end %>
 </div>
 

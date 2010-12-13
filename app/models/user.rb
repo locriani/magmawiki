@@ -1,56 +1,43 @@
-# == Schema Information
-# Schema version: 20100712040454
-#
-# Table name: users
-#
-#  id                  :integer         not null, primary key
-#  login               :string(255)     not null
-#  email               :string(255)     not null
-#  crypted_password    :string(255)     not null
-#  password_salt       :string(255)     not null
-#  persistence_token   :string(255)     not null
-#  single_access_token :string(255)     not null
-#  perishable_token    :string(255)     not null
-#  login_count         :integer         default(0), not null
-#  failed_login_count  :integer         default(0), not null
-#  last_request_at     :datetime        
-#  current_login_at    :datetime        
-#  last_login_at       :datetime        
-#  current_login_ip    :string(255)     
-#  last_login_ip       :string(255)     
-#  created_at          :datetime        
-#  updated_at          :datetime        
-#
-
 class User < ActiveRecord::Base
-  has_many :wiki_sessions
-  has_many :user_preferences
-  attr_accessor :locale
-  
-  acts_as_authentic do |c|
-    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-  end
-  
-  # This allows us to use user.preferences as an accessor.
-  def preferences
-    @preferences ||= Preferences.new(self)
-  end
-end
+  has_many :authentications
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-# Shorcut class to allow us to use user.preferences[:key] format.
-class Preferences
-  def initialize(user)
-    @user = user
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me
+  attr_accessor :login
+  attr_accessible :login
+
+  def apply_omniauth(omniauth)  
+    authentications.build(:provider => omniauth['provider'],:uid => omniauth['uid'])  
+  end  
+  
+  def password_required?  
+    (authentications.empty? || !password.blank?) && super  
+  end  
+  
+  def self.included(base)
+    base.extend ClassMethods
+    assert_validations_api!(base)
+
+    base.class_eval do
+      validates_presence_of   :username
+      validates_uniqueness_of :username, :scope => authentication_keys[1..-1], :case_sensitive => false, :allow_blank => true
+
+      with_options :if => :password_required? do |v|
+        v.validates_presence_of     :password
+        v.validates_confirmation_of :password
+        v.validates_length_of       :password, :within => password_length, :allow_blank => true
+      end
+    end
   end
   
-  def [](key)
-    preference = @user.user_preferences.find_by_preference(key.to_s)
-    preference.value unless preference.nil?
-  end
-  
-  def []=(key, value)
-    preference = @user.user_preferences.find_or_create_by_preference(key.to_s)
-    preference.value = value
-    preference.save!
+  protected
+
+  def self.find_for_database_authentication(conditions)
+    value = conditions[authentication_keys.first]
+    where(["username = :value", { :value => value }]).first
   end
 end
