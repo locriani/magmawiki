@@ -25,7 +25,7 @@ Magmawiki::Application.routes.draw do
                           :as => :update_article_section
    
     match '/wiki/',     :to => 'articles#index'
-    match '/wiki/:id',  :to => 'articles#show'
+    match '/wiki/:id',  :to => 'articles#show', :as => :show_article
   # }
   ################
   
