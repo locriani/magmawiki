@@ -19,8 +19,8 @@
 <div>
   <div id="article-tools">
       <div id="article-tools-left">
-	      <%= article_tab(article, article_active)  -%>
-	      <%= talk_tab(talk_forum, talk_forum_active) -%>
+	      <%= article_tab(article, article_active).html_safe  -%>
+	      <%= talk_tab(talk_forum, talk_forum_active).html_safe -%>
       </div>
 
       <div id="search">
@@ -29,11 +29,11 @@
       </div>
 
       <div id="article-tools-right">
-	      <%= read_tab(article, read_active)      	-%>
-	      <%= edit_tab(article, edit_active)      	-%>
-	      <%= history_tab(article, history_active)  -%>
-	      <%= star_tab(article, star_active)      	-%>
-	      <%= menu_tab(article, menu_active)      	-%>
+	      <%= read_tab(article, read_active).html_safe    	-%>
+	      <%= edit_tab(article, edit_active).html_safe  	-%>
+	      <%= history_tab(article, history_active).html_safe  -%>
+	      <%= star_tab(article, star_active).html_safe      	-%>
+	      <%= menu_tab(article, menu_active).html_safe      	-%>
       </div>
   </div>
 </div>

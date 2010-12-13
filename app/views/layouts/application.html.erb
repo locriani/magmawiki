@@ -12,6 +12,7 @@
 		<%= yield(:head) -%>
 	</head>
   	<body>
+		<%= render :partial => 'layouts/toolbar_header', :locals => define_toolbar_variables(@toolbar_locals) -%>
 		<div id="body">
 			<% flash.each do |name, msg| %>
 				<%= content_tag :div, (h msg), :id => "flash_#{name}" -%>
