@@ -4,7 +4,7 @@ class WikiParser < WikiCloth::Parser
   end
   
   def section_link(section)
-	"/editsec/#{section}/#{self.params[:pagename]}"
+	"/edit/section/#{section}/#{self.params[:pagename]}"
   end
 
   def templater(template, args = nil)

@@ -30,7 +30,7 @@ Magmawiki::Application.routes.draw do
   ################
   
   # Comments
-  match '/', :to => 'articles#index', :as => :discuss #NYI
+  match '/', :id => 'main_page',  :to => redirect('/wiki/%{id}'), :as => :discuss #NYI
 
   match '/revision/history/:id',   :to => 'revisions#index',
                                   :as => :show_history
