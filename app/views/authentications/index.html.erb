@@ -1,4 +1,7 @@
 <%# title "Sign In" %>  
+<div id="authents">
+<h1>Login<a>[x]</a></h1>
+<div id="authcontent">
 <% if @authentications %>  
  <% unless @authentications.empty? %>  
   <p><strong>You can sign in to this account using:</strong></p>  
@@ -23,3 +26,4 @@
   <%= image_tag "facebook_64.png", :size => "64x64", :alt => "Facebook" %>Facebook</a>  
 <a href="/auth/google" class="auth_provider">  
   <%= image_tag "google_64.png", :size => "64x64", :alt => "Google" %>Google</a>  
+</div></div>

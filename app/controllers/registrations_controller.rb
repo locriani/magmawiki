@@ -9,6 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     super  
     if session[:omniauth]  
       @user.apply_omniauth(session[:omniauth])  
+	  @user.email = session[:omniauth].recursive_find_by_key("email")
       @user.valid?  
     end  
   end  
