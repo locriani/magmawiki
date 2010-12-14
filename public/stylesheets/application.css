@@ -134,6 +134,9 @@ ins.diff {
     text-decoration: none;
 }
 
+#authcontent {
+margin: 0 74px;
+}
 
 #authents {
     -moz-box-shadow: 0 1px 3px #999;
@@ -142,14 +145,20 @@ ins.diff {
     border: 1px solid #9DF;
     font-size: .9em;
     margin: 1em auto;
-    width: 33em;
+    width: 400px;
     text-align: left;
+	min-height:150px;
 }
-#authents a.auth_provider {
-
+.auth_provider img {
+  display: block;
 }
-#authents a.auth_provider img {
 
+.auth_provider {
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 10px;
 }
 
 #authents h1 {
