@@ -6,12 +6,6 @@ class WikiParser < WikiCloth::Parser
   def section_link(section)
 	"/edit/section/#{section}/#{self.params[:pagename]}"
   end
-
-  def templater(template, args = nil)
-    tmpname = template.gsub(/\s/,"_")
-    article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
-    article.nil? ? nil : article.current_revision.body
-  end
 	
   def template(template, args = nil)
     tmpname = template.gsub(/\s/,"_")
