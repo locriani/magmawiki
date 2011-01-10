@@ -3,6 +3,6 @@
 		<%= link_to "#{t 'history.revision.default'} #{revision.id}", show_revision_path(revision, @article) -%>
 		<%=h revision.created_at.to_s	-%>
 		<%=h revision.summary -%>
-		<%=h revision.wiki_session.user.login unless (revision.wiki_session.nil? || revision.wiki_session.user.nil?) %>		
+		<%=h revision.wiki_session.user.username unless (revision.wiki_session.nil? || revision.wiki_session.user.nil?) %>		
 	</p>
 <% end %>

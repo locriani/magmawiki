@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.0'
+gem 'rails', '>= 3.0.3'
 
 gem 'devise', '1.1.5'
 gem 'omniauth'
-gem 'wikicloth'
+gem 'wikicloth', '> 0.5.0'
 gem 'nifty-generators'
 
 # group :development, :test do
