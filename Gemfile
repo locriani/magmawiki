@@ -4,7 +4,7 @@ gem 'rails', '>= 3.0.3'
 
 gem 'devise', '1.1.5'
 gem 'omniauth'
-gem 'wikicloth', '> 0.5.0'
+gem 'wikicloth'
 gem 'nifty-generators'
 
 # group :development, :test do
