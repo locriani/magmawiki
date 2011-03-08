@@ -1,6 +1,6 @@
 class RevisionsController < ApplicationController
   def index
-    @article = Article.find_by_slug(params[:id])
+    @article = Article.find_by_slug(params[:id].slugify)
     @toolbar_locals = { :article	          => @article,
   						          :article_active		  => true,
   						          :history_active	    => true}
@@ -10,7 +10,7 @@ class RevisionsController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_slug(params[:id])
+    @article = Article.find_by_slug(params[:id].slugify)
     @revision = @article.revisions.find(params[:revision_id])
     @toolbar_locals = { :article	          => @article,
   						          :article_active		  => true,
@@ -25,9 +25,9 @@ class RevisionsController < ApplicationController
   end
   
   def diff
-    @article = Article.find_by_slug(params[:id])
-	@revision = @article.revisions.find(params[:revision_1_id])
-	@revision2 = @article.revisions.find(params[:revision_2_id])
+    @article = Article.find_by_slug(params[:id].slugify)
+	  @revision = @article.revisions.find(params[:revision_1_id])
+	  @revision2 = @article.revisions.find(params[:revision_2_id])
 	    @toolbar_locals = { :article	          => @article,
   						          :article_active		  => true,
   						          :read_active        => true}

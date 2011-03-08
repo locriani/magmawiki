@@ -65,13 +65,9 @@ private
   
   # TODO: Refactor this for unicode support and better url parsing
   def escape(input_string)
-    output_string = input_string.downcase
+    output_string = input_string
     # We don't want to stick anything that's not a number or letter in our urls
-    output_string.gsub!(/[^a-zA-Z0-9]/, '_')
-    # and we don't want to have multiple '_' in a row
-    output_string.gsub!(/(_{2,})/, '_')
-    # and strip trailing underscores
-    output_string.chomp('_')
+    output_string.slugify
   end
   
 end
