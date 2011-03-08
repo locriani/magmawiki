@@ -7,7 +7,7 @@ gem 'omniauth'
 gem 'wikicloth'
 gem 'nifty-generators'
 
-group :development, :test do
+group :development, :test, :cucumber do
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
   gem 'shoulda'
