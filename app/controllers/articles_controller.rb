@@ -117,4 +117,9 @@ class ArticlesController < ApplicationController
     end
   end
   
+  #TODO: Real search, and better location
+  def search
+    redirect_to show_article_url(params[:search].slugify)
+  end
+  
 end

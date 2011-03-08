@@ -25,7 +25,10 @@
 
       <div id="search">
 	    <%#= render partial => "layouts/search" -%>
-	    <input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> 
+	    <!--<input id="searchInput" title="Search Magmawiki" accesskey="f" value="" name="search" /> -->
+	    <%= form_tag search_for_article_url, :method => 'get' do %>  
+          <%= text_field_tag :search, params[:search], :id => "searchInput" %> 
+      <% end %>
       </div>
 
       <div id="article-tools-right">

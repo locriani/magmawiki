@@ -26,6 +26,7 @@ Magmawiki::Application.routes.draw do
    
     match '/wiki/',     :to => 'articles#index'
     match '/wiki/*id',  :to => 'articles#show', :as => :show_article
+    match '/search', :to => 'articles#search', :as => :search_for_article #TODO: Real search and better placement of search
   # }
   ################
   
