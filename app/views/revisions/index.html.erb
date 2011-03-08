@@ -1,8 +1,6 @@
 <% @article.revisions.find_all_ordered.each do |revision| %>
 	<p>
-		<%= link_to "#{t 'history.revision.default'} #{revision.id}", show_revision_path(revision, @article) -%>
-		<%=h revision.created_at.to_s	-%>
-		<%=h revision.summary -%>
-		<%=h revision.wiki_session.user.username unless (revision.wiki_session.nil? || revision.wiki_session.user.nil?) %>		
+		<%= link_to "#{revision.created_at.to_s} - #{revision.summary}", show_revision_path(revision, @article) -%>
+		<%=h (revision.wiki_session.user.username unless revision.wiki_session.user.nil?) || revision.wiki_session.ip_address  %>		
 	</p>
 <% end %>
