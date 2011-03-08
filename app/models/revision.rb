@@ -19,7 +19,7 @@ MARKUP_ENGINES = {
 	  :data => body,
 	  :params => {
 	    :pagename => Article.find_by_id(article_id).slug, 
-		"PAGENAME" => Article.find_by_id(article_id).title
+		  "PAGENAME" => Article.find_by_id(article_id).title
 	  }
     ).to_html
   end
@@ -52,7 +52,7 @@ class Revision < ActiveRecord::Base
 
   def markup_proc
     unless result = MARKUP_ENGINES[engine_name]
-      puts "Warning: Revision is trying to use a nonexistant engine (#{engine_name.inspect})"
+      Rails.logger.warn "Warning: Revision is trying to use a nonexistant engine (#{engine_name.inspect})"
       result = proc { |text| text }
     end
 

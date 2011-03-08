@@ -35,7 +35,7 @@ class Article < ActiveRecord::Base
   
   ## Validations
 
-  before_validation_on_create  :prepare_article_slug
+  before_validation  :prepare_article_slug, :on => :create
 
   validates_presence_of   :title
   validates_presence_of   :slug
