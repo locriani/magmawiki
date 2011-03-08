@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
     revision = @article.revisions.build(params[:revision])
     revision.approved = true
     
-    revision.wiki_session = WikiSession.create(:user => current_user, :ip_address => request.remote_ip)
+    revision.wiki_session = WikiSession.create(:user_id => current_user, :ip_address => request.remote_ip)
     
     if @article.update_attributes(params[:article])
       flash[:notice] = I18n.t 'article.update_message'

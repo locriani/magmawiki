@@ -16,5 +16,5 @@ class WikiSession < ActiveRecord::Base
   belongs_to :revision
   belongs_to :user
   
-  attr_accessible :ip_address
+  attr_accessible :ip_address, :user_id
 end
