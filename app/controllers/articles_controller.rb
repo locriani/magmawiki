@@ -8,7 +8,7 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :read_active        => true}
@@ -50,8 +50,8 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    unless @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
-      @article = Article.new(:title=>params[:id])
+    unless @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
+      @article = Article.new(:title=>params[:id].slugify)
       @article.current_revision = Revision.new
     end
 
@@ -63,7 +63,7 @@ class ArticlesController < ApplicationController
   end
 
   def editsec
-    @article = Article.find_by_slug(params[:id].downcase, :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
 
     @wiki = WikiParser.new(:data => @article.current_revision.body)
     @article.current_revision.body = @wiki.get_section(params[:section].to_s)
@@ -77,12 +77,13 @@ class ArticlesController < ApplicationController
   end
 
   def update
-    @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
+    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :current_revision)
 
     revision = @article.revisions.build(params[:revision])
     revision.approved = true
     
-    revision.wiki_session = WikiSession.create(:user => current_user)
+    revision.wiki_session = WikiSession.create(:user_id => current_user, :ip_address => request.remote_ip)
+    
     if @article.update_attributes(params[:article])
       flash[:notice] = I18n.t 'article.update_message'
       redirect_to show_article_url(@article)
@@ -96,10 +97,10 @@ class ArticlesController < ApplicationController
   end
 
   def updatesec
-    @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
+    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :current_revision)
 
     @wiki = WikiParser.new(:data => @article.current_revision.body)
-	@wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
+	  @wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
 	
     rev = params[:revision]
     rev[:body] = @wiki.to_wiki
@@ -107,7 +108,7 @@ class ArticlesController < ApplicationController
     revision = @article.revisions.build(rev)
     revision.approved = true
     
-    revision.wiki_session = WikiSession.create(:user => current_user)
+    revision.wiki_session = WikiSession.create(:user_id => current_user, :ip_address => request.remote_ip)
     if @article.update_attributes(params[:article])
       flash[:notice] = I18n.t 'article.update_message'
       redirect_to show_article_url(@article)

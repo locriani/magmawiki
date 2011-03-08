@@ -12,32 +12,32 @@ Magmawiki::Application.routes.draw do
     match '/new',     :to => 'articles#new',    :as => :new_article
     match '/create',  :to => 'articles#create', :as => :create_article
   
-    match '/edit/:id',    :to => 'articles#edit',
+    match '/edit/*id',    :to => 'articles#edit',
                           :as => :edit_article
-    match '/edit/section/:id/:section/',  #TODO: This entire action is nasty and needs refactoring
+    match '/edit/section/:section/*id',  #TODO: This entire action is nasty and needs refactoring
                           :to => 'articles#editsec',
                           :as => :edit_article_section
   
-    match '/update/:id',  :to => 'articles#update',
+    match '/update/*id',  :to => 'articles#update',
                           :as => :update_article
-    match '/update/section/:id/:section', #TODO: This entire action is nasty and needs refactoring
+    match '/update/section/:section/*id', #TODO: This entire action is nasty and needs refactoring
                           :to => 'articles#updatesec',
                           :as => :update_article_section
    
     match '/wiki/',     :to => 'articles#index'
-    match '/wiki/:id',  :to => 'articles#show', :as => :show_article
+    match '/wiki/*id',  :to => 'articles#show', :as => :show_article
   # }
   ################
   
   # Comments
   match '/', :id => 'main_page',  :to => redirect('/wiki/%{id}'), :as => :discuss #NYI
 
-  match '/revision/history/:id',   :to => 'revisions#index',
+  match '/revision/history/*id',   :to => 'revisions#index',
                                   :as => :show_history
-  match '/revision/:revision_id/show/:id', #TODO: This entire action is nasty and needs refactoring
+  match '/revision/:revision_id/show/*id', #TODO: This entire action is nasty and needs refactoring
                                   :to => 'revisions#show',
                                   :as => :show_revision
-  match '/revision/:revision_1_id/diff/:revision_2_id/:id', #TODO: This entire action is nasty and needs refactoring
+  match '/revision/:revision_1_id/diff/:revision_2_id/*id', #TODO: This entire action is nasty and needs refactoring
                                   :to => 'revisions#diff',
                                   :as => :diff_revision
 								  

@@ -73,8 +73,8 @@ class Revision < ActiveRecord::Base
   require 'tempfile'
   require 'open3'
   def diff_against(other)
-    a = other.to_html
-    b = self.to_html
+    a = other.body
+    b = self.body
 
     #Differ.diff_by_word(a, b)
     #xhtml_diff(a, b)
