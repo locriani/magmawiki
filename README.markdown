@@ -1,11 +1,6 @@
 Magmawiki
 =========
 
-Narwhal Branch
---------------
-
-Emalee is making changes in this branch as she dog-foods Magmawiki. Occasionally these changes will be merged back into develop. 
-
 What is Magmawiki?
 ------------------
 
