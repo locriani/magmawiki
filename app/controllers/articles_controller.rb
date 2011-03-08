@@ -82,7 +82,7 @@ class ArticlesController < ApplicationController
     revision = @article.revisions.build(params[:revision])
     revision.approved = true
     
-    revision.wiki_session = WikiSession.create(:user => current_user)
+    revision.wiki_session = WikiSession.create(:user => current_user, :ip_address => request.remote_ip)
     if @article.update_attributes(params[:article])
       flash[:notice] = I18n.t 'article.update_message'
       redirect_to show_article_url(@article)
@@ -99,7 +99,7 @@ class ArticlesController < ApplicationController
     @article = Article.find_or_initialize_by_slug(params[:id].downcase, :include => :current_revision)
 
     @wiki = WikiParser.new(:data => @article.current_revision.body)
-	@wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
+	  @wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
 	
     rev = params[:revision]
     rev[:body] = @wiki.to_wiki
@@ -107,7 +107,7 @@ class ArticlesController < ApplicationController
     revision = @article.revisions.build(rev)
     revision.approved = true
     
-    revision.wiki_session = WikiSession.create(:user => current_user)
+    revision.wiki_session = WikiSession.create(:user => current_user, :ip_address => request.remote_ip)
     if @article.update_attributes(params[:article])
       flash[:notice] = I18n.t 'article.update_message'
       redirect_to show_article_url(@article)
