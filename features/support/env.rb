@@ -54,3 +54,7 @@ if defined?(ActiveRecord::Base)
   rescue LoadError => ignore_if_database_cleaner_not_present
   end
 end
+
+World(Webrat::Methods)
+World(Webrat::Matchers)
+

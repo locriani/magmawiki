@@ -1,4 +1,5 @@
 # Rails stuff
+*.log
 log/*.log
 tmp/**/*
 db/*.sqlite3
