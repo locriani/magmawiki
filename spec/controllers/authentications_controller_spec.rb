@@ -5,10 +5,8 @@ describe AuthenticationsController do
   render_views
 
   it "index action should render index template" do
-    pending do
-      get :index
-      response.should render_template(:index)
-    end
+    get :index
+    response.should render_template(:index)
   end
   
   it "create action should render new template when model is invalid" do
@@ -35,4 +33,5 @@ describe AuthenticationsController do
       Authentication.exists?(authentication.id).should be_false
     end
   end
+  include Devise::TestHelpers
 end

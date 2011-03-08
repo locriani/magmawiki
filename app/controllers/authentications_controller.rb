@@ -1,6 +1,7 @@
 class AuthenticationsController < ApplicationController  
   def index  
-	@authentications = current_user.authentications if current_user  
+   	@authentications = current_user.authentications if current_user 
+    render :index 
   end  
     
   def create  
