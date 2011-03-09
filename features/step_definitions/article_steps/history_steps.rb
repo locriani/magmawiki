@@ -1,12 +1,13 @@
 Given /^(?:|I )am reading an article with (\d+) revision(?:|s)$/ do |number_of_revisions|
+  # This is a bundle of mess because of the way our wikisessions model is (not) working.
   number_of_revisions = number_of_revisions.to_i
   @article = Factory.create(:article)
-  
+  @user = Factory.create(:user)  
   number_of_revisions.times do |i|
-    revision = @article.revisions.create(:body => "something")
-    if (i + 1) == number_of_revisions
-      revision.save
-    end
+    revision = @article.revisions.build(:body => "text")
+    revision.wiki_session = WikiSession.create(:user_id => @user)
+    revision.engine_name = "wikicloth"
+    revision.save!
   end
   Given "I am on article #{@article.title}"
 end

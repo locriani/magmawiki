@@ -13,6 +13,7 @@
 #  approved    :boolean         
 #
 
+#TODO: This should be extracted out.
 MARKUP_ENGINES = {
   "wikicloth" => proc do |body, article_id|
     WikiParser.new(
@@ -31,16 +32,6 @@ class Revision < ActiveRecord::Base
   has_one :wiki_session
   has_many :revisions, :through => :article_id
   has_many :threads
-
-  def self.find_all_ordered(order = nil, options = {})
-    if !(order == "DESC" || order == nil)
-      raise ArgumentError, "argument must be nil or DESC"
-    end
-    
-    with_scope :find => options do
-      all(:order => ["created_at ", order])
-    end
-  end
 
   def next
     Revision.first(:conditions=>["article_id = ? and updated_at > ?", article_id, updated_at])

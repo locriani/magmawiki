@@ -3,7 +3,7 @@ Feature: Login
 	As a user
 	I want to log in
 	
-	Scenario: Log in
+	Scenario: Log in with a wiki account
 		Given I am on the home page
 		And I am not logged in
 		And I have an account with username "john" and password "somepassword"
@@ -14,3 +14,5 @@ Feature: Login
 			| Password: | somepassword |
 		And I press "Submit"
 		Then I should see "Successfully logged in"
+		
+	Scenario: Log in with OpenID

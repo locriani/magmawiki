@@ -4,5 +4,5 @@ Given /^I am not logged in$/ do
 end
 
 Given /^I have an account with username "([^\"]*)" and password "([^\"]*)"$/ do |username, password|
-  @user = Factory.create(:user, :login => username, :password => password)
+  @user = Factory.create(:user, :username => username, :password => password)
 end
