@@ -7,6 +7,10 @@ class WikiParser < WikiCloth::Parser
 	  "/edit/section/#{section}/#{self.params[:pagename]}"
   end
   
+  link_attributes_for do |page|
+    {:href => "/wiki/#{page}"}
+  end
+      
   template do |template|
     tmpname = template.gsub(/\s/,"_")
     article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
