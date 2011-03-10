@@ -12,7 +12,7 @@
 #
 
 class WikiSession < ActiveRecord::Base
-  # This model keeps track of who editted a revision.
+  # This model keeps track of who edited a revision.
   belongs_to :revision
   belongs_to :user
   

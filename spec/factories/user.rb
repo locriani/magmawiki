@@ -1,5 +1,5 @@
 Factory.define :user do |user|
-  user.sequence :login do |n|
+  user.sequence :username do |n|
     "username#{n}"
   end
   user.sequence :email do |n|

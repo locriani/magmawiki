@@ -1,4 +1,4 @@
-<% @article.revisions.find_all_ordered.each do |revision| %>
+<% @article.revisions.order.each do |revision| %>
 	<p>
 		<%= link_to "#{revision.created_at.to_s} - #{revision.summary}", show_revision_path(revision, @article) -%>
 		<%= ((revision.wiki_session.user.username unless revision.wiki_session.user.nil?) || revision.wiki_session.ip_address)  %>		
