@@ -4,8 +4,7 @@ Feature: History
     I want to be able to view an article's revisions
 
     Scenario Outline: View revision <revision>
-		Given I am reading an article with <total_revisions> revisions
-		And revision <revision> has text "<revision_text>"
+		Given I am reading an article with <total_revisions> revisions and revision <revision> has text "<revision_text>"
 		When I follow "history"
 		Then I should see a list of <total_revisions> revisions
 		When I follow "Revision <revision>"
