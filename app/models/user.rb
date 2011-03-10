@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-  has_many :authentications
   has_many :wikisessions
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable, :lockable and :timeoutable
@@ -9,15 +8,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :username, :password, :password_confirmation, :remember_me
 
-  validates :username, :presence => true, :length => {:minimum => 2}, :uniqueness => true, :format => { :with => /[A-Za-z0-9_\.\-]+/ }
-
-  def apply_omniauth(omniauth)  
-    authentications.build(:provider => omniauth['provider'],:uid => omniauth['uid'])  
-  end  
-  
-  def password_required?  
-    (authentications.empty? || !password.blank?) && super  
-  end  
+  validates :username, :presence => true, :length => {:minimum => 2}, :uniqueness => true, :format => { :with => /[A-Za-z0-9_\.\-]+/ } 
   
   def self.included(base)
     base.extend ClassMethods
@@ -33,12 +24,5 @@ class User < ActiveRecord::Base
         v.validates_length_of       :password, :within => password_length, :allow_blank => true
       end
     end
-  end
-  
-  protected
-
-  def self.find_for_database_authentication(conditions)
-    value = conditions[authentication_keys.first]
-    where(["username = :value", { :value => value }]).first
   end
 end

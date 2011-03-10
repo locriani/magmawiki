@@ -41,10 +41,8 @@ Magmawiki::Application.routes.draw do
   match '/revision/:revision_1_id/diff/:revision_2_id/*id', #TODO: This entire action is nasty and needs refactoring
                                   :to => 'revisions#diff',
                                   :as => :diff_revision
-								  
-  match '/auth/:provider/callback' => 'authentications#create'
-  devise_for :users, :controllers => { :registrations => 'registrations' }  
-  resources :authentications  
+                                  
+  devise_for :users
   root :to => 'projects#index'  
 	
   # And our root route
