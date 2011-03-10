@@ -22,6 +22,11 @@ a:link, a:visited{
     text-decoration:none;
 }
 
+a:link.redlink, a:visited.redlink{
+  color:#c80000;
+  text-decoration:none;  
+}
+
 h1{
 font-size:188%;
 }

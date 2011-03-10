@@ -8,12 +8,12 @@ class WikiParser < WikiCloth::Parser
   end
   
   link_attributes_for do |page|
-    {:href => "/wiki/#{page}"}
+    article = Article.find_by_slug(page.slugify, :include => :current_revision)
+    article.nil? ? {:href => "/wiki/#{page}", :class => "redlink"} : {:href => "/wiki/#{page}"}
   end
       
   template do |template|
-    tmpname = template.gsub(/\s/,"_")
-    article = Article.find_by_slug(tmpname.downcase, :include => :current_revision)
+    article = Article.find_by_slug("template:_".concat(template).slugify, :include => :current_revision)
     article.nil? ? nil : article.current_revision.body.dup
   end
 end
