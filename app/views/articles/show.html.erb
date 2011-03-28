@@ -1,4 +1,4 @@
 <h1><%=h @article.title %></h1>
 <div class="article-text">
-<%= @body.html_safe %>
+<%= raw(@body) %>
 </div>
