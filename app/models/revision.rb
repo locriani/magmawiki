@@ -61,36 +61,5 @@ class Revision < ActiveRecord::Base
   #
   # Diff method  #TODO: Wait seriously, why are we using python and popen for a ruby project?
   #
-  require 'tempfile'
-  require 'open3'
-  def diff_against(other)
-    a = other.body
-    b = self.body
-
-    #Differ.diff_by_word(a, b)
-    #xhtml_diff(a, b)
-
-    tmpfiles = [a,b].map do |doc|
-      f = Tempfile.open("diff")
-      f.write(doc)
-      f.flush
-      f
-    end
-
-    args    = ["python", "lib/diff.py", *tmpfiles.map(&:path)]
-    result  = Open3.popen3(*args) { |stdin, stdout, stderr| stdout.read }
-
-    tmpfiles.each{|f| f.unlink}
-
-    result
-  end
-
-#  def xhtml_diff(doc_a, doc_b)
-#    a = REXML::HashableElementDelegator.new(REXML::Document.new(doc_a))
-#    b = REXML::HashableElementDelegator.new(REXML::Document.new(doc_b))
-#
-#    result = XHTMLDiff.diff(a,b)
-#    result.to_s
-#  end
 
 end
