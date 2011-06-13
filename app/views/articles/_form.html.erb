@@ -1,5 +1,5 @@
 <%# form_for article, :url => method(url_action).call(article) do |f| %>
-<% form_for article, :url => update_article_url(params[:id]) do |f| %>
+<%= form_for article, :url => update_article_url(params[:id]) do |f| %>
 
 	<%= f.error_messages %>
 	<%= f.hidden_field :lock_version %>

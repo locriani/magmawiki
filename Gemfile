@@ -7,6 +7,7 @@ gem 'wikicloth'
 gem 'nifty-generators'
 
 group :development, :test, :cucumber do
+  
   gem 'sqlite3-ruby', :require => 'sqlite3'
   gem 'rspec-rails', '>= 2.0.0.beta.19'
   gem 'shoulda'
@@ -16,4 +17,9 @@ group :development, :test, :cucumber do
   gem 'webrat'
   gem 'cucumber-rails'
   gem 'mocha'
+end
+
+group :osx do
+  gem 'autotest-growl'
+  gem 'autotest-fsevent'
 end
