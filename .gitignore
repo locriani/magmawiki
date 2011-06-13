@@ -11,6 +11,7 @@ rerun.txt
 coverage/**/*
 coverage.data
 doc/**/*
+webrat.log
 
 # Project / editor files
 .*~
