@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rails', '= 3.0.8'
+gem 'rails', '3.0.8'
 
-gem 'devise'
+gem 'devise', '1.1.7'
 gem 'wikicloth', :git => "https://github.com/nricciar/wikicloth.git"
 gem 'nifty-generators'
 gem "builder", "~> 2.1.2"
