@@ -16,15 +16,4 @@ Given /^that article "([^""]*)" exists with title "([^""]*)"$/ do |article_name,
   revision.engine_name = "wikicloth"
   revision.save!
 end
-
-Then /^I should see a link to "([^""]*)" with text "([^""]*)"$/ do |url, text|
-  response_body.should have_selector("a[href='#{ url }']") do |element|
-    element.should contain(text)
-  end
-end
-
-Then /^I should see a link to "([^""]*)" with text "([^""]*)" and class "([^""]*)"$/ do |url, text, a_class|
-  response_body.should have_selector('a', :href => url, :class => a_class) do |element|
-    element.should contain(text)
-  end
 end
