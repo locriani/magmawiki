@@ -17,3 +17,8 @@ Test Suite
 
 To run the test suite, use `AUTOFEATURE=TRUE bundle exec autotest`.  This will run Cucumber features as well.
 [1]: http://nvie.com/posts/a-successful-git-branching-model/ "A Successful Git Branching Model"
+
+Deployment
+==========
+
+We can not recommend the use of Magmawiki in a production environment at this time.
