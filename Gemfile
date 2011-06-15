@@ -17,6 +17,7 @@ group :development, :test, :cucumber do
   
   gem 'webrat'
   gem 'cucumber-rails'
+  gem 'database_cleaner'
   gem 'mocha'
 end
 
