@@ -16,4 +16,3 @@ Given /^that article "([^""]*)" exists with title "([^""]*)"$/ do |article_name,
   revision.engine_name = "wikicloth"
   revision.save!
 end
-end
