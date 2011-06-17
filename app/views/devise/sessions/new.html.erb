@@ -1,11 +1,22 @@
 <h2>Sign in</h2>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :username %><br />
-  <%= f.text_field :username %></p>
+<script src="/javascripts/jquery.identicon5.js"></script>
+<script src="/javascripts/jquery.md5.js"></script>
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  
+  <p>
+    <%= f.label :username %><br />
+    
+    <input style="float:left;" name="username" onkeyup="$('li#identicon')[0].innerHTML=$.md5(this.value);$('li#identicon').identicon5({size:50});">
+    
+    <ul><li id="identicon" style="width:50px;height:50px;list-style-type: none"></li></ul>
+  </p>
+  
+  <p>
+    <%= f.label :password %><br />
+    <%= f.password_field :password %>
+  </p>
 
   <% if devise_mapping.rememberable? -%>
     <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>

@@ -2,9 +2,7 @@
 <%= raw "<html lang=\"#{I18n.locale}\">" %>
 	<head>
 		<title>
-		  <% title = yield(:title) || @title %>
-		  <%= h "#{title} ::" if title -%> 
-		  <%= h MAGMAWIKI_CONFIG[:title] -%>
+		  <% title = yield(:title) || @title %> <%= h "#{title} ::" if title -%> <%= h MAGMAWIKI_CONFIG[:title] -%>
     </title>
 		<%= javascript_include_tag 'rails', 'jquery-1.4.2.min', 'chroma-hash/chroma-hash', 'application' %>
 		<%= stylesheet_link_tag 'reset', 'application', 'header', 'forms' %>

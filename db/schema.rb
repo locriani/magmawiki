@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110308062555) do
+ActiveRecord::Schema.define(:version => 20110310102035) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,14 +23,6 @@ ActiveRecord::Schema.define(:version => 20110308062555) do
   end
 
   add_index "articles", ["slug"], :name => "index_articles_on_slug", :unique => true
-
-  create_table "authentications", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "provider"
-    t.string   "uid"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "comments", :force => true do |t|
     t.integer  "article_id"
@@ -68,6 +60,7 @@ ActiveRecord::Schema.define(:version => 20110308062555) do
     t.string   "summary"
     t.string   "engine_name"
     t.boolean  "approved"
+    t.integer  "wiki_session_id"
   end
 
   add_index "revisions", ["approved"], :name => "index_revisions_on_approved"
@@ -113,7 +106,6 @@ ActiveRecord::Schema.define(:version => 20110308062555) do
 
   create_table "wiki_sessions", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "revision_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
