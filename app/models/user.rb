@@ -23,34 +23,30 @@
 #
 
 class User < ActiveRecord::Base
-  has_many :wiki_sessions
-  has_many :user_preferences
-  attr_accessor :locale
-  
-  acts_as_authentic do |c|
-    c.crypto_provider = Authlogic::CryptoProviders::BCrypt
-  end
-  
-  # This allows us to use user.preferences as an accessor.
-  def preferences
-    @preferences ||= Preferences.new(self)
-  end
-end
+  has_many :wikisessions
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable, :lockable and :timeoutable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
 
-# Shorcut class to allow us to use user.preferences[:key] format.
-class Preferences
-  def initialize(user)
-    @user = user
-  end
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :username, :password, :password_confirmation, :remember_me
+
+  validates :username, :presence => true, :length => {:minimum => 2}, :uniqueness => true, :format => { :with => /[A-Za-z0-9_\.\-]+/ } 
   
-  def [](key)
-    preference = @user.user_preferences.find_by_preference(key.to_s)
-    preference.value unless preference.nil?
-  end
-  
-  def []=(key, value)
-    preference = @user.user_preferences.find_or_create_by_preference(key.to_s)
-    preference.value = value
-    preference.save!
+  def self.included(base)
+    base.extend ClassMethods
+    assert_validations_api!(base)
+
+    base.class_eval do
+      validates_presence_of   :username
+      validates_uniqueness_of :username, :scope => authentication_keys[1..-1], :case_sensitive => false, :allow_blank => true
+
+      with_options :if => :password_required? do |v|
+        v.validates_presence_of     :password
+        v.validates_confirmation_of :password
+        v.validates_length_of       :password, :within => password_length, :allow_blank => true
+      end
+    end
   end
 end

@@ -13,13 +13,14 @@
 #  approved    :boolean         
 #
 
+#TODO: This should be extracted out.
 MARKUP_ENGINES = {
   "wikicloth" => proc do |body, article_id|
     WikiParser.new(
 	  :data => body,
 	  :params => {
 	    :pagename => Article.find_by_id(article_id).slug, 
-		"PAGENAME" => Article.find_by_id(article_id).title
+		  "PAGENAME" => Article.find_by_id(article_id).title
 	  }
     ).to_html
   end
@@ -32,16 +33,6 @@ class Revision < ActiveRecord::Base
   has_many :revisions, :through => :article_id
   has_many :threads
 
-  def self.find_all_ordered(order = nil, options = {})
-    if !(order == "DESC" || order == nil)
-      raise ArgumentError, "argument must be nil or DESC"
-    end
-    
-    with_scope :find => options do
-      all(:order => ["created_at ", order])
-    end
-  end
-
   def next
     Revision.first(:conditions=>["article_id = ? and updated_at > ?", article_id, updated_at])
   end
@@ -52,7 +43,7 @@ class Revision < ActiveRecord::Base
 
   def markup_proc
     unless result = MARKUP_ENGINES[engine_name]
-      puts "Warning: Revision is trying to use a nonexistant engine (#{engine_name.inspect})"
+      Rails.logger.warn "Warning: Revision is trying to use a nonexistant engine (#{engine_name.inspect})"
       result = proc { |text| text }
     end
 
@@ -68,38 +59,7 @@ class Revision < ActiveRecord::Base
   end
 
   #
-  # Diff method
+  # Diff method  #TODO: Wait seriously, why are we using python and popen for a ruby project?
   #
-  require 'tempfile'
-  require 'open3'
-  def diff_against(other)
-    a = other.to_html
-    b = self.to_html
-
-    #Differ.diff_by_word(a, b)
-    #xhtml_diff(a, b)
-
-    tmpfiles = [a,b].map do |doc|
-      f = Tempfile.open("diff")
-      f.write(doc)
-      f.flush
-      f
-    end
-
-    args    = ["python", "lib/diff.py", *tmpfiles.map(&:path)]
-    result  = Open3.popen3(*args) { |stdin, stdout, stderr| stdout.read }
-
-    tmpfiles.each{|f| f.unlink}
-
-    result
-  end
-
-#  def xhtml_diff(doc_a, doc_b)
-#    a = REXML::HashableElementDelegator.new(REXML::Document.new(doc_a))
-#    b = REXML::HashableElementDelegator.new(REXML::Document.new(doc_b))
-#
-#    result = XHTMLDiff.diff(a,b)
-#    result.to_s
-#  end
 
 end

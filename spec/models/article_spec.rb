@@ -1,14 +1,15 @@
+# coding: utf-8
+
 require 'spec_helper'
 
 describe Article do
   context 'slugs' do
-    it 'should strip out non a-zA-Z0-9 characters' do
+    it 'should strip out non word (a-z, A-Z, 0-9, øéáå, asian) characters' do
       title = "ésomething!~"
       article = Factory.create(:article, :title => title)
       
       article.slug["!"].should be_nil
       article.slug["~"].should be_nil
-      article.slug["é"].should be_nil
     end
     
     it 'should strip out double underscore characters' do
@@ -35,17 +36,6 @@ describe Article do
       article = Factory.create(:article, :title => title)
       
       article.slug.reverse[0,1]["_"].should be_nil
-    end
-    
-    it 'should replace any sequence of non a-zA-Z0-9 characters with an underscore' do
-      title = "exclamation!!!point.THIS_()()is a test"
-      article = Factory.create(:article, :title => title)
-      
-      article.slug["!"].should be_nil
-      article.slug["("].should be_nil
-      article.slug[")"].should be_nil
-      article.slug[" "].should be_nil
-      article.slug[11,1]["_"].should_not be_nil
     end
     
     it 'should be immutable' do

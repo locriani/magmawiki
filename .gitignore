@@ -1,14 +1,18 @@
 # Rails stuff
+*.log
 log/*.log
+tmp/*
 tmp/**/*
 db/*.sqlite3
 db/*.sqlite3-journal
+.bundle/*
 
 # Unit testing / code coverage
 rerun.txt
 coverage/**/*
 coverage.data
 doc/**/*
+webrat.log
 
 # Project / editor files
 .*~
@@ -16,3 +20,4 @@ doc/**/*
 .project
 .idea
 nbproject/*
+.rvmrc*

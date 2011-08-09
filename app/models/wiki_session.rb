@@ -12,14 +12,9 @@
 #
 
 class WikiSession < ActiveRecord::Base
-  # This model does automagical wonderful things to link our different session types
-  # to a revision (future: or a comment).
-  
-  # We can have:
-  # IP Address ONLY sessions (no cookies)
-  # IP + Cookie
-  # User
-  
+  # This model keeps track of who edited a revision.
   belongs_to :revision
   belongs_to :user
+  
+  attr_accessible :ip_address, :user_id, :user
 end

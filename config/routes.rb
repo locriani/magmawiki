@@ -1,36 +1,50 @@
-ActionController::Routing::Routes.draw do |map|
-  # user routes
-  map.login "login", :controller => "user_sessions", :action => "new"
-  map.logout "logout", :controller => "user_sessions", :action => "destroy"
+Magmawiki::Application.routes.draw do
+
+  # Users and user_sessions for login / logout
+  #resources :users
+  #resources :user_sessions
   
-  map.resources :users
-  map.resource :user_session
-
-  map.with_options :controller => 'articles' do |map|
-    # create
-    map.new_article     '/new',         :action => 'new'
-    map.create_article  '/create/:id',  :action => 'create'
-
-    # update
-    map.edit_article    '/edit/:id',    :action => 'edit'
-    map.edit_article_section '/editsec/:section/:id', :action => 'editsec'
-	map.update_article  '/update/:id',  :action => 'update'
-    map.update_article_section  '/updatesec/:section/:id',  :action => 'updatesec'
-
-    # comments
-    map.discuss         '/discuss/:id',     :controller=>'topic', :action => 'index'
-
-    # read
-    map.connect         '/wiki/',            :action => 'index'
-    map.show_article    '/wiki/:id',         :action => 'show'
-
-    # destroy
-    # NYI
-  end
+  match 'login',  :to => 'user_sessions#create'
+  match 'logout', :to => 'user_sessions#destroy'
   
-  map.show_history      '/revision/history/:id',                                :controller => :revisions, :action => 'index'
-  map.show_revision     '/revision/:revision_id/show/:id/',                     :controller => :revisions, :action => 'show'
-  map.diff_revision     '/revision/:revision_1_id/diff/:revision_2_id/:id/',    :controller => :revisions,  :action => 'diff'
+  # Article URLs {
+  ################
+    match '/new',     :to => 'articles#new',    :as => :new_article
+    match '/create',  :to => 'articles#create', :as => :create_article
   
-  map.root :controller => :articles, :action => :redirect, :id => "Main_page"
+    match '/edit/*id',    :to => 'articles#edit',
+                          :as => :edit_article
+    match '/edit/section/:section/*id',  #TODO: This entire action is nasty and needs refactoring
+                          :to => 'articles#editsec',
+                          :as => :edit_article_section
+  
+    match '/update/*id',  :to => 'articles#update',
+                          :as => :update_article
+    match '/update/section/:section/*id', #TODO: This entire action is nasty and needs refactoring
+                          :to => 'articles#updatesec',
+                          :as => :update_article_section
+   
+    match '/wiki/',     :to => 'articles#index'
+    match '/wiki/*id',  :to => 'articles#show', :as => :show_article
+    match '/search', :to => 'articles#search', :as => :search_for_article #TODO: Real search and better placement of search
+  # }
+  ################
+  
+  # Comments
+  match '/', :id => 'main_page',  :to => redirect('/wiki/%{id}'), :as => :discuss #NYI
+
+  match '/revision/history/*id',   :to => 'revisions#index',
+                                  :as => :show_history
+  match '/revision/:revision_id/show/*id', #TODO: This entire action is nasty and needs refactoring
+                                  :to => 'revisions#show',
+                                  :as => :show_revision
+  match '/revision/:revision_1_id/diff/:revision_2_id/*id', #TODO: This entire action is nasty and needs refactoring
+                                  :to => 'revisions#diff',
+                                  :as => :diff_revision
+                                  
+  devise_for :users
+  root :to => 'projects#index'  
+	
+  # And our root route
+  root :to => 'articles#index'
 end

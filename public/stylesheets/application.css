@@ -7,6 +7,8 @@ body{
     color: #555;
 }
 
+
+
 table{
 font-family: sans-serif;
 }
@@ -18,6 +20,11 @@ margin-left:2em;
 a:link, a:visited{
     color:#08c;
     text-decoration:none;
+}
+
+a:link.redlink, a:visited.redlink{
+  color:#c80000;
+  text-decoration:none;  
 }
 
 h1{
@@ -54,6 +61,7 @@ div#body{
       padding: 5px;
       padding-top: 10px;
       background: #FFF;
+
 }
 
 #article_title{
@@ -129,4 +137,60 @@ ins.diff {
     color: chartreuse;
     background-color: darkgreen;
     text-decoration: none;
+}
+
+#authcontent {
+margin: 0 74px;
+}
+
+#authents {
+    -moz-box-shadow: 0 1px 3px #999;
+    -webkit-box-shadow: 0 1px 3px #999;
+    background-color: #eef5ff;
+    border: 1px solid #9DF;
+    font-size: .9em;
+    margin: 1em auto;
+    width: 400px;
+    text-align: left;
+	min-height:150px;
+}
+.auth_provider img {
+  display: block;
+}
+
+.auth_provider {
+  float: left;
+  text-decoration: none;
+  margin-right: 20px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+#authents h1 {
+    height:12px;
+    max-height:12px;
+    font-size:12px;
+    background: #FFF url('/images/Gradient-blue.png') repeat-x;
+    display: block;
+	margin:0;
+    margin-bottom:1em;
+    color: #08c;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 12px;
+/*    border-top-left-radius:4px;
+    -moz-border-radius-topleft:4px;
+    -webkit-border-top-left-radius:4px;
+    border-bottom-right-radius:4px;
+    -moz-border-radius-bottomright:4px;
+    -webkit-border-bottom-right-radius:4px; */
+/*    text-shadow: 0 -1px 1px #fff; */
+    border-bottom: 1px solid #9DF;
+    position: relative;
+    outline:0px;
+    padding:6px 8px;
+}
+
+#authents h1 a{
+    float:right;
 }
