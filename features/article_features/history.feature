@@ -5,7 +5,7 @@ Feature: History
 
     Scenario Outline: View revision <revision>
 		Given I am reading an article with <total_revisions> revisions and revision <revision> has text "<revision_text>"
-		When I follow "history"
+		When I follow "History"
 		Then I should see a list of <total_revisions> revisions
 		When I follow "Revision <revision>"
 		Then I should see "You are viewing an older revision of this page"
@@ -23,7 +23,7 @@ Feature: History
 	Scenario: Revision summaries
 		Given I am reading an article with 7 revisions
 		And revision 4 has edit summary "I was modifying this article"
-		When I follow "history"
+		When I follow "History"
 		Then I should see "I was modifying this article"
 		
 	Scenario: Minor revisions
