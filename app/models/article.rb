@@ -22,14 +22,14 @@ class Article < ActiveRecord::Base
   ## Associations
 
   has_many :revisions, :order => "updated_at DESC"
-  has_one :current_revision, :class_name => 'Revision', :order=>"created_at DESC"
+  has_one :latest, :class_name => 'Revision', :order=>"created_at DESC", :include=>:article
 
   has_many :comments
 
 
   ## Attributes
   
-  accepts_nested_attributes_for :current_revision, :revisions
+  accepts_nested_attributes_for :latest, :revisions
   attr_accessible :title
 
   
@@ -42,6 +42,10 @@ class Article < ActiveRecord::Base
   validates_uniqueness_of :slug
   validate :slug_must_be_immutable 
   
+  def self.by_params(params)
+    find_by_slug(params[:id].slugify, :include => :latest)
+  end
+
   #
   # Rails uses to_param to construct the string for the object.
   # This *should* support unicode; but that's a theory.
@@ -50,7 +54,6 @@ class Article < ActiveRecord::Base
     self.slug
   end
 
-  
 private
 
   def slug_must_be_immutable 

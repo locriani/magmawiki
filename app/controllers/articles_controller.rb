@@ -8,7 +8,8 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
+    @article = Article.by_params(params)
+
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :read_active        => true}
@@ -17,7 +18,7 @@ class ArticlesController < ApplicationController
       redirect_to edit_article_url(params[:id])
     else
       @title = @article.title
-      @body = @article.current_revision.to_html
+      @body = @article.latest.to_html
       respond_to do |format|
         format.html
       end
@@ -26,7 +27,7 @@ class ArticlesController < ApplicationController
   
   def new
     @article = Article.new
-    @article.current_revision = @article.revisions.build
+    @article.latest = @article.revisions.build
     
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
@@ -50,34 +51,34 @@ class ArticlesController < ApplicationController
   end
   
   def edit
-    unless @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
+    unless @article = Article.find_by_slug(params[:id].slugify, :include => :latest)
       @article = Article.new(:title=>params[:id].slugify)
-      @article.current_revision = Revision.new
+      @article.latest = Revision.new
     end
 
     # We don't care about the previous revision's summary, because this will be a new revision
-    @article.current_revision.summary = ""
+    @article.latest.summary = ""
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :edit_active        => true}
   end
 
   def editsec
-    @article = Article.find_by_slug(params[:id].slugify, :include => :current_revision)
+    @article = Article.find_by_slug(params[:id].slugify, :include => :latest)
 
-    @wiki = WikiParser.new(:data => @article.current_revision.body)
-    @article.current_revision.body = @wiki.get_section(params[:section].to_s)
+    @wiki = WikiParser.new(:data => @article.latest.body)
+    @article.latest.body = @wiki.get_section(params[:section].to_s)
     @section = params[:section].to_s
 
     # We don't care about the previous revision's summary, because this will be a new revision
-    @article.current_revision.summary = ""
+    @article.latest.summary = ""
     @toolbar_locals = { :article            => @article,
                         :article_active     => true,
                         :edit_active        => true}
   end
 
   def update
-    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :current_revision)
+    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :latest)
 
     revision = @article.revisions.build(params[:revision])
     revision.approved = true
@@ -97,9 +98,9 @@ class ArticlesController < ApplicationController
   end
 
   def updatesec
-    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :current_revision)
+    @article = Article.find_or_initialize_by_slug(params[:id].slugify, :include => :latest)
 
-    @wiki = WikiParser.new(:data => @article.current_revision.body)
+    @wiki = WikiParser.new(:data => @article.latest.body)
 	  @wiki.put_section(params[:section].to_s, params[:revision][:body].to_s)
 	
     rev = params[:revision]
