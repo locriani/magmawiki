@@ -2,6 +2,8 @@ source :rubygems
 
 gem 'rails', '3.0.9'
 
+gem 'haml'
+
 gem 'devise', '1.1.7'       # Authentication
 gem 'nifty-generators'      # wat?
 gem "builder", "~> 2.1.2"   # XML/HTML generator
