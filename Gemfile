@@ -7,18 +7,22 @@ gem 'wikicloth', :git => "https://github.com/epitron/wikicloth.git"
 gem 'nifty-generators'
 gem "builder", "~> 2.1.2"
 
-group :development, :test, :cucumber do
-  
+group :development do
   gem 'sqlite3'
+  gem 'autotest'
+end
+
+group :test, :cucumber do
+  gem 'sqlite3'
+  
   gem 'rspec-rails'
   gem 'cucumber-rails'
+  gem 'shoulda'
+  
   gem 'factory_girl_rails'
-
-  gem 'autotest'
-
+  
   gem 'database_cleaner'
-
-  #gem 'shoulda'
+  
   #gem 'webrat'
   #gem 'mocha'
 end

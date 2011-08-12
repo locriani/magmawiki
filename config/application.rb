@@ -6,6 +6,12 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+
+if defined? FactoryGirl and defined? Factory
+  Object.send(:remove_const, :Factory)
+  Factory = FactoryGirl
+end
+
 module Magmawiki
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
