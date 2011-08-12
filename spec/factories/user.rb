@@ -1,4 +1,4 @@
-Factory(:user) do |user|
+FactoryGirl(:user) do |user|
   user.sequence :username do |n|
     "username#{n}"
   end

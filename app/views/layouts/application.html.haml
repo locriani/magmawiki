@@ -1,0 +1,19 @@
+!!!
+%head
+  / title
+  - title = yield(:title)
+  - title = @title if title.blank?
+  - wikiname = MAGMAWIKI_CONFIG[:title]
+  %title #{h title} :: #{h wikiname}
+
+  / includes
+  = javascript_include_tag 'rails', 'jquery-1.4.2.min', 'chroma-hash/chroma-hash', 'application'
+  = stylesheet_link_tag 'reset', 'application', 'header', 'forms'
+  =# stylesheet_link_tag 'reset', 'application', 'header', 'forms' #, :cache => 'cache/all'
+  = yield :head
+%body
+  = render :partial => 'layouts/toolbar_header', :locals => define_toolbar_variables(@toolbar_locals)
+  #body
+    - flash.each do |name, msg|
+      = content_tag :div, h(msg), :id => "flash_#{name}"
+    = yield

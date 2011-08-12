@@ -1,4 +1,4 @@
-Factory(:article) do |article|
+FactoryGirl(:article) do |article|
   article.sequence :title do |n|
     "Some Title ##{n}"
   end
