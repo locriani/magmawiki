@@ -13,25 +13,37 @@
 #  approved    :boolean         
 #
 
-#TODO: This should be extracted out.
 MARKUP_ENGINES = {
-  "wikicloth" => proc do |body, article_id|
+
+  "wikicloth" => proc do |revision|
     WikiParser.new(
-	  :data => body,
-	  :params => {
-	    :pagename => Article.find_by_id(article_id).slug, 
-		  "PAGENAME" => Article.find_by_id(article_id).title
-	  }
+    :data => revision.body,
+    :params => {
+      :pagename => revision.slug,
+      "PAGENAME" => revision.title
+    }
     ).to_html
-  end
+  end,
+
+  'markdown' => proc do |revision|
+    RDiscount.new(revision.body).to_html
+  end,
+
+  'textile' => proc do |revision|
+    RedCloth.new(revision.body).to_html
+  end,
+
 }
 
 class Revision < ActiveRecord::Base
 
-  belongs_to :article, :counter_cache => :revision_count
-  has_one :wiki_session
-  has_many :revisions, :through => :article_id
-  has_many :threads
+  belongs_to  :article,       :counter_cache => :revision_count
+  has_many    :revisions,     :through => :article_id
+  has_one     :wiki_session
+  has_many    :threads
+
+  def slug; article.slug; end
+  def title; article.title; end
 
   def next
     Revision.first(:conditions=>["article_id = ? and updated_at > ?", article_id, updated_at])
@@ -44,14 +56,14 @@ class Revision < ActiveRecord::Base
   def markup_proc
     unless result = MARKUP_ENGINES[engine_name]
       Rails.logger.warn "Warning: Revision is trying to use a nonexistant engine (#{engine_name.inspect})"
-      result = proc { |text| text }
+      result = proc { |article| article.body }
     end
 
     result
   end
 
   def to_html
-    markup_proc.call(body, article_id)
+    markup_proc.call(self)
   end
 
   def prev_diff
