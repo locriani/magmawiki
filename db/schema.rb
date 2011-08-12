@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110310102035) do
+ActiveRecord::Schema.define(:version => 20110310062342) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -60,7 +60,6 @@ ActiveRecord::Schema.define(:version => 20110310102035) do
     t.string   "summary"
     t.string   "engine_name"
     t.boolean  "approved"
-    t.integer  "wiki_session_id"
   end
 
   add_index "revisions", ["approved"], :name => "index_revisions_on_approved"
@@ -106,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20110310102035) do
 
   create_table "wiki_sessions", :force => true do |t|
     t.integer  "user_id"
+    t.integer  "revision_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ip_address"
