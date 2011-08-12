@@ -1,2 +1,2 @@
-Factory(:talk_forum) do |forum|
+FactoryGirl(:talk_forum) do |forum|
 end

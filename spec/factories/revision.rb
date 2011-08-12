@@ -1,4 +1,4 @@
-Factory(:revision) do |revision|
+FactoryGirl(:revision) do |revision|
   revision.sequence :body do |s|
      "#{s} Some text goes here"
   end
