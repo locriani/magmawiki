@@ -1,7 +1,0 @@
-<h2>Articles:</h2>
-<% @articles.each do |article| %>
-	<h3><%=link_to (h article.title), show_article_path(article) %></h3>
-<% end %>
-<br />
-
-<% content_for :title do %>Articles<% end %>

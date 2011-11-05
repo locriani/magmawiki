@@ -1,6 +1,0 @@
-<div id="notice"><%= I18n.t 'history.revision.older'-%></div>
-<h1><%=h @article.title -%></h1>
-<p><%= @revision.diff_against(@revision2).html_safe -%></p>
-<div id="revision-summary">
-	<p><%=t 'history.revision.summary' -%>: <%= @revision.summary -%></p>
-</div>
