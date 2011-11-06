@@ -11,5 +11,7 @@ class CreateRevisions < ActiveRecord::Migration
 
       t.timestamps
     end
+    add_index :revisions, [:article_id, :id], :unique => true
+    add_index :revisions, :article_id
   end
 end

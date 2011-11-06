@@ -1,5 +1,10 @@
 require 'spec_helper'
 
 describe Article do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do 
+    Factory.create(:article)
+  end
+  it { should have_many :revisions }
+  it { should validate_presence_of :title }
+  it { should validate_uniqueness_of :title }
 end

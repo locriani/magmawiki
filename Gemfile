@@ -17,7 +17,7 @@ end
 gem 'jquery-rails'
 
 group :test, :development do
-  gem "shoulda"
+  gem "shoulda-matchers"
   gem "factory_girl"
   gem "rspec-rails", "~> 2.4"
   
