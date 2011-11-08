@@ -1,5 +1,13 @@
-FactoryGirl(:article) do |article|
-  article.sequence :title do |n|
-    "Some Title ##{n}"
+FactoryGirl.define do
+  factory :article do
+    sequence :title do |n|
+      "title#{n}"
+    end
+  end
+  
+  factory :article_without_revision, :class => Article do
+    sequence :title do |n|
+      "title#{n}"
+    end
   end
 end

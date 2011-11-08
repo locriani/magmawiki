@@ -1,37 +1,26 @@
-source :rubygems
+source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0'
 
-gem 'haml'
+gem 'sqlite3'
 
-gem 'devise', '1.1.7'       # Authentication
-gem 'nifty-generators'      # wat?
-gem "builder", "~> 2.1.2"   # XML/HTML generator
+gem "haml"
 
-# Markup engines
-gem 'wikicloth', :git => "https://github.com/epitron/wikicloth.git"
-gem "rdiscount"
-gem "RedCloth"
-
-
-## DEV ENVIRONMENT
-group :development do
-  gem 'sqlite3'
-  gem 'ZenTest', '~> 4.5.0'
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails', "  ~> 3.1.0"
+  gem 'coffee-rails', "~> 3.1.0"
+  gem 'uglifier'
 end
 
-## TEST ENVIRONMENT
-group :test, :cucumber do
-  gem 'sqlite3'
+gem 'jquery-rails'
+
+group :test, :development do
+  gem "shoulda-matchers"
+  gem "factory_girl"
+  gem "rspec-rails", "~> 2.4"
   
-  gem 'rspec-rails'
-  gem 'cucumber-rails'
-  gem 'shoulda'
-  
-  gem 'factory_girl_rails'
-  
-  gem 'database_cleaner'
-  
-  #gem 'webrat'
-  #gem 'mocha'
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'guard-rspec'
 end

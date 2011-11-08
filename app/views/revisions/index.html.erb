@@ -1,8 +1,0 @@
-<% @article.revisions.order.each_with_index do |revision,index| %>
-	<p>
-		<%= link_to "Revision #{@article.revisions.size - index}", show_revision_path(revision, @article) -%> 
-		<%  #should really be #{@article.revisions.size - index} but whatever %>
-		<%= "#{revision.created_at.to_s} - #{revision.summary}" %>
-		<%= ((revision.wiki_session.user.username unless revision.wiki_session.user.nil?) || revision.wiki_session.ip_address)  %>		
-	</p>
-<% end %>

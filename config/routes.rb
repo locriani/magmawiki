@@ -1,50 +1,58 @@
 Magmawiki::Application.routes.draw do
+  # The priority is based upon order of creation:
+  # first created -> highest priority.
 
-  # Users and user_sessions for login / logout
-  #resources :users
-  #resources :user_sessions
-  
-  match 'login',  :to => 'user_sessions#create'
-  match 'logout', :to => 'user_sessions#destroy'
-  
-  # Article URLs {
-  ################
-    match '/new',     :to => 'articles#new',    :as => :new_article
-    match '/create',  :to => 'articles#create', :as => :create_article
-  
-    match '/edit/*id',    :to => 'articles#edit',
-                          :as => :edit_article
-    match '/edit/section/:section/*id',  #TODO: This entire action is nasty and needs refactoring
-                          :to => 'articles#editsec',
-                          :as => :edit_article_section
-  
-    match '/update/*id',  :to => 'articles#update',
-                          :as => :update_article
-    match '/update/section/:section/*id', #TODO: This entire action is nasty and needs refactoring
-                          :to => 'articles#updatesec',
-                          :as => :update_article_section
-   
-    match '/wiki/',     :to => 'articles#index'
-    match '/wiki/*id',  :to => 'articles#show', :as => :show_article
-    match '/search', :to => 'articles#search', :as => :search_for_article #TODO: Real search and better placement of search
-  # }
-  ################
-  
-  # Comments
-  match '/', :id => 'main_page',  :to => redirect('/wiki/%{id}'), :as => :discuss #NYI
+  # Sample of regular route:
+  #   match 'products/:id' => 'catalog#view'
+  # Keep in mind you can assign values other than :controller and :action
 
-  match '/revision/history/*id',   :to => 'revisions#index',
-                                  :as => :show_history
-  match '/revision/:revision_id/show/*id', #TODO: This entire action is nasty and needs refactoring
-                                  :to => 'revisions#show',
-                                  :as => :show_revision
-  match '/revision/:revision_1_id/diff/:revision_2_id/*id', #TODO: This entire action is nasty and needs refactoring
-                                  :to => 'revisions#diff',
-                                  :as => :diff_revision
-                                  
-  devise_for :users
-  root :to => 'projects#index'  
-	
-  # And our root route
-  root :to => 'articles#index'
+  # Sample of named route:
+  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
+  # This route can be invoked with purchase_url(:id => product.id)
+
+  # Sample resource route (maps HTTP verbs to controller actions automatically):
+  #   resources :products
+
+  # Sample resource route with options:
+  #   resources :products do
+  #     member do
+  #       get 'short'
+  #       post 'toggle'
+  #     end
+  #
+  #     collection do
+  #       get 'sold'
+  #     end
+  #   end
+
+  # Sample resource route with sub-resources:
+  #   resources :products do
+  #     resources :comments, :sales
+  #     resource :seller
+  #   end
+
+  # Sample resource route with more complex sub-resources
+  #   resources :products do
+  #     resources :comments
+  #     resources :sales do
+  #       get 'recent', :on => :collection
+  #     end
+  #   end
+
+  # Sample resource route within a namespace:
+  #   namespace :admin do
+  #     # Directs /admin/products/* to Admin::ProductsController
+  #     # (app/controllers/admin/products_controller.rb)
+  #     resources :products
+  #   end
+
+  # You can have the root of your site routed with "root"
+  # just remember to delete public/index.html.
+  # root :to => 'welcome#index'
+
+  # See how all your routes lay out with "rake routes"
+
+  # This is a legacy wild controller route that's not recommended for RESTful applications.
+  # Note: This route will make all actions in every controller accessible via GET requests.
+  # match ':controller(/:action(/:id(.:format)))'
 end

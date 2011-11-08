@@ -1,6 +1,5 @@
-FactoryGirl(:revision) do |revision|
-  revision.sequence :body do |s|
-     "#{s} Some text goes here"
+FactoryGirl.define do
+  factory :revision do
+    association :article
   end
-  revision.association :article
 end
