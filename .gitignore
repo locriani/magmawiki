@@ -18,4 +18,5 @@ webrat.log
 *.bak
 .project
 .idea
+.rvmrc
 nbproject/*
