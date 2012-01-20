@@ -18,21 +18,3 @@ class CreatePermissions < ActiveRecord::Migration
     add_index :permissions, [:namespace_id, :group_id]
   end
 end
-
-/computer
-/ordinateur => 302 redirect => /fr/ordinateur
-/fr/ordinateur
-/fr/computer => 302 redirect => /computer
-
-/en => page about en
-/en/apple
-magmawiki.com
-[en].magmawiki.com/whatever
-
-en.magmawiki.com/wiki/shit
-en.magmawiki.com/user/briess
-en.magmawiki.com/namespaces is why it doesn't work
-unless'
-  
-  we do
-en.magmawiki.com/namespace/apple_products/article/iMa

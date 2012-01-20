@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111106011347) do
+ActiveRecord::Schema.define(:version => 20120120084644) do
 
   create_table "articles", :force => true do |t|
     t.string   "title"
@@ -23,6 +23,63 @@ ActiveRecord::Schema.define(:version => 20111106011347) do
   end
 
   add_index "articles", ["title"], :name => "index_articles_on_title", :unique => true
+
+  create_table "groups", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "admin_users"
+    t.boolean  "moderate_users"
+    t.boolean  "admin_permissions"
+    t.boolean  "admin_namespaces"
+    t.integer  "global_permission_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups", ["global_permission_id"], :name => "index_groups_on_global_permission_id"
+
+  create_table "namespaces", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "namespaces", ["name"], :name => "index_namespaces_on_name"
+
+  create_table "permissions", :force => true do |t|
+    t.integer  "namespace_id"
+    t.integer  "group_id"
+    t.boolean  "create"
+    t.boolean  "read"
+    t.boolean  "update"
+    t.boolean  "destroy"
+    t.boolean  "move"
+    t.boolean  "restrict"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "permissions", ["group_id"], :name => "index_permissions_on_group_id"
+  add_index "permissions", ["namespace_id", "group_id"], :name => "index_permissions_on_namespace_id_and_group_id"
+  add_index "permissions", ["namespace_id"], :name => "index_permissions_on_namespace_id"
+
+  create_table "restrictions", :force => true do |t|
+    t.integer  "article_id"
+    t.integer  "revision_id"
+    t.integer  "creator_id"
+    t.datetime "effective_at"
+    t.datetime "expires_at"
+    t.integer  "restricted_group_id"
+    t.string   "restriction_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "restrictions", ["article_id", "restricted_group_id"], :name => "index_restrictions_on_article_id_and_restricted_group_id"
+  add_index "restrictions", ["article_id"], :name => "index_restrictions_on_article_id"
+  add_index "restrictions", ["creator_id"], :name => "index_restrictions_on_creator_id"
+  add_index "restrictions", ["restricted_group_id"], :name => "index_restrictions_on_restricted_group_id"
+  add_index "restrictions", ["revision_id"], :name => "index_restrictions_on_revision_id"
 
   create_table "revisions", :force => true do |t|
     t.integer  "article_id"
