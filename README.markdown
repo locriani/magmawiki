@@ -11,13 +11,12 @@ Contributions to Magmawiki make us happy.
 We discuss Magmawiki on freenode irc at #magmawiki, feel free to stop in and join us in discussions about the duckbilled prematureoptimizationadon, Starcraft 2, Sesame Street, and occasionally Magmawiki development!
 
 Please note that we don't use the Master branch any longer for development work; instead, it references a stable codebase (usually releases).  We use the [git-flow workflow][1] to help ensure we don't go too insane.
+[1]: http://nvie.com/posts/a-successful-git-branching-model/ "A Successful Git Branching Model"
 
 Test Suite
 ----------
 
-To run the test suite, use `AUTOFEATURE=TRUE bundle exec autotest`.  This will run Cucumber features as well.
-[1]: http://nvie.com/posts/a-successful-git-branching-model/ "A Successful Git Branching Model"
-
+To run the test suite, use `bundle exec guard`.
 Deployment
 ==========
 
