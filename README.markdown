@@ -1,3 +1,5 @@
+Please note: we've decided to rewrite Magmawiki from scratch, if you wish to see older versions of Magmawiki, please check the develop branch.
+
 What is Magmawiki?
 ==================
 
