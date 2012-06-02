@@ -28,6 +28,7 @@ group :test, :development do
   gem 'rspec'
   gem 'rspec-rails'
   gem 'factory_girl'
+  gem 'shoulda', :require => false
 end
 
 # To use ActiveModel has_secure_password
