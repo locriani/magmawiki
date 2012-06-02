@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602184919) do
+ActiveRecord::Schema.define(:version => 20120602201341) do
 
   create_table "article_bases", :force => true do |t|
     t.string   "title"
@@ -20,17 +20,21 @@ ActiveRecord::Schema.define(:version => 20120602184919) do
     t.integer  "edit_count"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "slug"
   end
 
+  add_index "article_bases", ["slug"], :name => "index_article_bases_on_slug", :unique => true
   add_index "article_bases", ["title"], :name => "index_article_bases_on_title", :unique => true
 
   create_table "article_namespaces", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
   add_index "article_namespaces", ["name"], :name => "index_article_namespaces_on_name", :unique => true
+  add_index "article_namespaces", ["slug"], :name => "index_article_namespaces_on_slug", :unique => true
 
   create_table "article_revisions", :force => true do |t|
     t.integer  "base_id"
