@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20120602184919) do
   add_index "article_namespaces", ["name"], :name => "index_article_namespaces_on_name", :unique => true
 
   create_table "article_revisions", :force => true do |t|
-    t.integer  "article_id"
+    t.integer  "base_id"
     t.text     "body"
     t.string   "engine"
     t.boolean  "compressed"
@@ -44,8 +44,8 @@ ActiveRecord::Schema.define(:version => 20120602184919) do
     t.datetime "updated_at",   :null => false
   end
 
-  add_index "article_revisions", ["article_id", "id"], :name => "index_article_revisions_on_article_id_and_id", :unique => true
-  add_index "article_revisions", ["article_id"], :name => "index_article_revisions_on_article_id"
+  add_index "article_revisions", ["base_id", "id"], :name => "index_article_revisions_on_base_id_and_id", :unique => true
+  add_index "article_revisions", ["base_id"], :name => "index_article_revisions_on_base_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"

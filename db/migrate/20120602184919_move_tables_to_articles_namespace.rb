@@ -7,8 +7,9 @@ class MoveTablesToArticlesNamespace < ActiveRecord::Migration
     remove_index :revisions, [:article_id, :id]
     remove_index :revisions, :article_id
     rename_table :revisions, :article_revisions
-    add_index :article_revisions, [:article_id, :id], :unique => true
-    add_index :article_revisions, :article_id
+    rename_column :article_revisions, :article_id, :base_id
+    add_index :article_revisions, [:base_id, :id], :unique => true
+    add_index :article_revisions, :base_id
 
     remove_index :namespaces, :name
     rename_table :namespaces, :article_namespaces
