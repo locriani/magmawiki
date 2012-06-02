@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120120084644) do
+ActiveRecord::Schema.define(:version => 20120602184919) do
 
-  create_table "articles", :force => true do |t|
+  create_table "article_bases", :force => true do |t|
     t.string   "title"
     t.integer  "current_revision_id"
     t.integer  "view_count"
@@ -22,7 +22,30 @@ ActiveRecord::Schema.define(:version => 20120120084644) do
     t.datetime "updated_at",          :null => false
   end
 
-  add_index "articles", ["title"], :name => "index_articles_on_title", :unique => true
+  add_index "article_bases", ["title"], :name => "index_article_bases_on_title", :unique => true
+
+  create_table "article_namespaces", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "article_namespaces", ["name"], :name => "index_article_namespaces_on_name", :unique => true
+
+  create_table "article_revisions", :force => true do |t|
+    t.integer  "article_id"
+    t.text     "body"
+    t.string   "engine"
+    t.boolean  "compressed"
+    t.integer  "editor_id"
+    t.text     "edit_summary"
+    t.text     "auto_summary"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "article_revisions", ["article_id", "id"], :name => "index_article_revisions_on_article_id_and_id", :unique => true
+  add_index "article_revisions", ["article_id"], :name => "index_article_revisions_on_article_id"
 
   create_table "groups", :force => true do |t|
     t.string   "name"
@@ -37,14 +60,6 @@ ActiveRecord::Schema.define(:version => 20120120084644) do
   end
 
   add_index "groups", ["global_permission_id"], :name => "index_groups_on_global_permission_id"
-
-  create_table "namespaces", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "namespaces", ["name"], :name => "index_namespaces_on_name"
 
   create_table "permissions", :force => true do |t|
     t.integer  "namespace_id"
@@ -80,20 +95,5 @@ ActiveRecord::Schema.define(:version => 20120120084644) do
   add_index "restrictions", ["creator_id"], :name => "index_restrictions_on_creator_id"
   add_index "restrictions", ["restricted_group_id"], :name => "index_restrictions_on_restricted_group_id"
   add_index "restrictions", ["revision_id"], :name => "index_restrictions_on_revision_id"
-
-  create_table "revisions", :force => true do |t|
-    t.integer  "article_id"
-    t.text     "body"
-    t.string   "engine"
-    t.boolean  "compressed"
-    t.integer  "editor_id"
-    t.text     "edit_summary"
-    t.text     "auto_summary"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
-  end
-
-  add_index "revisions", ["article_id", "id"], :name => "index_revisions_on_article_id_and_id", :unique => true
-  add_index "revisions", ["article_id"], :name => "index_revisions_on_article_id"
 
 end

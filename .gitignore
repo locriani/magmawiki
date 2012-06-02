@@ -19,3 +19,6 @@ webrat.log
 .project
 .idea
 nbproject/*
+
+# Mac OS X
+.DS_Store
