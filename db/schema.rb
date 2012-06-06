@@ -20,17 +20,22 @@ ActiveRecord::Schema.define(:version => 20120602204321) do
     t.integer  "edit_count"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
+    t.string   "slug"
+    t.integer  "namespace_id"
   end
 
+  add_index "article_bases", ["slug"], :name => "index_article_bases_on_slug", :unique => true
   add_index "article_bases", ["title"], :name => "index_article_bases_on_title", :unique => true
 
   create_table "article_namespaces", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "slug"
   end
 
   add_index "article_namespaces", ["name"], :name => "index_article_namespaces_on_name", :unique => true
+  add_index "article_namespaces", ["slug"], :name => "index_article_namespaces_on_slug", :unique => true
 
   create_table "article_revisions", :force => true do |t|
     t.integer  "base_id"
