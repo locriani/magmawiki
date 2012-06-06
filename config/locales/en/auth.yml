@@ -1,0 +1,7 @@
+en:
+  auth:
+    login_required: "You must log in to view this page."
+    logged_in: "Logged in!"
+    logged_out: "Logged out!"
+    invalid: "Username or password was invalid."
+    signed_up: "Signed up!"
