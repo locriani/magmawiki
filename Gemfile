@@ -21,6 +21,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'haml-rails'
 
 group :test, :development do
   gem 'guard', '1.0.3'
