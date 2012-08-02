@@ -21,3 +21,6 @@ webrat.log
 .idea
 nbproject/*
 .rvmrc*
+
+# Mac OS X
+.DS_Store

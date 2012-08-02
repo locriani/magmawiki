@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :revision do
+  factory :revision, :class => Article::Revision do
     association :article
   end
 end
