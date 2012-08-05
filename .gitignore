@@ -5,6 +5,7 @@ tmp/*
 tmp/**/*
 db/*.sqlite3
 db/*.sqlite3-journal
+.bundle/*
 
 # Unit testing / code coverage
 rerun.txt
@@ -19,6 +20,7 @@ webrat.log
 .project
 .idea
 nbproject/*
+.rvmrc*
 
 # Mac OS X
 .DS_Store
