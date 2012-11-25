@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Group do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :users }
+  it { should have_many :permissions }
+  it { should have_many :restrictions }
 end

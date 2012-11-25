@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121125005902) do
+ActiveRecord::Schema.define(:version => 20121125012220) do
 
   create_table "article_bases", :force => true do |t|
     t.string   "title"
@@ -91,16 +91,16 @@ ActiveRecord::Schema.define(:version => 20121125005902) do
     t.integer  "creator_id"
     t.datetime "effective_at"
     t.datetime "expires_at"
-    t.integer  "restricted_group_id"
+    t.integer  "group_id"
     t.string   "restriction_type"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
-  add_index "restrictions", ["article_id", "restricted_group_id"], :name => "index_restrictions_on_article_id_and_restricted_group_id"
   add_index "restrictions", ["article_id"], :name => "index_restrictions_on_article_id"
   add_index "restrictions", ["creator_id"], :name => "index_restrictions_on_creator_id"
-  add_index "restrictions", ["restricted_group_id"], :name => "index_restrictions_on_restricted_group_id"
+  add_index "restrictions", ["group_id", "article_id"], :name => "index_restrictions_on_group_id_and_article_id"
+  add_index "restrictions", ["group_id"], :name => "index_restrictions_on_group_id"
   add_index "restrictions", ["revision_id"], :name => "index_restrictions_on_revision_id"
 
 end
