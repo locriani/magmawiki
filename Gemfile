@@ -35,6 +35,7 @@ group :test, :development do
   gem 'factory_girl'
   gem 'shoulda', :require => false
   gem 'terminal-notifier-guard'
+  gem 'rb-fsevent'
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

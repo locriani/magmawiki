@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120602202733) do
+ActiveRecord::Schema.define(:version => 20121125005902) do
 
   create_table "article_bases", :force => true do |t|
     t.string   "title"
@@ -77,8 +77,10 @@ ActiveRecord::Schema.define(:version => 20120602202733) do
     t.boolean  "restrict"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "creator_id"
   end
 
+  add_index "permissions", ["creator_id"], :name => "index_permissions_on_creator_id"
   add_index "permissions", ["group_id"], :name => "index_permissions_on_group_id"
   add_index "permissions", ["namespace_id", "group_id"], :name => "index_permissions_on_namespace_id_and_group_id"
   add_index "permissions", ["namespace_id"], :name => "index_permissions_on_namespace_id"
