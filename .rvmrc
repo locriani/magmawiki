@@ -1,20 +1,8 @@
-#!/usr/bin/env bash
+environment_id="ruby-1.9.3-p194@magmawiki-rails"
 
-ruby_string="ruby-1.9.3-p194"
-gemset_name="magmawiki-rails"
-
-if rvm list strings | grep -q "${ruby_string}" ; then
- 
-   # Load or create the specified environment
-   if [[ -d "${rvm_path:-$HOME/.rvm}/environments" \
-     && -s "${rvm_path:-$HOME/.rvm}/environments/${ruby_string}@${gemset_name}" ]] ; then
-     \. "${rvm_path:-$HOME/.rvm}/environments/${ruby_string}@${gemset_name}"
-   else
-     rvm --create  "${ruby_string}@${gemset_name}"
-   fi
- else
- 
-   # Notify the user to install the desired interpreter before proceeding.
-   echo "${ruby_string} was not found, please run 'rvm install ${ruby_string}' and then cd back into the project directory."
- 
- fi
+if [[ -d "${rvm_path:-$HOME/.rvm}/environments" \
+  && -s "${rvm_path:-$HOME/.rvm}/environments/$environment_id" ]] ; then
+  \. "${rvm_path:-$HOME/.rvm}/environments/$environment_id"
+else
+  rvm --create use  "$environment_id"
+fi

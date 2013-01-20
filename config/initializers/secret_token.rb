@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Magmawiki::Application.config.secret_token = '244f2739b689124ab7001229047bc87399cb5d5671bdc970344457dee097dc7f19082789fe432d17236d6cd19d636069be05ff7c85b2be4131c5ba65e778b4de'
+Magmawiki::Application.config.secret_token = 'b946920ddde0e71de89072d0a79a977acd3c4d00e6a7a8184bf718a6a6afeb8374fa69e2af2fc06f05e3322e35e0f9dac47e07f5d8438e1e4156f78e6935548c'

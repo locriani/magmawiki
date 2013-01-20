@@ -1,5 +1,7 @@
 class Article::Revision < ActiveRecord::Base
-  belongs_to :article, :foreign_key => :base_id
+  belongs_to :article
+  belongs_to :editor
 
-  validates :base_id, :presence => :true
+  validates :edit_summary, presence: true
+  validates :body, presence: true
 end
