@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     builder (3.0.4)
+    coderay (1.0.8)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -58,9 +59,16 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    method_source (0.8.1)
     mime-types (1.19)
     multi_json (1.5.0)
     polyglot (0.3.3)
+    pry (0.9.10)
+      coderay (~> 1.0.5)
+      method_source (~> 0.8)
+      slop (~> 3.3.1)
+    pry-rails (0.2.2)
+      pry (>= 0.9.10)
     rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -102,12 +110,17 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    slop (3.3.3)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.7)
+    strong_parameters (0.1.6)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
+      railties (~> 3.0)
     thor (0.16.0)
     tilt (1.3.3)
     treetop (1.4.12)
@@ -125,8 +138,10 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   haml-rails
   jquery-rails
+  pry-rails
   rails (= 3.2.11)
   rspec-rails
   sass-rails (~> 3.2.3)
   sqlite3
+  strong_parameters
   uglifier (>= 1.0.3)

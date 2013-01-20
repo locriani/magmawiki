@@ -21,6 +21,8 @@ end
 gem 'jquery-rails'
 gem 'haml-rails'
 
+gem 'pry-rails'
+
 group :test, :development do
   gem 'rspec-rails'
 end
