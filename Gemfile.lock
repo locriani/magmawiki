@@ -42,6 +42,7 @@ GEM
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    expression_parser (0.9.0)
     factory_girl (4.1.0)
       activesupport (>= 3.0.0)
     factory_girl_rails (4.1.0)
@@ -135,6 +136,9 @@ GEM
     uglifier (1.3.0)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
+    wikicloth (0.8.0)
+      builder
+      expression_parser
 
 PLATFORMS
   ruby
@@ -151,3 +155,4 @@ DEPENDENCIES
   sqlite3
   strong_parameters
   uglifier (>= 1.0.3)
+  wikicloth

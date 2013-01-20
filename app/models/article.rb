@@ -13,6 +13,6 @@ class Article < ActiveRecord::Base
 
 private
   def slugify_title
-    self.slug = self.title.downcase.tr(' ','_').gsub(/[\!-\.;-@\[-\^`\{-~]/,"").gsub(/:/,":_").gsub(/(_{2,})/, '_').chomp("_")
+    self.slug = self.title.slugify
   end
 end

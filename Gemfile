@@ -18,6 +18,8 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'wikicloth'
+
 gem 'jquery-rails'
 gem 'haml-rails'
 

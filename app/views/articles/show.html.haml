@@ -1,0 +1,7 @@
+%h1
+  = @article.title
+
+=link_to("Edit", new_article_article_revision_path(@article))
+
+.article
+  = @article.current_revision.to_html

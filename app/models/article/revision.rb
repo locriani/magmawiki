@@ -4,4 +4,14 @@ class Article::Revision < ActiveRecord::Base
 
   validates :edit_summary, presence: true
   validates :body, presence: true
+
+  def to_html
+    WikiParser.new(
+      data: self.body,
+      params: {
+        pagename: self.article.slug,
+        "PAGENAME" => self.article.title
+      }
+    ).to_html.html_safe
+  end
 end
