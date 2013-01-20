@@ -1,6 +1,5 @@
 require 'spec_helper'
 
 describe Article::Revision do
-  it { should belong_to :article }
-  it { should validate_presence_of :base_id }
+  pending "add some examples to (or delete) #{__FILE__}"
 end

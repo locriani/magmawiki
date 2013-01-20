@@ -2,13 +2,11 @@ class CreateArticles < ActiveRecord::Migration
   def change
     create_table :articles do |t|
       t.string :title
-      t.integer :current_revision_id
-      t.integer :view_count
-      t.integer :edit_count
+      t.string :slug
+      t.references :namespace
 
       t.timestamps
     end
-    
-    add_index :articles, :title, :unique => true
+    add_index :articles, :namespace_id
   end
 end
